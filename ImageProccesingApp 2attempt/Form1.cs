@@ -38,5 +38,4 @@ namespace ImageProccesingApp_2attempt
         }
 
     }
-
 }
