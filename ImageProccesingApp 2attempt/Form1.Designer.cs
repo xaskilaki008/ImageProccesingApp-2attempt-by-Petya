@@ -456,7 +456,7 @@
             this.btn_f1.FlatAppearance.BorderSize = 2;
             this.btn_f1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_f1.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f1.Location = new System.Drawing.Point(357, 149);
+            this.btn_f1.Location = new System.Drawing.Point(356, 149);
             this.btn_f1.Name = "btn_f1";
             this.btn_f1.Size = new System.Drawing.Size(90, 38);
             this.btn_f1.TabIndex = 11;
