@@ -458,8 +458,93 @@ namespace ImageProccesingApp_2attempt
             }
         }
 
+        private void btn_f1_Click_1(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null) return;
+
+            Bitmap original = new Bitmap(pictureBox1.Image);
+            Bitmap binary = new Bitmap(original.Width, original.Height);
+
+            // Порог бинаризации (можно регулировать)
+            int threshold = 128;
+
+            for (int y = 0; y < original.Height; y++)
+            {
+                for (int x = 0; x < original.Width; x++)
+                {
+                    Color pixel = original.GetPixel(x, y);
+                    // Преобразование в grayscale
+                    int gray = (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11);
+                    // Бинаризация
+                    Color binaryColor = gray > threshold ? Color.White : Color.Black;
+                    binary.SetPixel(x, y, binaryColor);
+                }
+            }
+
+            pictureBox1.Image = binary;
+            processedImage = new Bitmap(binary); // Сохраняем результат
+        }
+
+        private void btn_f2_Click_1(object sender, EventArgs e)
+    {
+        // Проверяем, загружено ли изображение в PictureBox (например, pictureBox1)
+        if (pictureBox1.Image == null)
+        {
+            MessageBox.Show("Сначала загрузите изображение!");
+            return;
+        }
+
+        // Получаем изображение из PictureBox
+        Bitmap originalImage = new Bitmap(pictureBox1.Image);
+        Bitmap grayImage = new Bitmap(originalImage.Width, originalImage.Height);
+
+        // Применяем фильтр оттенков серого
+        for (int y = 0; y < originalImage.Height; y++)
+        {
+            for (int x = 0; x < originalImage.Width; x++)
+            {
+                Color pixel = originalImage.GetPixel(x, y);
+                
+                // Вычисляем среднее значение RGB (простой метод)
+                int grayValue = (int)((pixel.R * 0.299) + (pixel.G * 0.587) + (pixel.B * 0.114));
+                
+                // Создаем новый цвет в градациях серого
+                Color grayPixel = Color.FromArgb(grayValue, grayValue, grayValue);
+                grayImage.SetPixel(x, y, grayPixel);
+            }
+        }
+
+        // Отображаем результат
+        pictureBox1.Image = grayImage;
+    }
+
+        private void btn_f3_Click_1(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null) return;
+
+            Bitmap original = new Bitmap(pictureBox1.Image);
+            Bitmap negative = new Bitmap(original.Width, original.Height);
+
+            for (int y = 0; y < original.Height; y++)
+            {
+                for (int x = 0; x < original.Width; x++)
+                {
+                    Color pixel = original.GetPixel(x, y);
+                    // Инвертируем каждый цветовой канал
+                    Color negativeColor = Color.FromArgb(
+                        255 - pixel.R,
+                        255 - pixel.G,
+                        255 - pixel.B);
+                    negative.SetPixel(x, y, negativeColor);
+                }
+            }
+
+            pictureBox1.Image = negative;
+            processedImage = new Bitmap(negative); // Сохраняем результат
+        }
+
         // В конструкторе Form1 добавьте (если еще не добавлено):
-        
+
 
     }
 }

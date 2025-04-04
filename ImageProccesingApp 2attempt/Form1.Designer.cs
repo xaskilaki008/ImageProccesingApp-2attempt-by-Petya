@@ -246,6 +246,12 @@
             // 
             this.panel6.AutoSize = true;
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.panel6.Controls.Add(this.btn_f5);
+            this.panel6.Controls.Add(this.btn_f4);
+            this.panel6.Controls.Add(this.btn_rotate);
+            this.panel6.Controls.Add(this.btn_f1);
+            this.panel6.Controls.Add(this.btn_f3);
+            this.panel6.Controls.Add(this.btn_f2);
             this.panel6.Controls.Add(this.Brightnes);
             this.panel6.Controls.Add(this.trk_bright);
             this.panel6.Controls.Add(this.label6);
@@ -258,12 +264,6 @@
             this.panel6.Controls.Add(this.txt_hight);
             this.panel6.Controls.Add(this.txt_width);
             this.panel6.Controls.Add(this.txt_imgpath);
-            this.panel6.Controls.Add(this.btn_f5);
-            this.panel6.Controls.Add(this.btn_f4);
-            this.panel6.Controls.Add(this.btn_f3);
-            this.panel6.Controls.Add(this.btn_f2);
-            this.panel6.Controls.Add(this.btn_f1);
-            this.panel6.Controls.Add(this.btn_rotate);
             this.panel6.Controls.Add(this.btn_reload);
             this.panel6.Controls.Add(this.btn_resize);
             this.panel6.Controls.Add(this.btn_save);
@@ -408,7 +408,7 @@
             this.btn_f5.FlatAppearance.BorderSize = 2;
             this.btn_f5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_f5.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f5.Location = new System.Drawing.Point(835, 149);
+            this.btn_f5.Location = new System.Drawing.Point(791, 149);
             this.btn_f5.Name = "btn_f5";
             this.btn_f5.Size = new System.Drawing.Size(90, 38);
             this.btn_f5.TabIndex = 15;
@@ -421,7 +421,7 @@
             this.btn_f4.FlatAppearance.BorderSize = 2;
             this.btn_f4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_f4.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f4.Location = new System.Drawing.Point(722, 149);
+            this.btn_f4.Location = new System.Drawing.Point(695, 149);
             this.btn_f4.Name = "btn_f4";
             this.btn_f4.Size = new System.Drawing.Size(90, 38);
             this.btn_f4.TabIndex = 14;
@@ -438,21 +438,25 @@
             this.btn_f3.Name = "btn_f3";
             this.btn_f3.Size = new System.Drawing.Size(90, 38);
             this.btn_f3.TabIndex = 13;
-            this.btn_f3.Text = "Filter-3";
+            this.btn_f3.Text = "Negative";
             this.btn_f3.UseVisualStyleBackColor = true;
+            this.btn_f3.Click += new System.EventHandler(this.btn_f3_Click_1);
             // 
             // btn_f2
             // 
             this.btn_f2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_f2.FlatAppearance.BorderSize = 2;
             this.btn_f2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_f2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_f2.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f2.Location = new System.Drawing.Point(477, 149);
+            this.btn_f2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btn_f2.Location = new System.Drawing.Point(458, 149);
             this.btn_f2.Name = "btn_f2";
-            this.btn_f2.Size = new System.Drawing.Size(90, 38);
+            this.btn_f2.Size = new System.Drawing.Size(135, 38);
             this.btn_f2.TabIndex = 12;
-            this.btn_f2.Text = "Filter-2";
+            this.btn_f2.Text = "Shades of grey";
             this.btn_f2.UseVisualStyleBackColor = true;
+            this.btn_f2.Click += new System.EventHandler(this.btn_f2_Click_1);
             // 
             // btn_f1
             // 
@@ -462,10 +466,11 @@
             this.btn_f1.ForeColor = System.Drawing.Color.GreenYellow;
             this.btn_f1.Location = new System.Drawing.Point(356, 149);
             this.btn_f1.Name = "btn_f1";
-            this.btn_f1.Size = new System.Drawing.Size(90, 38);
+            this.btn_f1.Size = new System.Drawing.Size(96, 38);
             this.btn_f1.TabIndex = 11;
-            this.btn_f1.Text = "Filter-1";
+            this.btn_f1.Text = "Binarization";
             this.btn_f1.UseVisualStyleBackColor = true;
+            this.btn_f1.Click += new System.EventHandler(this.btn_f1_Click_1);
             // 
             // btn_rotate
             // 
@@ -534,22 +539,32 @@
             // 
             // btn_Copy
             // 
-            this.btn_Copy.Location = new System.Drawing.Point(494, 11);
+            this.btn_Copy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Copy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_Copy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Copy.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Copy.Location = new System.Drawing.Point(494, 8);
             this.btn_Copy.Name = "btn_Copy";
-            this.btn_Copy.Size = new System.Drawing.Size(75, 23);
+            this.btn_Copy.Size = new System.Drawing.Size(75, 26);
             this.btn_Copy.TabIndex = 4;
             this.btn_Copy.Text = "Copy";
-            this.btn_Copy.UseVisualStyleBackColor = true;
+            this.btn_Copy.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Copy.UseVisualStyleBackColor = false;
             this.btn_Copy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // btn_Paste
             // 
-            this.btn_Paste.Location = new System.Drawing.Point(575, 11);
+            this.btn_Paste.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Paste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btn_Paste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Paste.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Paste.Location = new System.Drawing.Point(575, 8);
             this.btn_Paste.Name = "btn_Paste";
-            this.btn_Paste.Size = new System.Drawing.Size(75, 23);
+            this.btn_Paste.Size = new System.Drawing.Size(75, 26);
             this.btn_Paste.TabIndex = 5;
             this.btn_Paste.Text = "Paste";
-            this.btn_Paste.UseVisualStyleBackColor = true;
+            this.btn_Paste.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Paste.UseVisualStyleBackColor = false;
             this.btn_Paste.Click += new System.EventHandler(this.btnPaste_Click);
             // 
             // Form1
