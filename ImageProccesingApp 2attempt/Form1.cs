@@ -38,6 +38,11 @@ namespace ImageProccesingApp_2attempt
             btn_resize.Click += Btn_resize_Click;
             btn_reload.Click += Btn_reload_Click;
             btn_rotate.Click += Btn_rotate_Click;
+            // Добавьте в конструктор Form1() после инициализации других элементов:
+            btn_Copy.Click += btnCopy_Click;
+            btn_Paste.Click += btnPaste_Click;
+            this.KeyPreview = true; // Для обработки горячих клавиш
+            this.KeyDown += Form1_KeyDown;
 
             trk_hue.Scroll += TrackBar_Scroll;
             trk_contrast.Scroll += TrackBar_Scroll;
@@ -376,5 +381,85 @@ namespace ImageProccesingApp_2attempt
         {
             // Обработка изменения текста
         }
+
+
+        
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (pictureBox1.Image != null)
+                {
+                    // Копируем текущее изображение в буфер обмена
+                    Clipboard.SetImage(pictureBox1.Image);
+                    MessageBox.Show("Изображение скопировано в буфер обмена", "Успех",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Нет изображения для копирования", "Ошибка",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при копировании: {ex.Message}", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnPaste_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Clipboard.ContainsImage())
+                {
+                    // Вставляем изображение из буфера обмена
+                    Image pastedImage = Clipboard.GetImage();
+
+                    // Обновляем изображения и интерфейс
+                    pictureBox1.Image = pastedImage;
+                    pictureBox2.Image = pastedImage;
+                    processedImage = new Bitmap(pastedImage);
+                    originalImage = new Bitmap(pastedImage);
+
+                    // Обновляем информацию о размере
+                    txt_width.Text = pastedImage.Width.ToString();
+                    txt_hight.Text = pastedImage.Height.ToString();
+                    lbl_size.Text = $"{pastedImage.Width} x {pastedImage.Height}";
+
+                    // Сбрасываем трекбары
+                    trk_hue.Value = 0;
+                    trk_contrast.Value = 0;
+                    trk_bright.Value = 0;
+                }
+                else
+                {
+                    MessageBox.Show("В буфере обмена нет изображения", "Информация",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при вставке: {ex.Message}", "Ошибка",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                btnCopy_Click(null, null);
+            }
+            else if (e.Control && e.KeyCode == Keys.V)
+            {
+                btnPaste_Click(null, null);
+            }
+        }
+
+        // В конструкторе Form1 добавьте (если еще не добавлено):
+        
+
     }
 }

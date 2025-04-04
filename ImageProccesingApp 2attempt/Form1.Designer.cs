@@ -64,8 +64,8 @@
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_open = new System.Windows.Forms.Button();
-            this.btnCopy = new System.Windows.Forms.Button();
-            this.btnPaste = new System.Windows.Forms.Button();
+            this.btn_Copy = new System.Windows.Forms.Button();
+            this.btn_Paste = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -83,8 +83,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panel1.Controls.Add(this.btnPaste);
-            this.panel1.Controls.Add(this.btnCopy);
+            this.panel1.Controls.Add(this.btn_Paste);
+            this.panel1.Controls.Add(this.btn_Copy);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
@@ -532,23 +532,25 @@
             this.btn_open.Text = "Select Image";
             this.btn_open.UseVisualStyleBackColor = true;
             // 
-            // btnCopy
+            // btn_Copy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(494, 11);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(75, 23);
-            this.btnCopy.TabIndex = 4;
-            this.btnCopy.Text = "Copy";
-            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btn_Copy.Location = new System.Drawing.Point(494, 11);
+            this.btn_Copy.Name = "btn_Copy";
+            this.btn_Copy.Size = new System.Drawing.Size(75, 23);
+            this.btn_Copy.TabIndex = 4;
+            this.btn_Copy.Text = "Copy";
+            this.btn_Copy.UseVisualStyleBackColor = true;
+            this.btn_Copy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
-            // btnPaste
+            // btn_Paste
             // 
-            this.btnPaste.Location = new System.Drawing.Point(575, 11);
-            this.btnPaste.Name = "btnPaste";
-            this.btnPaste.Size = new System.Drawing.Size(75, 23);
-            this.btnPaste.TabIndex = 5;
-            this.btnPaste.Text = "Paste";
-            this.btnPaste.UseVisualStyleBackColor = true;
+            this.btn_Paste.Location = new System.Drawing.Point(575, 11);
+            this.btn_Paste.Name = "btn_Paste";
+            this.btn_Paste.Size = new System.Drawing.Size(75, 23);
+            this.btn_Paste.TabIndex = 5;
+            this.btn_Paste.Text = "Paste";
+            this.btn_Paste.UseVisualStyleBackColor = true;
+            this.btn_Paste.Click += new System.EventHandler(this.btnPaste_Click);
             // 
             // Form1
             // 
@@ -615,8 +617,8 @@
         private System.Windows.Forms.TrackBar trk_contrast;
         private System.Windows.Forms.Label Brightnes;
         private System.Windows.Forms.TrackBar trk_bright;
-        private System.Windows.Forms.Button btnPaste;
-        private System.Windows.Forms.Button btnCopy;
+        private System.Windows.Forms.Button btn_Paste;
+        private System.Windows.Forms.Button btn_Copy;
     }
 }
 
