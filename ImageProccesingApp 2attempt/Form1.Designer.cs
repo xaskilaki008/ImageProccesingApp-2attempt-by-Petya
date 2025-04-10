@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_Paste = new System.Windows.Forms.Button();
+            this.btn_Copy = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -42,6 +44,12 @@
             this.btn_normal = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btn_f5 = new System.Windows.Forms.Button();
+            this.btn_f4 = new System.Windows.Forms.Button();
+            this.btn_rotate = new System.Windows.Forms.Button();
+            this.btn_f1 = new System.Windows.Forms.Button();
+            this.btn_f3 = new System.Windows.Forms.Button();
+            this.btn_f2 = new System.Windows.Forms.Button();
             this.Brightnes = new System.Windows.Forms.Label();
             this.trk_bright = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,18 +62,15 @@
             this.txt_hight = new System.Windows.Forms.TextBox();
             this.txt_width = new System.Windows.Forms.TextBox();
             this.txt_imgpath = new System.Windows.Forms.TextBox();
-            this.btn_f5 = new System.Windows.Forms.Button();
-            this.btn_f4 = new System.Windows.Forms.Button();
-            this.btn_f3 = new System.Windows.Forms.Button();
-            this.btn_f2 = new System.Windows.Forms.Button();
-            this.btn_f1 = new System.Windows.Forms.Button();
-            this.btn_rotate = new System.Windows.Forms.Button();
             this.btn_reload = new System.Windows.Forms.Button();
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_open = new System.Windows.Forms.Button();
-            this.btn_Copy = new System.Windows.Forms.Button();
-            this.btn_Paste = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fIltersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripbtn_f1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.shadesOfGreyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.negativeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -75,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trk_bright)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_contrast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -92,6 +98,36 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(690, 360);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_Paste
+            // 
+            this.btn_Paste.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Paste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btn_Paste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Paste.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Paste.Location = new System.Drawing.Point(575, 8);
+            this.btn_Paste.Name = "btn_Paste";
+            this.btn_Paste.Size = new System.Drawing.Size(75, 26);
+            this.btn_Paste.TabIndex = 5;
+            this.btn_Paste.Text = "Paste";
+            this.btn_Paste.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Paste.UseVisualStyleBackColor = false;
+            this.btn_Paste.Click += new System.EventHandler(this.btnPaste_Click);
+            // 
+            // btn_Copy
+            // 
+            this.btn_Copy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Copy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_Copy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Copy.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Copy.Location = new System.Drawing.Point(494, 8);
+            this.btn_Copy.Name = "btn_Copy";
+            this.btn_Copy.Size = new System.Drawing.Size(75, 26);
+            this.btn_Copy.TabIndex = 4;
+            this.btn_Copy.Text = "Copy";
+            this.btn_Copy.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Copy.UseVisualStyleBackColor = false;
+            this.btn_Copy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // pictureBox1
             // 
@@ -268,11 +304,88 @@
             this.panel6.Controls.Add(this.btn_resize);
             this.panel6.Controls.Add(this.btn_save);
             this.panel6.Controls.Add(this.btn_open);
+            this.panel6.Controls.Add(this.menuStrip1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel6.Location = new System.Drawing.Point(0, 370);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(934, 190);
             this.panel6.TabIndex = 2;
+            // 
+            // btn_f5
+            // 
+            this.btn_f5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_f5.FlatAppearance.BorderSize = 2;
+            this.btn_f5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_f5.ForeColor = System.Drawing.Color.GreenYellow;
+            this.btn_f5.Location = new System.Drawing.Point(791, 149);
+            this.btn_f5.Name = "btn_f5";
+            this.btn_f5.Size = new System.Drawing.Size(90, 38);
+            this.btn_f5.TabIndex = 15;
+            this.btn_f5.Text = "Filter-5";
+            this.btn_f5.UseVisualStyleBackColor = true;
+            // 
+            // btn_f4
+            // 
+            this.btn_f4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_f4.FlatAppearance.BorderSize = 2;
+            this.btn_f4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_f4.ForeColor = System.Drawing.Color.GreenYellow;
+            this.btn_f4.Location = new System.Drawing.Point(695, 149);
+            this.btn_f4.Name = "btn_f4";
+            this.btn_f4.Size = new System.Drawing.Size(90, 38);
+            this.btn_f4.TabIndex = 14;
+            this.btn_f4.Text = "Filter-4";
+            this.btn_f4.UseVisualStyleBackColor = true;
+            // 
+            // btn_rotate
+            // 
+            this.btn_rotate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_rotate.FlatAppearance.BorderSize = 2;
+            this.btn_rotate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_rotate.ForeColor = System.Drawing.Color.GreenYellow;
+            this.btn_rotate.Location = new System.Drawing.Point(238, 149);
+            this.btn_rotate.Name = "btn_rotate";
+            this.btn_rotate.Size = new System.Drawing.Size(90, 38);
+            this.btn_rotate.TabIndex = 10;
+            this.btn_rotate.Text = "Rotate";
+            this.btn_rotate.UseVisualStyleBackColor = true;
+            // 
+            // btn_f1
+            // 
+            this.btn_f1.Location = new System.Drawing.Point(0, 0);
+            this.btn_f1.Name = "btn_f1";
+            this.btn_f1.Size = new System.Drawing.Size(75, 23);
+            this.btn_f1.TabIndex = 16;
+            // 
+            // btn_f3
+            // 
+            this.btn_f3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_f3.FlatAppearance.BorderSize = 2;
+            this.btn_f3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_f3.ForeColor = System.Drawing.Color.GreenYellow;
+            this.btn_f3.Location = new System.Drawing.Point(599, 149);
+            this.btn_f3.Name = "btn_f3";
+            this.btn_f3.Size = new System.Drawing.Size(90, 38);
+            this.btn_f3.TabIndex = 13;
+            this.btn_f3.Text = "Negative";
+            this.btn_f3.UseVisualStyleBackColor = true;
+            this.btn_f3.Click += new System.EventHandler(this.btn_f3_Click_1);
+            // 
+            // btn_f2
+            // 
+            this.btn_f2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_f2.FlatAppearance.BorderSize = 2;
+            this.btn_f2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_f2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_f2.ForeColor = System.Drawing.Color.GreenYellow;
+            this.btn_f2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btn_f2.Location = new System.Drawing.Point(458, 149);
+            this.btn_f2.Name = "btn_f2";
+            this.btn_f2.Size = new System.Drawing.Size(135, 38);
+            this.btn_f2.TabIndex = 12;
+            this.btn_f2.Text = "Shades of grey";
+            this.btn_f2.UseVisualStyleBackColor = true;
+            this.btn_f2.Click += new System.EventHandler(this.btn_f2_Click_1);
             // 
             // Brightnes
             // 
@@ -292,7 +405,7 @@
             // 
             this.trk_bright.Location = new System.Drawing.Point(697, 94);
             this.trk_bright.Name = "trk_bright";
-            this.trk_bright.Size = new System.Drawing.Size(140, 56);
+            this.trk_bright.Size = new System.Drawing.Size(140, 58);
             this.trk_bright.TabIndex = 25;
             // 
             // label6
@@ -313,7 +426,7 @@
             // 
             this.trk_contrast.Location = new System.Drawing.Point(495, 94);
             this.trk_contrast.Name = "trk_contrast";
-            this.trk_contrast.Size = new System.Drawing.Size(140, 56);
+            this.trk_contrast.Size = new System.Drawing.Size(140, 58);
             this.trk_contrast.TabIndex = 23;
             // 
             // label4
@@ -334,7 +447,7 @@
             // 
             this.trk_hue.Location = new System.Drawing.Point(285, 94);
             this.trk_hue.Name = "trk_hue";
-            this.trk_hue.Size = new System.Drawing.Size(140, 56);
+            this.trk_hue.Size = new System.Drawing.Size(140, 58);
             this.trk_hue.TabIndex = 21;
             // 
             // label5
@@ -402,89 +515,6 @@
             this.txt_imgpath.Size = new System.Drawing.Size(422, 38);
             this.txt_imgpath.TabIndex = 16;
             // 
-            // btn_f5
-            // 
-            this.btn_f5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_f5.FlatAppearance.BorderSize = 2;
-            this.btn_f5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_f5.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f5.Location = new System.Drawing.Point(791, 149);
-            this.btn_f5.Name = "btn_f5";
-            this.btn_f5.Size = new System.Drawing.Size(90, 38);
-            this.btn_f5.TabIndex = 15;
-            this.btn_f5.Text = "Filter-5";
-            this.btn_f5.UseVisualStyleBackColor = true;
-            // 
-            // btn_f4
-            // 
-            this.btn_f4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_f4.FlatAppearance.BorderSize = 2;
-            this.btn_f4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_f4.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f4.Location = new System.Drawing.Point(695, 149);
-            this.btn_f4.Name = "btn_f4";
-            this.btn_f4.Size = new System.Drawing.Size(90, 38);
-            this.btn_f4.TabIndex = 14;
-            this.btn_f4.Text = "Filter-4";
-            this.btn_f4.UseVisualStyleBackColor = true;
-            // 
-            // btn_f3
-            // 
-            this.btn_f3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_f3.FlatAppearance.BorderSize = 2;
-            this.btn_f3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_f3.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f3.Location = new System.Drawing.Point(599, 149);
-            this.btn_f3.Name = "btn_f3";
-            this.btn_f3.Size = new System.Drawing.Size(90, 38);
-            this.btn_f3.TabIndex = 13;
-            this.btn_f3.Text = "Negative";
-            this.btn_f3.UseVisualStyleBackColor = true;
-            this.btn_f3.Click += new System.EventHandler(this.btn_f3_Click_1);
-            // 
-            // btn_f2
-            // 
-            this.btn_f2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_f2.FlatAppearance.BorderSize = 2;
-            this.btn_f2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_f2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_f2.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btn_f2.Location = new System.Drawing.Point(458, 149);
-            this.btn_f2.Name = "btn_f2";
-            this.btn_f2.Size = new System.Drawing.Size(135, 38);
-            this.btn_f2.TabIndex = 12;
-            this.btn_f2.Text = "Shades of grey";
-            this.btn_f2.UseVisualStyleBackColor = true;
-            this.btn_f2.Click += new System.EventHandler(this.btn_f2_Click_1);
-            // 
-            // btn_f1
-            // 
-            this.btn_f1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_f1.FlatAppearance.BorderSize = 2;
-            this.btn_f1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_f1.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f1.Location = new System.Drawing.Point(356, 149);
-            this.btn_f1.Name = "btn_f1";
-            this.btn_f1.Size = new System.Drawing.Size(96, 38);
-            this.btn_f1.TabIndex = 11;
-            this.btn_f1.Text = "Binarization";
-            this.btn_f1.UseVisualStyleBackColor = true;
-            this.btn_f1.Click += new System.EventHandler(this.btn_f1_Click_1);
-            // 
-            // btn_rotate
-            // 
-            this.btn_rotate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_rotate.FlatAppearance.BorderSize = 2;
-            this.btn_rotate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_rotate.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_rotate.Location = new System.Drawing.Point(238, 149);
-            this.btn_rotate.Name = "btn_rotate";
-            this.btn_rotate.Size = new System.Drawing.Size(90, 38);
-            this.btn_rotate.TabIndex = 10;
-            this.btn_rotate.Text = "Rotate";
-            this.btn_rotate.UseVisualStyleBackColor = true;
-            // 
             // btn_reload
             // 
             this.btn_reload.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -537,35 +567,47 @@
             this.btn_open.Text = "Select Image";
             this.btn_open.UseVisualStyleBackColor = true;
             // 
-            // btn_Copy
+            // menuStrip1
             // 
-            this.btn_Copy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Copy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_Copy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Copy.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_Copy.Location = new System.Drawing.Point(494, 8);
-            this.btn_Copy.Name = "btn_Copy";
-            this.btn_Copy.Size = new System.Drawing.Size(75, 26);
-            this.btn_Copy.TabIndex = 4;
-            this.btn_Copy.Text = "Copy";
-            this.btn_Copy.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_Copy.UseVisualStyleBackColor = false;
-            this.btn_Copy.Click += new System.EventHandler(this.btnCopy_Click);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fIltersToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(934, 28);
+            this.menuStrip1.TabIndex = 27;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // btn_Paste
+            // fIltersToolStripMenuItem
             // 
-            this.btn_Paste.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Paste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btn_Paste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Paste.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_Paste.Location = new System.Drawing.Point(575, 8);
-            this.btn_Paste.Name = "btn_Paste";
-            this.btn_Paste.Size = new System.Drawing.Size(75, 26);
-            this.btn_Paste.TabIndex = 5;
-            this.btn_Paste.Text = "Paste";
-            this.btn_Paste.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_Paste.UseVisualStyleBackColor = false;
-            this.btn_Paste.Click += new System.EventHandler(this.btnPaste_Click);
+            this.fIltersToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.fIltersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripbtn_f1,
+            this.shadesOfGreyToolStripMenuItem,
+            this.negativeToolStripMenuItem});
+            this.fIltersToolStripMenuItem.Name = "fIltersToolStripMenuItem";
+            this.fIltersToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.fIltersToolStripMenuItem.Text = "FIlters";
+            this.fIltersToolStripMenuItem.Click += new System.EventHandler(this.fIltersToolStripMenuItem_Click);
+            // 
+            // ToolStripbtn_f1
+            // 
+            this.ToolStripbtn_f1.Name = "ToolStripbtn_f1";
+            this.ToolStripbtn_f1.Size = new System.Drawing.Size(190, 26);
+            this.ToolStripbtn_f1.Text = "Binarization";
+            this.ToolStripbtn_f1.Click += new System.EventHandler(this.binarizationToolStripMenuItem_Click);
+            // 
+            // shadesOfGreyToolStripMenuItem
+            // 
+            this.shadesOfGreyToolStripMenuItem.Name = "shadesOfGreyToolStripMenuItem";
+            this.shadesOfGreyToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.shadesOfGreyToolStripMenuItem.Text = "Shades of grey";
+            // 
+            // negativeToolStripMenuItem
+            // 
+            this.negativeToolStripMenuItem.Name = "negativeToolStripMenuItem";
+            this.negativeToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.negativeToolStripMenuItem.Text = "Negative";
             // 
             // Form1
             // 
@@ -575,6 +617,7 @@
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -589,6 +632,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trk_bright)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_contrast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -615,7 +660,6 @@
         private System.Windows.Forms.Button btn_f4;
         private System.Windows.Forms.Button btn_f3;
         private System.Windows.Forms.Button btn_f2;
-        private System.Windows.Forms.Button btn_f1;
         private System.Windows.Forms.Button btn_rotate;
         private System.Windows.Forms.Button btn_reload;
         private System.Windows.Forms.Button btn_resize;
@@ -634,6 +678,12 @@
         private System.Windows.Forms.TrackBar trk_bright;
         private System.Windows.Forms.Button btn_Paste;
         private System.Windows.Forms.Button btn_Copy;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fIltersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripbtn_f1;
+        private System.Windows.Forms.ToolStripMenuItem shadesOfGreyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem negativeToolStripMenuItem;
+        private System.Windows.Forms.Button btn_f1;
     }
 }
 

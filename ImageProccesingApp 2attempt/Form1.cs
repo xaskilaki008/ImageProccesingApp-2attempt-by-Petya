@@ -310,7 +310,7 @@ namespace ImageProccesingApp_2attempt
         }
 
         // Фильтры (заглушки - можно реализовать свои алгоритмы)
-        private void Btn_f1_Click(object sender, EventArgs e)
+        private void ToolStripbtn_f1_Click(object sender, EventArgs e)
         {
             ApplyFilter(1);
         }
@@ -458,7 +458,7 @@ namespace ImageProccesingApp_2attempt
             }
         }
 
-        private void btn_f1_Click_1(object sender, EventArgs e)
+        private void ToolStripbtn_f1_Click_1(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null) return;
 
@@ -541,6 +541,16 @@ namespace ImageProccesingApp_2attempt
 
             pictureBox1.Image = negative;
             processedImage = new Bitmap(negative); // Сохраняем результат
+        }
+
+        private void fIltersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void binarizationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         // В конструкторе Form1 добавьте (если еще не добавлено):

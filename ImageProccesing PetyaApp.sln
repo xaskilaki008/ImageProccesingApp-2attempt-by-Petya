@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81 d17.13
+VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProccesingApp 2attempt", "ImageProccesingApp 2attempt\ImageProccesingApp 2attempt.csproj", "{113E4976-B144-42C9-9406-9179A19A39BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProccesing PetyaApp", "ImageProccesingApp 2attempt\ImageProccesing PetyaApp.csproj", "{113E4976-B144-42C9-9406-9179A19A39BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
