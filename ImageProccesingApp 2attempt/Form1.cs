@@ -553,6 +553,21 @@ namespace ImageProccesingApp_2attempt
 
         }
 
+        private void btn_f1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         // В конструкторе Form1 добавьте (если еще не добавлено):
 
 
