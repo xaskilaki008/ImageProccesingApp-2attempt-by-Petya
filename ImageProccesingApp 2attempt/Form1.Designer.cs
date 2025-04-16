@@ -91,16 +91,17 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panel1.BackColor = System.Drawing.Color.Silver;
             this.panel1.Controls.Add(this.btn_Paste);
             this.panel1.Controls.Add(this.btn_Copy);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.menuStrip1);
-            this.panel1.Location = new System.Drawing.Point(1, 4);
+            this.panel1.Location = new System.Drawing.Point(1, 3);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(690, 360);
+            this.panel1.Size = new System.Drawing.Size(518, 292);
             this.panel1.TabIndex = 0;
             // 
             // btn_Paste
@@ -109,9 +110,10 @@
             this.btn_Paste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btn_Paste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Paste.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_Paste.Location = new System.Drawing.Point(575, -1);
+            this.btn_Paste.Location = new System.Drawing.Point(431, -1);
+            this.btn_Paste.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Paste.Name = "btn_Paste";
-            this.btn_Paste.Size = new System.Drawing.Size(75, 26);
+            this.btn_Paste.Size = new System.Drawing.Size(56, 21);
             this.btn_Paste.TabIndex = 5;
             this.btn_Paste.Text = "Paste";
             this.btn_Paste.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -124,9 +126,10 @@
             this.btn_Copy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btn_Copy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Copy.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_Copy.Location = new System.Drawing.Point(494, -1);
+            this.btn_Copy.Location = new System.Drawing.Point(370, -1);
+            this.btn_Copy.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Copy.Name = "btn_Copy";
-            this.btn_Copy.Size = new System.Drawing.Size(75, 26);
+            this.btn_Copy.Size = new System.Drawing.Size(56, 21);
             this.btn_Copy.TabIndex = 4;
             this.btn_Copy.Text = "Copy";
             this.btn_Copy.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -140,9 +143,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.pictureBox1.Location = new System.Drawing.Point(24, 40);
+            this.pictureBox1.Location = new System.Drawing.Point(18, 32);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(649, 302);
+            this.pictureBox1.Size = new System.Drawing.Size(487, 245);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -150,35 +154,43 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkGray;
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(0, 366);
+            this.panel3.Location = new System.Drawing.Point(0, 297);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(934, 190);
+            this.panel3.Size = new System.Drawing.Size(700, 154);
             this.panel3.TabIndex = 2;
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(696, 0);
+            this.panel4.Location = new System.Drawing.Point(522, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(241, 360);
+            this.panel4.Size = new System.Drawing.Size(181, 292);
             this.panel4.TabIndex = 1;
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(696, 0);
+            this.panel2.Location = new System.Drawing.Point(522, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(241, 360);
+            this.panel2.Size = new System.Drawing.Size(181, 292);
             this.panel2.TabIndex = 1;
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.file_tsmenu,
             this.filters_tsmenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(690, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(124, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -192,7 +204,7 @@
             this.file_tsmenu.Font = new System.Drawing.Font("Verdana", 7F, System.Drawing.FontStyle.Bold);
             this.file_tsmenu.ForeColor = System.Drawing.Color.Sienna;
             this.file_tsmenu.Name = "file_tsmenu";
-            this.file_tsmenu.Size = new System.Drawing.Size(58, 24);
+            this.file_tsmenu.Size = new System.Drawing.Size(48, 20);
             this.file_tsmenu.Text = "Файл";
             this.file_tsmenu.Click += new System.EventHandler(this.файлToolStripMenuItem_Click);
             // 
@@ -200,15 +212,17 @@
             // 
             this.copyToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // filters_tsmenu
             // 
@@ -220,7 +234,7 @@
             this.filters_tsmenu.Font = new System.Drawing.Font("Verdana", 7F, System.Drawing.FontStyle.Bold);
             this.filters_tsmenu.ForeColor = System.Drawing.Color.Sienna;
             this.filters_tsmenu.Name = "filters_tsmenu";
-            this.filters_tsmenu.Size = new System.Drawing.Size(83, 24);
+            this.filters_tsmenu.Size = new System.Drawing.Size(70, 20);
             this.filters_tsmenu.Text = "Фильтры";
             this.filters_tsmenu.Click += new System.EventHandler(this.четоToolStripMenuItem_Click);
             // 
@@ -229,16 +243,16 @@
             this.filters_binaris.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.filters_binaris.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_binaris.Name = "filters_binaris";
-            this.filters_binaris.Size = new System.Drawing.Size(224, 26);
+            this.filters_binaris.Size = new System.Drawing.Size(158, 22);
             this.filters_binaris.Text = "Бинаризация";
-            this.filters_binaris.Click += new System.EventHandler(this.УааааToolStripMenuItem_Click);
+            this.filters_binaris.Click += new System.EventHandler(this.BinarisToolStripMenuItem_Click);
             // 
             // filters_shadesofgrey
             // 
             this.filters_shadesofgrey.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.filters_shadesofgrey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_shadesofgrey.Name = "filters_shadesofgrey";
-            this.filters_shadesofgrey.Size = new System.Drawing.Size(224, 26);
+            this.filters_shadesofgrey.Size = new System.Drawing.Size(158, 22);
             this.filters_shadesofgrey.Text = "Оттенки серого";
             // 
             // filters_negative
@@ -246,7 +260,7 @@
             this.filters_negative.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.filters_negative.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_negative.Name = "filters_negative";
-            this.filters_negative.Size = new System.Drawing.Size(224, 26);
+            this.filters_negative.Size = new System.Drawing.Size(158, 22);
             this.filters_negative.Text = "Негатив";
             // 
             // panel5
@@ -262,20 +276,22 @@
             this.panel5.Controls.Add(this.btn_stretch);
             this.panel5.Controls.Add(this.btn_normal);
             this.panel5.Controls.Add(this.pictureBox2);
-            this.panel5.Location = new System.Drawing.Point(697, 4);
+            this.panel5.Location = new System.Drawing.Point(523, 3);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(241, 360);
+            this.panel5.Size = new System.Drawing.Size(181, 292);
             this.panel5.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoEllipsis = true;
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Location = new System.Drawing.Point(88, 105);
+            this.label1.Location = new System.Drawing.Point(66, 85);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 16);
+            this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Start Image";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -287,9 +303,10 @@
             this.btn_zoom.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_zoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_zoom.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_zoom.Location = new System.Drawing.Point(8, 298);
+            this.btn_zoom.Location = new System.Drawing.Point(6, 242);
+            this.btn_zoom.Margin = new System.Windows.Forms.Padding(2);
             this.btn_zoom.Name = "btn_zoom";
-            this.btn_zoom.Size = new System.Drawing.Size(217, 38);
+            this.btn_zoom.Size = new System.Drawing.Size(163, 31);
             this.btn_zoom.TabIndex = 5;
             this.btn_zoom.Text = "Zoom";
             this.btn_zoom.UseVisualStyleBackColor = true;
@@ -301,9 +318,10 @@
             this.btn_center.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_center.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_center.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_center.Location = new System.Drawing.Point(8, 254);
+            this.btn_center.Location = new System.Drawing.Point(6, 206);
+            this.btn_center.Margin = new System.Windows.Forms.Padding(2);
             this.btn_center.Name = "btn_center";
-            this.btn_center.Size = new System.Drawing.Size(217, 38);
+            this.btn_center.Size = new System.Drawing.Size(163, 31);
             this.btn_center.TabIndex = 4;
             this.btn_center.Text = "Center";
             this.btn_center.UseVisualStyleBackColor = true;
@@ -315,12 +333,14 @@
             this.btn_autosize.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_autosize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_autosize.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_autosize.Location = new System.Drawing.Point(8, 210);
+            this.btn_autosize.Location = new System.Drawing.Point(6, 171);
+            this.btn_autosize.Margin = new System.Windows.Forms.Padding(2);
             this.btn_autosize.Name = "btn_autosize";
-            this.btn_autosize.Size = new System.Drawing.Size(217, 38);
+            this.btn_autosize.Size = new System.Drawing.Size(163, 31);
             this.btn_autosize.TabIndex = 3;
             this.btn_autosize.Text = "Auto Size";
             this.btn_autosize.UseVisualStyleBackColor = true;
+            this.btn_autosize.Click += new System.EventHandler(this.btn_autosize_Click_1);
             // 
             // btn_stretch
             // 
@@ -329,9 +349,10 @@
             this.btn_stretch.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_stretch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_stretch.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_stretch.Location = new System.Drawing.Point(8, 166);
+            this.btn_stretch.Location = new System.Drawing.Point(6, 135);
+            this.btn_stretch.Margin = new System.Windows.Forms.Padding(2);
             this.btn_stretch.Name = "btn_stretch";
-            this.btn_stretch.Size = new System.Drawing.Size(217, 38);
+            this.btn_stretch.Size = new System.Drawing.Size(163, 31);
             this.btn_stretch.TabIndex = 2;
             this.btn_stretch.Text = "Stretch";
             this.btn_stretch.UseVisualStyleBackColor = true;
@@ -343,9 +364,10 @@
             this.btn_normal.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_normal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_normal.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_normal.Location = new System.Drawing.Point(8, 122);
+            this.btn_normal.Location = new System.Drawing.Point(6, 99);
+            this.btn_normal.Margin = new System.Windows.Forms.Padding(2);
             this.btn_normal.Name = "btn_normal";
-            this.btn_normal.Size = new System.Drawing.Size(217, 38);
+            this.btn_normal.Size = new System.Drawing.Size(163, 31);
             this.btn_normal.TabIndex = 1;
             this.btn_normal.Text = "Normal";
             this.btn_normal.UseVisualStyleBackColor = true;
@@ -354,9 +376,10 @@
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.pictureBox2.Location = new System.Drawing.Point(8, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(6, 3);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(221, 102);
+            this.pictureBox2.Size = new System.Drawing.Size(166, 83);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -364,6 +387,8 @@
             // 
             // panel6
             // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.AutoSize = true;
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.panel6.Controls.Add(this.btn_f5);
@@ -388,10 +413,10 @@
             this.panel6.Controls.Add(this.btn_resize);
             this.panel6.Controls.Add(this.btn_save);
             this.panel6.Controls.Add(this.btn_open);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 370);
+            this.panel6.Location = new System.Drawing.Point(0, 301);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(934, 190);
+            this.panel6.Size = new System.Drawing.Size(700, 154);
             this.panel6.TabIndex = 2;
             // 
             // btn_f5
@@ -399,10 +424,11 @@
             this.btn_f5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_f5.FlatAppearance.BorderSize = 2;
             this.btn_f5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_f5.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f5.Location = new System.Drawing.Point(791, 149);
+            this.btn_f5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_f5.Location = new System.Drawing.Point(593, 121);
+            this.btn_f5.Margin = new System.Windows.Forms.Padding(2);
             this.btn_f5.Name = "btn_f5";
-            this.btn_f5.Size = new System.Drawing.Size(90, 38);
+            this.btn_f5.Size = new System.Drawing.Size(68, 31);
             this.btn_f5.TabIndex = 15;
             this.btn_f5.Text = "Filter-5";
             this.btn_f5.UseVisualStyleBackColor = true;
@@ -412,10 +438,11 @@
             this.btn_f4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_f4.FlatAppearance.BorderSize = 2;
             this.btn_f4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_f4.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f4.Location = new System.Drawing.Point(695, 149);
+            this.btn_f4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_f4.Location = new System.Drawing.Point(521, 121);
+            this.btn_f4.Margin = new System.Windows.Forms.Padding(2);
             this.btn_f4.Name = "btn_f4";
-            this.btn_f4.Size = new System.Drawing.Size(90, 38);
+            this.btn_f4.Size = new System.Drawing.Size(68, 31);
             this.btn_f4.TabIndex = 14;
             this.btn_f4.Text = "Filter-4";
             this.btn_f4.UseVisualStyleBackColor = true;
@@ -425,10 +452,11 @@
             this.btn_rotate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_rotate.FlatAppearance.BorderSize = 2;
             this.btn_rotate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_rotate.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_rotate.Location = new System.Drawing.Point(238, 149);
+            this.btn_rotate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_rotate.Location = new System.Drawing.Point(178, 121);
+            this.btn_rotate.Margin = new System.Windows.Forms.Padding(2);
             this.btn_rotate.Name = "btn_rotate";
-            this.btn_rotate.Size = new System.Drawing.Size(90, 38);
+            this.btn_rotate.Size = new System.Drawing.Size(68, 31);
             this.btn_rotate.TabIndex = 10;
             this.btn_rotate.Text = "Rotate";
             this.btn_rotate.UseVisualStyleBackColor = true;
@@ -438,10 +466,11 @@
             this.btn_f1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_f1.FlatAppearance.BorderSize = 2;
             this.btn_f1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_f1.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f1.Location = new System.Drawing.Point(356, 149);
+            this.btn_f1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_f1.Location = new System.Drawing.Point(267, 121);
+            this.btn_f1.Margin = new System.Windows.Forms.Padding(2);
             this.btn_f1.Name = "btn_f1";
-            this.btn_f1.Size = new System.Drawing.Size(96, 38);
+            this.btn_f1.Size = new System.Drawing.Size(72, 31);
             this.btn_f1.TabIndex = 11;
             this.btn_f1.Text = "Binarization";
             this.btn_f1.UseVisualStyleBackColor = true;
@@ -452,10 +481,11 @@
             this.btn_f3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_f3.FlatAppearance.BorderSize = 2;
             this.btn_f3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_f3.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_f3.Location = new System.Drawing.Point(599, 149);
+            this.btn_f3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_f3.Location = new System.Drawing.Point(449, 121);
+            this.btn_f3.Margin = new System.Windows.Forms.Padding(2);
             this.btn_f3.Name = "btn_f3";
-            this.btn_f3.Size = new System.Drawing.Size(90, 38);
+            this.btn_f3.Size = new System.Drawing.Size(68, 31);
             this.btn_f3.TabIndex = 13;
             this.btn_f3.Text = "Negative";
             this.btn_f3.UseVisualStyleBackColor = true;
@@ -467,11 +497,12 @@
             this.btn_f2.FlatAppearance.BorderSize = 2;
             this.btn_f2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_f2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_f2.ForeColor = System.Drawing.Color.GreenYellow;
+            this.btn_f2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btn_f2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btn_f2.Location = new System.Drawing.Point(458, 149);
+            this.btn_f2.Location = new System.Drawing.Point(344, 121);
+            this.btn_f2.Margin = new System.Windows.Forms.Padding(2);
             this.btn_f2.Name = "btn_f2";
-            this.btn_f2.Size = new System.Drawing.Size(135, 38);
+            this.btn_f2.Size = new System.Drawing.Size(101, 31);
             this.btn_f2.TabIndex = 12;
             this.btn_f2.Text = "Shades of grey";
             this.btn_f2.UseVisualStyleBackColor = true;
@@ -485,17 +516,19 @@
             this.Brightnes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Brightnes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Brightnes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Brightnes.Location = new System.Drawing.Point(635, 97);
+            this.Brightnes.Location = new System.Drawing.Point(476, 79);
+            this.Brightnes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Brightnes.Name = "Brightnes";
-            this.Brightnes.Size = new System.Drawing.Size(63, 16);
+            this.Brightnes.Size = new System.Drawing.Size(51, 13);
             this.Brightnes.TabIndex = 26;
             this.Brightnes.Text = "Brightnes";
             // 
             // trk_bright
             // 
-            this.trk_bright.Location = new System.Drawing.Point(697, 94);
+            this.trk_bright.Location = new System.Drawing.Point(523, 76);
+            this.trk_bright.Margin = new System.Windows.Forms.Padding(2);
             this.trk_bright.Name = "trk_bright";
-            this.trk_bright.Size = new System.Drawing.Size(140, 56);
+            this.trk_bright.Size = new System.Drawing.Size(105, 45);
             this.trk_bright.TabIndex = 25;
             // 
             // label6
@@ -506,17 +539,19 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(433, 97);
+            this.label6.Location = new System.Drawing.Point(325, 79);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 24;
             this.label6.Text = "Contrast";
             // 
             // trk_contrast
             // 
-            this.trk_contrast.Location = new System.Drawing.Point(495, 94);
+            this.trk_contrast.Location = new System.Drawing.Point(371, 76);
+            this.trk_contrast.Margin = new System.Windows.Forms.Padding(2);
             this.trk_contrast.Name = "trk_contrast";
-            this.trk_contrast.Size = new System.Drawing.Size(140, 56);
+            this.trk_contrast.Size = new System.Drawing.Size(105, 45);
             this.trk_contrast.TabIndex = 23;
             // 
             // label4
@@ -527,17 +562,19 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(241, 97);
+            this.label4.Location = new System.Drawing.Point(181, 79);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 16);
+            this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 22;
             this.label4.Text = "Hue";
             // 
             // trk_hue
             // 
-            this.trk_hue.Location = new System.Drawing.Point(285, 94);
+            this.trk_hue.Location = new System.Drawing.Point(214, 76);
+            this.trk_hue.Margin = new System.Windows.Forms.Padding(2);
             this.trk_hue.Name = "trk_hue";
-            this.trk_hue.Size = new System.Drawing.Size(140, 56);
+            this.trk_hue.Size = new System.Drawing.Size(105, 45);
             this.trk_hue.TabIndex = 21;
             // 
             // label5
@@ -548,9 +585,10 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(150, 75);
+            this.label5.Location = new System.Drawing.Point(112, 61);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 16);
+            this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 20;
             this.label5.Text = "Hight";
             // 
@@ -562,9 +600,10 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(22, 75);
+            this.label3.Location = new System.Drawing.Point(16, 61);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 16);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 19;
             this.label3.Text = "Width";
             // 
@@ -576,33 +615,37 @@
             this.lbl_size.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lbl_size.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_size.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_size.Location = new System.Drawing.Point(95, 11);
+            this.lbl_size.Location = new System.Drawing.Point(71, 9);
+            this.lbl_size.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_size.Name = "lbl_size";
-            this.lbl_size.Size = new System.Drawing.Size(74, 16);
+            this.lbl_size.Size = new System.Drawing.Size(59, 13);
             this.lbl_size.TabIndex = 7;
             this.lbl_size.Text = "Image Size";
             // 
             // txt_hight
             // 
-            this.txt_hight.Location = new System.Drawing.Point(120, 94);
+            this.txt_hight.Location = new System.Drawing.Point(90, 76);
+            this.txt_hight.Margin = new System.Windows.Forms.Padding(2);
             this.txt_hight.Name = "txt_hight";
-            this.txt_hight.Size = new System.Drawing.Size(100, 22);
+            this.txt_hight.Size = new System.Drawing.Size(76, 20);
             this.txt_hight.TabIndex = 18;
             this.txt_hight.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // txt_width
             // 
-            this.txt_width.Location = new System.Drawing.Point(4, 94);
+            this.txt_width.Location = new System.Drawing.Point(3, 76);
+            this.txt_width.Margin = new System.Windows.Forms.Padding(2);
             this.txt_width.Name = "txt_width";
-            this.txt_width.Size = new System.Drawing.Size(100, 22);
+            this.txt_width.Size = new System.Drawing.Size(76, 20);
             this.txt_width.TabIndex = 17;
             // 
             // txt_imgpath
             // 
-            this.txt_imgpath.Location = new System.Drawing.Point(3, 30);
+            this.txt_imgpath.Location = new System.Drawing.Point(2, 24);
+            this.txt_imgpath.Margin = new System.Windows.Forms.Padding(2);
             this.txt_imgpath.Multiline = true;
             this.txt_imgpath.Name = "txt_imgpath";
-            this.txt_imgpath.Size = new System.Drawing.Size(422, 38);
+            this.txt_imgpath.Size = new System.Drawing.Size(318, 32);
             this.txt_imgpath.TabIndex = 16;
             // 
             // btn_reload
@@ -610,10 +653,11 @@
             this.btn_reload.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_reload.FlatAppearance.BorderSize = 2;
             this.btn_reload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_reload.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_reload.Location = new System.Drawing.Point(120, 149);
+            this.btn_reload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_reload.Location = new System.Drawing.Point(90, 121);
+            this.btn_reload.Margin = new System.Windows.Forms.Padding(2);
             this.btn_reload.Name = "btn_reload";
-            this.btn_reload.Size = new System.Drawing.Size(90, 38);
+            this.btn_reload.Size = new System.Drawing.Size(68, 31);
             this.btn_reload.TabIndex = 9;
             this.btn_reload.Text = "Reset";
             this.btn_reload.UseVisualStyleBackColor = true;
@@ -623,10 +667,11 @@
             this.btn_resize.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_resize.FlatAppearance.BorderSize = 2;
             this.btn_resize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_resize.ForeColor = System.Drawing.Color.GreenYellow;
-            this.btn_resize.Location = new System.Drawing.Point(3, 149);
+            this.btn_resize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_resize.Location = new System.Drawing.Point(2, 121);
+            this.btn_resize.Margin = new System.Windows.Forms.Padding(2);
             this.btn_resize.Name = "btn_resize";
-            this.btn_resize.Size = new System.Drawing.Size(90, 38);
+            this.btn_resize.Size = new System.Drawing.Size(68, 31);
             this.btn_resize.TabIndex = 8;
             this.btn_resize.Text = "Set";
             this.btn_resize.UseVisualStyleBackColor = true;
@@ -636,10 +681,11 @@
             this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(92)))));
-            this.btn_save.Location = new System.Drawing.Point(679, 30);
+            this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_save.Location = new System.Drawing.Point(509, 24);
+            this.btn_save.Margin = new System.Windows.Forms.Padding(2);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(240, 38);
+            this.btn_save.Size = new System.Drawing.Size(180, 31);
             this.btn_save.TabIndex = 7;
             this.btn_save.Text = "Save";
             this.btn_save.UseVisualStyleBackColor = true;
@@ -650,22 +696,24 @@
             this.btn_open.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_open.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_open.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_open.Location = new System.Drawing.Point(431, 30);
+            this.btn_open.Location = new System.Drawing.Point(323, 24);
+            this.btn_open.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open.Name = "btn_open";
-            this.btn_open.Size = new System.Drawing.Size(240, 38);
+            this.btn_open.Size = new System.Drawing.Size(180, 31);
             this.btn_open.TabIndex = 6;
             this.btn_open.Text = "Select Image";
             this.btn_open.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 560);
+            this.ClientSize = new System.Drawing.Size(700, 455);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

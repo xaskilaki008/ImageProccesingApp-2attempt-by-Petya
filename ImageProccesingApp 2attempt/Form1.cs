@@ -39,6 +39,8 @@ namespace ImageProccesingApp_2attempt
             btn_reload.Click += Btn_reload_Click;
             btn_rotate.Click += Btn_rotate_Click;
             filters_binaris.Click += filters_binaris_Click_1;
+            copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
+            pasteToolStripMenuItem.Click += pasteToolStripMenuItem_Click;
             // Добавьте в конструктор Form1() после инициализации других элементов:
             btn_Copy.Click += btnCopy_Click;
             btn_Paste.Click += btnPaste_Click;
@@ -447,7 +449,68 @@ namespace ImageProccesingApp_2attempt
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //ДЛЯ Tool Strip menu копировать и вставить
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (pictureBox1.Image != null)
+                {
+                    // Копируем текущее изображение в буфер обмена
+                    Clipboard.SetImage(pictureBox1.Image);
+                    MessageBox.Show("Изображение скопировано в буфер обмена", "Успех",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Нет изображения для копирования", "Ошибка",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при копировании: {ex.Message}", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Clipboard.ContainsImage())
+                {
+                    // Вставляем изображение из буфера обмена
+                    Image pastedImage = Clipboard.GetImage();
+
+                    // Обновляем изображения и интерфейс
+                    pictureBox1.Image = pastedImage;
+                    pictureBox2.Image = pastedImage;
+                    processedImage = new Bitmap(pastedImage);
+                    originalImage = new Bitmap(pastedImage);
+
+                    // Обновляем информацию о размере
+                    txt_width.Text = pastedImage.Width.ToString();
+                    txt_hight.Text = pastedImage.Height.ToString();
+                    lbl_size.Text = $"{pastedImage.Width} x {pastedImage.Height}";
+
+                    // Сбрасываем трекбары
+                    trk_hue.Value = 0;
+                    trk_contrast.Value = 0;
+                    trk_bright.Value = 0;
+                }
+                else
+                {
+                    MessageBox.Show("В буфере обмена нет изображения", "Информация",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при вставке: {ex.Message}", "Ошибка",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.C)
@@ -459,7 +522,7 @@ namespace ImageProccesingApp_2attempt
                 btnPaste_Click(null, null);
             }
         }
-
+ 
         private void btn_f1_Click_1(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null) return;
@@ -577,7 +640,7 @@ namespace ImageProccesingApp_2attempt
 
         }
 
-        private void УааааToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BinarisToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
@@ -591,6 +654,13 @@ namespace ImageProccesingApp_2attempt
         {
 
         }
+
+        private void btn_autosize_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         // В конструкторе Form1 добавьте (если еще не добавлено):
 
