@@ -38,6 +38,7 @@ namespace ImageProccesingApp_2attempt
             btn_resize.Click += Btn_resize_Click;
             btn_reload.Click += Btn_reload_Click;
             btn_rotate.Click += Btn_rotate_Click;
+            filters_binaris.Click += filters_binaris_Click_1;
             // Добавьте в конструктор Form1() после инициализации других элементов:
             btn_Copy.Click += btnCopy_Click;
             btn_Paste.Click += btnPaste_Click;
@@ -47,6 +48,7 @@ namespace ImageProccesingApp_2attempt
             trk_hue.Scroll += TrackBar_Scroll;
             trk_contrast.Scroll += TrackBar_Scroll;
             trk_bright.Scroll += TrackBar_Scroll;
+
         }
 
         // Загрузка изображения
@@ -314,7 +316,7 @@ namespace ImageProccesingApp_2attempt
         {
             ApplyFilter(1);
         }
-
+        
         private void Btn_f2_Click(object sender, EventArgs e)
         {
             ApplyFilter(2);
@@ -484,9 +486,36 @@ namespace ImageProccesingApp_2attempt
             pictureBox1.Image = binary;
             processedImage = new Bitmap(binary); // Сохраняем результат
         }
+        //функция для бинаризации--------------------
+        private void filters_binaris_Click_1(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null) return;
+
+            Bitmap original = new Bitmap(pictureBox1.Image);
+            Bitmap binary = new Bitmap(original.Width, original.Height);
+
+            // Порог бинаризации (можно регулировать)
+            int threshold = 128;
+
+            for (int y = 0; y < original.Height; y++)
+            {
+                for (int x = 0; x < original.Width; x++)
+                {
+                    Color pixel = original.GetPixel(x, y);
+                    // Преобразование в grayscale
+                    int gray = (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11);
+                    // Бинаризация
+                    Color binaryColor = gray > threshold ? Color.White : Color.Black;
+                    binary.SetPixel(x, y, binaryColor);
+                }
+            }
+
+            pictureBox1.Image = binary;
+            processedImage = new Bitmap(binary); // Сохраняем результат
+        }
 
         private void btn_f2_Click_1(object sender, EventArgs e)
-    {
+        {
         // Проверяем, загружено ли изображение в PictureBox (например, pictureBox1)
         if (pictureBox1.Image == null)
         {
@@ -516,7 +545,7 @@ namespace ImageProccesingApp_2attempt
 
         // Отображаем результат
         pictureBox1.Image = grayImage;
-    }
+        }
 
         private void btn_f3_Click_1(object sender, EventArgs e)
         {
@@ -541,6 +570,26 @@ namespace ImageProccesingApp_2attempt
 
             pictureBox1.Image = negative;
             processedImage = new Bitmap(negative); // Сохраняем результат
+        }
+
+        private void четоToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void УааааToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void файлToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
 
         // В конструкторе Form1 добавьте (если еще не добавлено):
