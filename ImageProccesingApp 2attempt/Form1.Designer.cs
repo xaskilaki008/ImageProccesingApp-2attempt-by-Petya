@@ -47,7 +47,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_zoom = new System.Windows.Forms.Button();
             this.btn_center = new System.Windows.Forms.Button();
-            this.btn_autosize = new System.Windows.Forms.Button();
             this.btn_stretch = new System.Windows.Forms.Button();
             this.btn_normal = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -272,7 +271,6 @@
             this.panel5.Controls.Add(this.label1);
             this.panel5.Controls.Add(this.btn_zoom);
             this.panel5.Controls.Add(this.btn_center);
-            this.panel5.Controls.Add(this.btn_autosize);
             this.panel5.Controls.Add(this.btn_stretch);
             this.panel5.Controls.Add(this.btn_normal);
             this.panel5.Controls.Add(this.pictureBox2);
@@ -303,7 +301,7 @@
             this.btn_zoom.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_zoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_zoom.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_zoom.Location = new System.Drawing.Point(6, 242);
+            this.btn_zoom.Location = new System.Drawing.Point(6, 209);
             this.btn_zoom.Margin = new System.Windows.Forms.Padding(2);
             this.btn_zoom.Name = "btn_zoom";
             this.btn_zoom.Size = new System.Drawing.Size(163, 31);
@@ -318,29 +316,13 @@
             this.btn_center.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_center.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_center.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_center.Location = new System.Drawing.Point(6, 206);
+            this.btn_center.Location = new System.Drawing.Point(6, 173);
             this.btn_center.Margin = new System.Windows.Forms.Padding(2);
             this.btn_center.Name = "btn_center";
             this.btn_center.Size = new System.Drawing.Size(163, 31);
             this.btn_center.TabIndex = 4;
             this.btn_center.Text = "Center";
             this.btn_center.UseVisualStyleBackColor = true;
-            // 
-            // btn_autosize
-            // 
-            this.btn_autosize.AutoSize = true;
-            this.btn_autosize.FlatAppearance.BorderSize = 3;
-            this.btn_autosize.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn_autosize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_autosize.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_autosize.Location = new System.Drawing.Point(6, 171);
-            this.btn_autosize.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_autosize.Name = "btn_autosize";
-            this.btn_autosize.Size = new System.Drawing.Size(163, 31);
-            this.btn_autosize.TabIndex = 3;
-            this.btn_autosize.Text = "Auto Size";
-            this.btn_autosize.UseVisualStyleBackColor = true;
-            this.btn_autosize.Click += new System.EventHandler(this.btn_autosize_Click_1);
             // 
             // btn_stretch
             // 
@@ -748,7 +730,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btn_zoom;
         private System.Windows.Forms.Button btn_center;
-        private System.Windows.Forms.Button btn_autosize;
         private System.Windows.Forms.Button btn_stretch;
         private System.Windows.Forms.Button btn_normal;
         private System.Windows.Forms.Button btn_save;

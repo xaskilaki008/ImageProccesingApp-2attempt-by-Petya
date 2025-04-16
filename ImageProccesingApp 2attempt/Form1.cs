@@ -32,7 +32,6 @@ namespace ImageProccesingApp_2attempt
             btn_save.Click += Btn_save_Click;
             btn_normal.Click += Btn_normal_Click;
             btn_stretch.Click += Btn_stretch_Click;
-            btn_autosize.Click += Btn_autosize_Click;
             btn_center.Click += Btn_center_Click;
             btn_zoom.Click += Btn_zoom_Click;
             btn_resize.Click += Btn_resize_Click;
