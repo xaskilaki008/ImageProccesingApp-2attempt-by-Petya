@@ -41,8 +41,6 @@ namespace ImageProccesingApp_2attempt
             copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
             pasteToolStripMenuItem.Click += pasteToolStripMenuItem_Click;
             // Добавьте в конструктор Form1() после инициализации других элементов:
-            btn_Copy.Click += btnCopy_Click;
-            btn_Paste.Click += btnPaste_Click;
             this.KeyPreview = true; // Для обработки горячих клавиш
             this.KeyDown += Form1_KeyDown;
 
@@ -713,6 +711,11 @@ namespace ImageProccesingApp_2attempt
         }
 
         private void filters_shadesofgrey_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_open_Click_1(object sender, EventArgs e)
         {
 
         }
