@@ -578,35 +578,64 @@ namespace ImageProccesingApp_2attempt
 
         private void btn_f2_Click_1(object sender, EventArgs e)
         {
-        // Проверяем, загружено ли изображение в PictureBox (например, pictureBox1)
-        if (pictureBox1.Image == null)
-        {
-            MessageBox.Show("Сначала загрузите изображение!");
-            return;
-        }
-
-        // Получаем изображение из PictureBox
-        Bitmap originalImage = new Bitmap(pictureBox1.Image);
-        Bitmap grayImage = new Bitmap(originalImage.Width, originalImage.Height);
-
-        // Применяем фильтр оттенков серого
-        for (int y = 0; y < originalImage.Height; y++)
-        {
-            for (int x = 0; x < originalImage.Width; x++)
+            // Проверяем, загружено ли изображение в PictureBox (например, pictureBox1)
+            if (pictureBox1.Image == null)
             {
-                Color pixel = originalImage.GetPixel(x, y);
-                
-                // Вычисляем среднее значение RGB (простой метод)
-                int grayValue = (int)((pixel.R * 0.299) + (pixel.G * 0.587) + (pixel.B * 0.114));
-                
-                // Создаем новый цвет в градациях серого
-                Color grayPixel = Color.FromArgb(grayValue, grayValue, grayValue);
-                grayImage.SetPixel(x, y, grayPixel);
+                MessageBox.Show("Сначала загрузите изображение!");
+                return;
+            }
+
+            // Получаем изображение из PictureBox
+            Bitmap originalImage = new Bitmap(pictureBox1.Image);
+            Bitmap grayImage = new Bitmap(originalImage.Width, originalImage.Height);
+
+            // Применяем фильтр оттенков серого
+            for (int y = 0; y < originalImage.Height; y++)
+            {
+                for (int x = 0; x < originalImage.Width; x++)
+                {
+                    Color pixel = originalImage.GetPixel(x, y);
+
+                    // Вычисляем среднее значение RGB (простой метод)
+                    int grayValue = (int)((pixel.R * 0.299) + (pixel.G * 0.587) + (pixel.B * 0.114));
+
+                    // Создаем новый цвет в градациях серого
+                    Color grayPixel = Color.FromArgb(grayValue, grayValue, grayValue);
+                    grayImage.SetPixel(x, y, grayPixel);
+                }
             }
         }
+        //Для шейдс оф грей tool strip menu
+        private void filters_shadesofgrey_Click(object sender, EventArgs e)
+        {
+            // Проверяем, загружено ли изображение в PictureBox (например, pictureBox1)
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Сначала загрузите изображение!");
+                return;
+            }
 
-        // Отображаем результат
-        pictureBox1.Image = grayImage;
+            // Получаем изображение из PictureBox
+            Bitmap originalImage = new Bitmap(pictureBox1.Image);
+            Bitmap grayImage = new Bitmap(originalImage.Width, originalImage.Height);
+
+            // Применяем фильтр оттенков серого
+            for (int y = 0; y < originalImage.Height; y++)
+            {
+                for (int x = 0; x < originalImage.Width; x++)
+                {
+                    Color pixel = originalImage.GetPixel(x, y);
+
+                    // Вычисляем среднее значение RGB (простой метод)
+                    int grayValue = (int)((pixel.R * 0.299) + (pixel.G * 0.587) + (pixel.B * 0.114));
+
+                    // Создаем новый цвет в градациях серого
+                    Color grayPixel = Color.FromArgb(grayValue, grayValue, grayValue);
+                    grayImage.SetPixel(x, y, grayPixel);
+                }
+            }
+            // Отображаем результат
+            pictureBox1.Image = grayImage;
         }
 
         private void btn_f3_Click_1(object sender, EventArgs e)
@@ -633,7 +662,31 @@ namespace ImageProccesingApp_2attempt
             pictureBox1.Image = negative;
             processedImage = new Bitmap(negative); // Сохраняем результат
         }
+        //Для негатива в  tool strip menu
+        private void filters_negative_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null) return;
 
+            Bitmap original = new Bitmap(pictureBox1.Image);
+            Bitmap negative = new Bitmap(original.Width, original.Height);
+
+            for (int y = 0; y < original.Height; y++)
+            {
+                for (int x = 0; x < original.Width; x++)
+                {
+                    Color pixel = original.GetPixel(x, y);
+                    // Инвертируем каждый цветовой канал
+                    Color negativeColor = Color.FromArgb(
+                        255 - pixel.R,
+                        255 - pixel.G,
+                        255 - pixel.B);
+                    negative.SetPixel(x, y, negativeColor);
+                }
+            }
+
+            pictureBox1.Image = negative;
+            processedImage = new Bitmap(negative); // Сохраняем результат
+        }
         private void четоToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -655,6 +708,11 @@ namespace ImageProccesingApp_2attempt
         }
 
         private void btn_autosize_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void filters_shadesofgrey_Click_1(object sender, EventArgs e)
         {
 
         }
