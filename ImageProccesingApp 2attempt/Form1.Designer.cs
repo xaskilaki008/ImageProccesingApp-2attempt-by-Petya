@@ -54,7 +54,6 @@
             this.btn_zoom = new System.Windows.Forms.Button();
             this.btn_center = new System.Windows.Forms.Button();
             this.btn_stretch = new System.Windows.Forms.Button();
-            this.btn_normal = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btn_rotate = new System.Windows.Forms.Button();
@@ -73,7 +72,6 @@
             this.btn_reload = new System.Windows.Forms.Button();
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.btn_open = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -156,9 +154,10 @@
             this.видToolStripMenuItem,
             this.изображениеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.MinimumSize = new System.Drawing.Size(355, 24);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.menuStrip1.Size = new System.Drawing.Size(315, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(355, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -202,6 +201,7 @@
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.openToolStripMenuItem.Text = "Открыть";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // filters_tsmenu
             // 
@@ -263,7 +263,7 @@
             this.нормальныйToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.нормальныйToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.нормальныйToolStripMenuItem.Name = "нормальныйToolStripMenuItem";
-            this.нормальныйToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.нормальныйToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.нормальныйToolStripMenuItem.Text = "Нормальный";
             // 
             // растянутыйToolStripMenuItem
@@ -271,7 +271,7 @@
             this.растянутыйToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.растянутыйToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.растянутыйToolStripMenuItem.Name = "растянутыйToolStripMenuItem";
-            this.растянутыйToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.растянутыйToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.растянутыйToolStripMenuItem.Text = "Растянутый";
             // 
             // поЦентруToolStripMenuItem
@@ -279,7 +279,7 @@
             this.поЦентруToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.поЦентруToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.поЦентруToolStripMenuItem.Name = "поЦентруToolStripMenuItem";
-            this.поЦентруToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.поЦентруToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.поЦентруToolStripMenuItem.Text = "По центру";
             // 
             // увеличитьToolStripMenuItem
@@ -287,22 +287,28 @@
             this.увеличитьToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.увеличитьToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.увеличитьToolStripMenuItem.Name = "увеличитьToolStripMenuItem";
-            this.увеличитьToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.увеличитьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.увеличитьToolStripMenuItem.Text = "Увеличить";
             // 
             // изображениеToolStripMenuItem
             // 
+            this.изображениеToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.изображениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.соToolStripMenuItem});
+            this.изображениеToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.изображениеToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.изображениеToolStripMenuItem.Name = "изображениеToolStripMenuItem";
-            this.изображениеToolStripMenuItem.Size = new System.Drawing.Size(121, 24);
+            this.изображениеToolStripMenuItem.Size = new System.Drawing.Size(124, 24);
             this.изображениеToolStripMenuItem.Text = "Изображение";
             // 
             // соToolStripMenuItem
             // 
+            this.соToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.соToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.соToolStripMenuItem.Name = "соToolStripMenuItem";
-            this.соToolStripMenuItem.Size = new System.Drawing.Size(110, 26);
-            this.соToolStripMenuItem.Text = "Со";
+            this.соToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.соToolStripMenuItem.Text = "Повернуть";
+            this.соToolStripMenuItem.Click += new System.EventHandler(this.СоToolStripMenuItem_Click);
             // 
             // panel5
             // 
@@ -314,7 +320,6 @@
             this.panel5.Controls.Add(this.btn_zoom);
             this.panel5.Controls.Add(this.btn_center);
             this.panel5.Controls.Add(this.btn_stretch);
-            this.panel5.Controls.Add(this.btn_normal);
             this.panel5.Controls.Add(this.pictureBox2);
             this.panel5.Location = new System.Drawing.Point(697, 4);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -342,7 +347,7 @@
             this.btn_zoom.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_zoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_zoom.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_zoom.Location = new System.Drawing.Point(8, 257);
+            this.btn_zoom.Location = new System.Drawing.Point(3, 214);
             this.btn_zoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_zoom.Name = "btn_zoom";
             this.btn_zoom.Size = new System.Drawing.Size(100, 39);
@@ -358,7 +363,7 @@
             this.btn_center.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_center.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_center.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_center.Location = new System.Drawing.Point(8, 213);
+            this.btn_center.Location = new System.Drawing.Point(3, 170);
             this.btn_center.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_center.Name = "btn_center";
             this.btn_center.Size = new System.Drawing.Size(100, 39);
@@ -374,7 +379,7 @@
             this.btn_stretch.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_stretch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_stretch.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_stretch.Location = new System.Drawing.Point(8, 166);
+            this.btn_stretch.Location = new System.Drawing.Point(3, 123);
             this.btn_stretch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_stretch.Name = "btn_stretch";
             this.btn_stretch.Size = new System.Drawing.Size(100, 39);
@@ -382,22 +387,6 @@
             this.btn_stretch.Text = "Stretch";
             this.btn_stretch.UseVisualStyleBackColor = true;
             this.btn_stretch.Click += new System.EventHandler(this.btn_stretch_Click);
-            // 
-            // btn_normal
-            // 
-            this.btn_normal.AutoSize = true;
-            this.btn_normal.FlatAppearance.BorderSize = 3;
-            this.btn_normal.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn_normal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_normal.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_normal.Location = new System.Drawing.Point(8, 122);
-            this.btn_normal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_normal.Name = "btn_normal";
-            this.btn_normal.Size = new System.Drawing.Size(100, 39);
-            this.btn_normal.TabIndex = 1;
-            this.btn_normal.Text = "Normal";
-            this.btn_normal.UseVisualStyleBackColor = true;
-            this.btn_normal.Click += new System.EventHandler(this.btn_normal_Click);
             // 
             // pictureBox2
             // 
@@ -434,7 +423,6 @@
             this.panel6.Controls.Add(this.btn_reload);
             this.panel6.Controls.Add(this.btn_resize);
             this.panel6.Controls.Add(this.btn_save);
-            this.panel6.Controls.Add(this.btn_open);
             this.panel6.Location = new System.Drawing.Point(0, 370);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
@@ -444,6 +432,7 @@
             // btn_rotate
             // 
             this.btn_rotate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_rotate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_rotate.FlatAppearance.BorderSize = 2;
             this.btn_rotate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_rotate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -452,7 +441,7 @@
             this.btn_rotate.Name = "btn_rotate";
             this.btn_rotate.Size = new System.Drawing.Size(91, 38);
             this.btn_rotate.TabIndex = 10;
-            this.btn_rotate.Text = "Rotate";
+            this.btn_rotate.Text = "Rotate 90°";
             this.btn_rotate.UseVisualStyleBackColor = true;
             // 
             // Brightnes
@@ -615,38 +604,23 @@
             this.btn_resize.Name = "btn_resize";
             this.btn_resize.Size = new System.Drawing.Size(91, 38);
             this.btn_resize.TabIndex = 8;
-            this.btn_resize.Text = "Set";
+            this.btn_resize.Text = "Resize";
             this.btn_resize.UseVisualStyleBackColor = true;
-            this.btn_resize.Click += new System.EventHandler(this.btn_resize_Click_1);
+            this.btn_resize.Click += new System.EventHandler(this.btn_resize_Click);
             // 
             // btn_save
             // 
             this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btn_save.Location = new System.Drawing.Point(679, 30);
             this.btn_save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(240, 38);
             this.btn_save.TabIndex = 7;
-            this.btn_save.Text = "Save";
+            this.btn_save.Text = "Сохранить изображение";
             this.btn_save.UseVisualStyleBackColor = true;
-            // 
-            // btn_open
-            // 
-            this.btn_open.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_open.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_open.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_open.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_open.Location = new System.Drawing.Point(431, 30);
-            this.btn_open.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_open.Name = "btn_open";
-            this.btn_open.Size = new System.Drawing.Size(240, 38);
-            this.btn_open.TabIndex = 6;
-            this.btn_open.Text = "Select Image";
-            this.btn_open.UseVisualStyleBackColor = true;
-            this.btn_open.Click += new System.EventHandler(this.btn_open_Click_1);
             // 
             // Form1
             // 
@@ -693,9 +667,7 @@
         private System.Windows.Forms.Button btn_zoom;
         private System.Windows.Forms.Button btn_center;
         private System.Windows.Forms.Button btn_stretch;
-        private System.Windows.Forms.Button btn_normal;
         private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.Button btn_open;
         private System.Windows.Forms.Button btn_rotate;
         private System.Windows.Forms.Button btn_reload;
         private System.Windows.Forms.Button btn_resize;

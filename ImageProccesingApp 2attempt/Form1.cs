@@ -28,9 +28,9 @@ namespace ImageProccesingApp_2attempt
             trk_bright.Value = 0;
 
             // Подписка на события
-            btn_open.Click += Btn_open_Click;
             btn_save.Click += Btn_save_Click;
             btn_normal.Click += Btn_normal_Click;
+            нормальныйToolStripMenuItem.Click += нормальныйToolStripMenuItem_Click;
             btn_stretch.Click += Btn_stretch_Click;
             btn_center.Click += Btn_center_Click;
             btn_zoom.Click += Btn_zoom_Click;
@@ -82,7 +82,37 @@ namespace ImageProccesingApp_2attempt
                 }
             }
         }
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        originalImage = new Bitmap(openFileDialog.FileName);
+                        processedImage = new Bitmap(originalImage);
 
+                        pictureBox1.Image = originalImage;
+                        pictureBox2.Image = originalImage;
+
+                        txt_imgpath.Text = openFileDialog.FileName;
+                        lbl_size.Text = $"{originalImage.Width} x {originalImage.Height}";
+                        txt_width.Text = originalImage.Width.ToString();
+                        txt_hight.Text = originalImage.Height.ToString();
+
+                        // Установка режимов отображения
+                        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                        pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error loading image: {ex.Message}");
+                    }
+                }
+            }
+        }
         // Сохранение изображения
         private void Btn_save_Click(object sender, EventArgs e)
         {
@@ -123,7 +153,10 @@ namespace ImageProccesingApp_2attempt
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
         }
-
+        private void нормальныйToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
+        }
         private void Btn_stretch_Click(object sender, EventArgs e)
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -715,7 +748,7 @@ namespace ImageProccesingApp_2attempt
 
         }
 
-        private void btn_open_Click_1(object sender, EventArgs e)
+        private void btn_open_Click(object sender, EventArgs e)
         {
 
         }
@@ -745,10 +778,17 @@ namespace ImageProccesingApp_2attempt
 
         }
 
-        private void btn_resize_Click_1(object sender, EventArgs e)
+        private void btn_resize_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void СоToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
 
 
 
