@@ -107,10 +107,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.pictureBox1.Location = new System.Drawing.Point(24, 39);
+            this.pictureBox1.Location = new System.Drawing.Point(11, 26);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(649, 302);
+            this.pictureBox1.Size = new System.Drawing.Size(664, 321);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -174,23 +174,23 @@
             this.file_tsmenu.Name = "file_tsmenu";
             this.file_tsmenu.Size = new System.Drawing.Size(58, 24);
             this.file_tsmenu.Text = "Файл";
-            this.file_tsmenu.Click += new System.EventHandler(this.файлToolStripMenuItem_Click);
+            this.file_tsmenu.Click += new System.EventHandler(this.file_ToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.copyToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
-            this.pasteToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pasteToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pasteToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
@@ -199,7 +199,7 @@
             this.openToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.openToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.openToolStripMenuItem.Text = "Открыть";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -215,7 +215,7 @@
             this.filters_tsmenu.Name = "filters_tsmenu";
             this.filters_tsmenu.Size = new System.Drawing.Size(83, 24);
             this.filters_tsmenu.Text = "Фильтры";
-            this.filters_tsmenu.Click += new System.EventHandler(this.четоToolStripMenuItem_Click);
+            this.filters_tsmenu.Click += new System.EventHandler(this.filters_ToolStripMenuItem_Click);
             // 
             // filters_binaris
             // 
@@ -228,7 +228,7 @@
             // 
             // filters_shadesofgrey
             // 
-            this.filters_shadesofgrey.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.filters_shadesofgrey.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.filters_shadesofgrey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_shadesofgrey.Name = "filters_shadesofgrey";
             this.filters_shadesofgrey.Size = new System.Drawing.Size(193, 26);
@@ -257,21 +257,22 @@
             this.видToolStripMenuItem.Name = "видToolStripMenuItem";
             this.видToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.видToolStripMenuItem.Text = "Вид";
+            this.видToolStripMenuItem.Click += new System.EventHandler(this.view_ToolStripMenuItem_Click);
             // 
             // нормальныйToolStripMenuItem
             // 
             this.нормальныйToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.нормальныйToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.нормальныйToolStripMenuItem.Name = "нормальныйToolStripMenuItem";
-            this.нормальныйToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.нормальныйToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
             this.нормальныйToolStripMenuItem.Text = "Нормальный";
             // 
             // растянутыйToolStripMenuItem
             // 
-            this.растянутыйToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.растянутыйToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.растянутыйToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.растянутыйToolStripMenuItem.Name = "растянутыйToolStripMenuItem";
-            this.растянутыйToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.растянутыйToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
             this.растянутыйToolStripMenuItem.Text = "Растянутый";
             // 
             // поЦентруToolStripMenuItem
@@ -279,15 +280,15 @@
             this.поЦентруToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.поЦентруToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.поЦентруToolStripMenuItem.Name = "поЦентруToolStripMenuItem";
-            this.поЦентруToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.поЦентруToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
             this.поЦентруToolStripMenuItem.Text = "По центру";
             // 
             // увеличитьToolStripMenuItem
             // 
-            this.увеличитьToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.увеличитьToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.увеличитьToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.увеличитьToolStripMenuItem.Name = "увеличитьToolStripMenuItem";
-            this.увеличитьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.увеличитьToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
             this.увеличитьToolStripMenuItem.Text = "Увеличить";
             // 
             // изображениеToolStripMenuItem
@@ -300,6 +301,7 @@
             this.изображениеToolStripMenuItem.Name = "изображениеToolStripMenuItem";
             this.изображениеToolStripMenuItem.Size = new System.Drawing.Size(124, 24);
             this.изображениеToolStripMenuItem.Text = "Изображение";
+            this.изображениеToolStripMenuItem.Click += new System.EventHandler(this.picture_ToolStripMenuItem_Click);
             // 
             // соToolStripMenuItem
             // 
@@ -308,7 +310,7 @@
             this.соToolStripMenuItem.Name = "соToolStripMenuItem";
             this.соToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
             this.соToolStripMenuItem.Text = "Повернуть";
-            this.соToolStripMenuItem.Click += new System.EventHandler(this.СоToolStripMenuItem_Click);
+            this.соToolStripMenuItem.Click += new System.EventHandler(this.Rotate_ToolStripMenuItem_Click);
             // 
             // panel5
             // 
@@ -321,10 +323,10 @@
             this.panel5.Controls.Add(this.btn_center);
             this.panel5.Controls.Add(this.btn_stretch);
             this.panel5.Controls.Add(this.pictureBox2);
-            this.panel5.Location = new System.Drawing.Point(697, 4);
+            this.panel5.Location = new System.Drawing.Point(646, 4);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(241, 359);
+            this.panel5.Size = new System.Drawing.Size(292, 359);
             this.panel5.TabIndex = 1;
             // 
             // label1
@@ -347,7 +349,7 @@
             this.btn_zoom.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_zoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_zoom.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_zoom.Location = new System.Drawing.Point(3, 214);
+            this.btn_zoom.Location = new System.Drawing.Point(173, 80);
             this.btn_zoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_zoom.Name = "btn_zoom";
             this.btn_zoom.Size = new System.Drawing.Size(100, 39);
@@ -363,7 +365,7 @@
             this.btn_center.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_center.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_center.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_center.Location = new System.Drawing.Point(3, 170);
+            this.btn_center.Location = new System.Drawing.Point(173, 44);
             this.btn_center.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_center.Name = "btn_center";
             this.btn_center.Size = new System.Drawing.Size(100, 39);
@@ -379,7 +381,7 @@
             this.btn_stretch.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_stretch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_stretch.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_stretch.Location = new System.Drawing.Point(3, 123);
+            this.btn_stretch.Location = new System.Drawing.Point(173, 7);
             this.btn_stretch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_stretch.Name = "btn_stretch";
             this.btn_stretch.Size = new System.Drawing.Size(100, 39);
@@ -395,7 +397,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(8, 4);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(221, 102);
+            this.pictureBox2.Size = new System.Drawing.Size(155, 102);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;

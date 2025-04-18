@@ -14,6 +14,10 @@ namespace ImageProccesingApp_2attempt
         {
             InitializeComponent();
 
+            openToolStripMenuItem.Click += delegate
+            {
+                openToolStripMenuItem.BackColor = Color.Red;
+            };
             // Настройка начальных значений
             trk_hue.Minimum = -180;
             trk_hue.Maximum = 180;
@@ -29,7 +33,6 @@ namespace ImageProccesingApp_2attempt
 
             // Подписка на события
             btn_save.Click += Btn_save_Click;
-            btn_normal.Click += Btn_normal_Click;
             нормальныйToolStripMenuItem.Click += нормальныйToolStripMenuItem_Click;
             btn_stretch.Click += Btn_stretch_Click;
             btn_center.Click += Btn_center_Click;
@@ -735,7 +738,7 @@ namespace ImageProccesingApp_2attempt
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
+            menuStrip1.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
         }
 
         private void btn_autosize_Click_1(object sender, EventArgs e)
@@ -783,17 +786,49 @@ namespace ImageProccesingApp_2attempt
 
         }
 
-        private void СоToolStripMenuItem_Click(object sender, EventArgs e)
+        private void file_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        private void filters_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void view_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picture_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Rotate_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+    // В конструкторе Form1 добавьте (если еще не добавлено):
 
 
+    }
+    // Создайте этот класс в любом месте вашего кода
+    public class MyOrangeColorTable : ProfessionalColorTable
+    {
+        // Цвет фона при наведении
+        public override Color MenuItemSelected => Color.Orange;
 
+        // Градиент можно сделать однородным (такой же как основной цвет)
+        public override Color MenuItemSelectedGradientBegin => Color.Orange;
+        public override Color MenuItemSelectedGradientEnd => Color.Orange;
 
-        // В конструкторе Form1 добавьте (если еще не добавлено):
+        // Цвет границы при наведении
+        public override Color MenuItemBorder => Color.DarkOrange;
 
-
+        // Опционально: цвет текста при наведении
+        public override Color MenuItemPressedGradientBegin => Color.Orange;
+        public override Color MenuItemPressedGradientEnd => Color.DarkOrange;
     }
 }
