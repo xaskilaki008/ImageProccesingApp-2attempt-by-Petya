@@ -810,7 +810,37 @@ namespace ImageProccesingApp_2attempt
         {
 
         }
-    // В конструкторе Form1 добавьте (если еще не добавлено):
+
+        private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Освобождаем ресурсы изображений
+            if (originalImage != null)
+            {
+                originalImage.Dispose();
+                originalImage = null;
+            }
+
+            if (processedImage != null)
+            {
+                processedImage.Dispose();
+                processedImage = null;
+            }
+
+            // Очищаем PictureBox
+            pictureBox1.Image = null;
+            pictureBox2.Image = null;
+
+            // Сбрасываем текстовые поля
+            txt_imgpath.Text = string.Empty;
+            lbl_size.Text = "0 x 0";
+            txt_width.Text = string.Empty;
+            txt_hight.Text = string.Empty;
+
+            // Опционально: сбрасываем режимы отображения
+            pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox2.SizeMode = PictureBoxSizeMode.Normal;
+        }
+        // В конструкторе Form1 добавьте (если еще не добавлено):
 
 
     }
