@@ -740,6 +740,16 @@ namespace ImageProccesingApp_2attempt
 
         }
 
+        private void btn_reload_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_resize_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
 
 
         // В конструкторе Form1 добавьте (если еще не добавлено):
