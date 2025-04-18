@@ -14,6 +14,7 @@ namespace ImageProccesingApp_2attempt
         {
             InitializeComponent();
 
+            menuStrip1.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
             openToolStripMenuItem.Click += delegate
             {
                 openToolStripMenuItem.BackColor = Color.Red;
@@ -847,18 +848,22 @@ namespace ImageProccesingApp_2attempt
     // Создайте этот класс в любом месте вашего кода
     public class MyOrangeColorTable : ProfessionalColorTable
     {
-        // Цвет фона при наведении
-        public override Color MenuItemSelected => Color.Orange;
+        // Основные цвета для подсветки
+        public override Color MenuItemSelected => Color.FromArgb(255, 224, 192); // Светло-оранжевый фон
 
-        // Градиент можно сделать однородным (такой же как основной цвет)
-        public override Color MenuItemSelectedGradientBegin => Color.Orange;
-        public override Color MenuItemSelectedGradientEnd => Color.Orange;
+        public override Color MenuItemSelectedGradientBegin => Color.FromArgb(255, 224, 192);
+        public override Color MenuItemSelectedGradientEnd => Color.FromArgb(255, 224, 192);
 
-        // Цвет границы при наведении
-        public override Color MenuItemBorder => Color.DarkOrange;
+        public override Color MenuItemBorder => Color.FromArgb(255, 180, 120); // Граница
 
-        // Опционально: цвет текста при наведении
-        public override Color MenuItemPressedGradientBegin => Color.Orange;
-        public override Color MenuItemPressedGradientEnd => Color.DarkOrange;
+        // Цвета при нажатии
+        public override Color MenuItemPressedGradientBegin => Color.FromArgb(255, 180, 120);
+        public override Color MenuItemPressedGradientEnd => Color.FromArgb(255, 180, 120);
+
+        // Фон выпадающего меню
+        public override Color ToolStripDropDownBackground => Color.White;
+
+        // Граница меню
+        public override Color MenuBorder => Color.LightGray;
     }
 }

@@ -98,7 +98,7 @@
             this.panel1.Location = new System.Drawing.Point(1, 4);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(691, 359);
+            this.panel1.Size = new System.Drawing.Size(647, 359);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -111,7 +111,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(11, 26);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(664, 321);
+            this.pictureBox1.Size = new System.Drawing.Size(623, 321);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
