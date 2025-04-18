@@ -720,6 +720,26 @@ namespace ImageProccesingApp_2attempt
 
         }
 
+        private void btn_normal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_stretch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_center_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_zoom_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
         // В конструкторе Form1 добавьте (если еще не добавлено):
