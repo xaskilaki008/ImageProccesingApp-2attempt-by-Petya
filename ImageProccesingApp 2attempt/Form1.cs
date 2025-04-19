@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -10,8 +11,9 @@ namespace ImageProccesingApp_2attempt
 		private Bitmap originalImage; // Оригинальное изображение
 		private Bitmap laterImage; //Для действия назад
 		private Bitmap processedImage; // Обработанное изображение
-
-		public Form1()
+        private Stack<Bitmap> undoHistory = new Stack<Bitmap>();  // История для отката
+        private Stack<Bitmap> redoHistory = new Stack<Bitmap>();  // История для повтора (опционально)
+        public Form1()
 		{
 			InitializeComponent();
 
@@ -67,13 +69,8 @@ namespace ImageProccesingApp_2attempt
 					{
 						originalImage = new Bitmap(openFileDialog.FileName);
 						processedImage = new Bitmap(originalImage);
-						if (processedImage=originalImage)
-						{
-                            laterImage = new Bitmap(processedImage);
-                        }
 						
-
-							pictureBox1.Image = originalImage;
+						pictureBox1.Image = originalImage;
 						pictureBox2.Image = originalImage;
 
 						txt_imgpath.Text = openFileDialog.FileName;
@@ -156,7 +153,10 @@ namespace ImageProccesingApp_2attempt
 					}
 				}
 			}
-		}
+            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+                                                           // Очищаем redoHistory при новом действии
+            redoHistory.Clear();
+        }
 
 		// Режимы отображения изображения
 		private void Btn_normal_Click(object sender, EventArgs e)
@@ -166,7 +166,10 @@ namespace ImageProccesingApp_2attempt
 		private void нормальныйToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
-		}
+            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+                                                           // Очищаем redoHistory при новом действии
+            redoHistory.Clear();
+        }
 		private void Btn_stretch_Click(object sender, EventArgs e)
 		{
 			pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -205,7 +208,10 @@ namespace ImageProccesingApp_2attempt
 			{
 				MessageBox.Show($"Error resizing image: {ex.Message}");
 			}
-		}
+            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+                                                           // Очищаем redoHistory при новом действии
+            redoHistory.Clear();
+        }
 
 		// Сброс изменений
 		private void Btn_reload_Click(object sender, EventArgs e)
@@ -225,12 +231,51 @@ namespace ImageProccesingApp_2attempt
 				trk_bright.Value = 0;
 			}
 		}
+        // Метод для кнопки "Назад"
         private void back_button_Click(object sender, EventArgs e)
         {
-			if (laterImage != originalImage & laterImage != null)
-			{
-				processedImage = new Bitmap(originalImage);
-			}
+            if (undoHistory.Count > 0)
+            {
+                // Сохраняем текущее состояние в redoHistory (если нужно)
+                redoHistory.Push(new Bitmap(processedImage));
+
+                // Восстанавливаем предыдущее состояние
+                processedImage = new Bitmap(undoHistory.Pop());
+                pictureBox1.Image = new Bitmap(processedImage);
+            }
+            else
+            {
+                MessageBox.Show("Нет предыдущих состояний для отката.");
+            }
+        }
+
+        // Метод для сравнения двух изображений (по пикселям)
+        private bool AreImagesEqual(Bitmap img1, Bitmap img2)
+        {
+            if (img1 == null || img2 == null)
+                return false;
+            if (img1.Width != img2.Width || img1.Height != img2.Height)
+                return false;
+
+            for (int y = 0; y < img1.Height; y++)
+            {
+                for (int x = 0; x < img1.Width; x++)
+                {
+                    if (img1.GetPixel(x, y) != img2.GetPixel(x, y))
+                        return false;
+                }
+            }
+            return true;
+        }
+
+        // Где-то в коде (например, после применения фильтра) сохраняем предыдущее состояние:
+        private void ApplyFilter()
+        {
+            // Перед изменением processedImage сохраняем его в laterImage
+            laterImage = new Bitmap(processedImage);
+
+            // Применяем изменения к processedImage...
+            // Например: processedImage = ApplyGrayscale(processedImage);
         }
         // Поворот изображения
         private void Btn_rotate_Click(object sender, EventArgs e)
@@ -239,7 +284,10 @@ namespace ImageProccesingApp_2attempt
 
 			processedImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
 			pictureBox1.Image = processedImage;
-		}
+            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+                                                           // Очищаем redoHistory при новом действии
+            redoHistory.Clear();
+        }
 
 		// Обработка изменений трекбаров
 		private void TrackBar_Scroll(object sender, EventArgs e)
@@ -568,7 +616,7 @@ namespace ImageProccesingApp_2attempt
             "По зеленому каналу",
             "По синему каналу",
             "Адаптивная бинаризация"
-        });
+			});
                 cmbMode.SelectedIndex = 0;
 
                 // Трекбар для порога
@@ -642,6 +690,9 @@ namespace ImageProccesingApp_2attempt
                     processedImage = new Bitmap(binary);
                 }
             }
+            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+                                                           // Очищаем redoHistory при новом действии
+            redoHistory.Clear();
         }
 
         private void btn_f2_Click_1(object sender, EventArgs e)
@@ -873,7 +924,10 @@ namespace ImageProccesingApp_2attempt
 			// Опционально: сбрасываем режимы отображения
 			pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
 			pictureBox2.SizeMode = PictureBoxSizeMode.Normal;
-		}
+            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+                                                           // Очищаем redoHistory при новом действии
+            redoHistory.Clear();
+        }
 
         private void поЦентруToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -893,7 +947,7 @@ namespace ImageProccesingApp_2attempt
 
 
     }
-    // Создайте этот класс в любом месте вашего кода
+    //Класс для измения цвета при наведении на кнопки
     public class MyOrangeColorTable : ProfessionalColorTable
 	{
 		// Основные цвета для подсветки
