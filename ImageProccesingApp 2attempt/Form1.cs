@@ -915,12 +915,22 @@ namespace ImageProccesingApp_2attempt
 			pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
 			pictureBox2.SizeMode = PictureBoxSizeMode.Normal;
 		}
-		// В конструкторе Form1 добавьте (если еще не добавлено):
+
+        private void поЦентруToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+        // В конструкторе Form1 добавьте (если еще не добавлено):
 
 
-	}
-	// Создайте этот класс в любом месте вашего кода
-	public class MyOrangeColorTable : ProfessionalColorTable
+    }
+    // Создайте этот класс в любом месте вашего кода
+    public class MyOrangeColorTable : ProfessionalColorTable
 	{
 		// Основные цвета для подсветки
 		public override Color MenuItemSelected => Color.FromArgb(255, 224, 192); // Светло-оранжевый фон
