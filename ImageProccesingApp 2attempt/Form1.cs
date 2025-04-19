@@ -219,9 +219,9 @@ namespace ImageProccesingApp_2attempt
 				trk_bright.Value = 0;
 			}
 		}
-
-		// Поворот изображения
-		private void Btn_rotate_Click(object sender, EventArgs e)
+        
+        // Поворот изображения
+        private void Btn_rotate_Click(object sender, EventArgs e)
 		{
 			if (processedImage == null) return;
 
@@ -869,6 +869,11 @@ namespace ImageProccesingApp_2attempt
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void back_button(object sender, EventArgs e)
         {
 
         }
