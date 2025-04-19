@@ -8,6 +8,7 @@ namespace ImageProccesingApp_2attempt
 	public partial class Form1 : Form
 	{
 		private Bitmap originalImage; // Оригинальное изображение
+		private Bitmap laterImage; //Для действия назад
 		private Bitmap processedImage; // Обработанное изображение
 
 		public Form1()
@@ -66,8 +67,13 @@ namespace ImageProccesingApp_2attempt
 					{
 						originalImage = new Bitmap(openFileDialog.FileName);
 						processedImage = new Bitmap(originalImage);
+						if (processedImage=originalImage)
+						{
+                            laterImage = new Bitmap(processedImage);
+                        }
+						
 
-						pictureBox1.Image = originalImage;
+							pictureBox1.Image = originalImage;
 						pictureBox2.Image = originalImage;
 
 						txt_imgpath.Text = openFileDialog.FileName;
@@ -219,7 +225,13 @@ namespace ImageProccesingApp_2attempt
 				trk_bright.Value = 0;
 			}
 		}
-        
+        private void back_button_Click(object sender, EventArgs e)
+        {
+			if (laterImage != originalImage & laterImage != null)
+			{
+				processedImage = new Bitmap(originalImage);
+			}
+        }
         // Поворот изображения
         private void Btn_rotate_Click(object sender, EventArgs e)
 		{
