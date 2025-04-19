@@ -48,9 +48,14 @@
             this.растянутыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поЦентруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.увеличитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.весьЭкранF11ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.соToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_zoom = new System.Windows.Forms.Button();
             this.btn_center = new System.Windows.Forms.Button();
@@ -73,25 +78,20 @@
             this.btn_reload = new System.Windows.Forms.Button();
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.весьЭкранF11ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trk_bright)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_contrast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).BeginInit();
-            this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -286,7 +286,7 @@
             this.нормальныйToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.нормальныйToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.нормальныйToolStripMenuItem.Name = "нормальныйToolStripMenuItem";
-            this.нормальныйToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.нормальныйToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.нормальныйToolStripMenuItem.Text = "Нормальный";
             // 
             // растянутыйToolStripMenuItem
@@ -294,7 +294,7 @@
             this.растянутыйToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.растянутыйToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.растянутыйToolStripMenuItem.Name = "растянутыйToolStripMenuItem";
-            this.растянутыйToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.растянутыйToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.растянутыйToolStripMenuItem.Text = "Растянутый";
             // 
             // поЦентруToolStripMenuItem
@@ -302,7 +302,7 @@
             this.поЦентруToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.поЦентруToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.поЦентруToolStripMenuItem.Name = "поЦентруToolStripMenuItem";
-            this.поЦентруToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.поЦентруToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.поЦентруToolStripMenuItem.Text = "По центру";
             this.поЦентруToolStripMenuItem.Click += new System.EventHandler(this.поЦентруToolStripMenuItem_Click);
             // 
@@ -311,8 +311,16 @@
             this.увеличитьToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.увеличитьToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.увеличитьToolStripMenuItem.Name = "увеличитьToolStripMenuItem";
-            this.увеличитьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.увеличитьToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.увеличитьToolStripMenuItem.Text = "Увеличить";
+            // 
+            // весьЭкранF11ToolStripMenuItem
+            // 
+            this.весьЭкранF11ToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.весьЭкранF11ToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
+            this.весьЭкранF11ToolStripMenuItem.Name = "весьЭкранF11ToolStripMenuItem";
+            this.весьЭкранF11ToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.весьЭкранF11ToolStripMenuItem.Text = "Весь экран [F11]";
             // 
             // изображениеToolStripMenuItem
             // 
@@ -352,6 +360,46 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(522, 359);
             this.panel5.TabIndex = 1;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.pictureBox5);
+            this.panel7.Controls.Add(this.pictureBox4);
+            this.panel7.Controls.Add(this.pictureBox3);
+            this.panel7.Location = new System.Drawing.Point(4, 125);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(513, 231);
+            this.panel7.TabIndex = 7;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox5.Location = new System.Drawing.Point(337, 3);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(160, 84);
+            this.pictureBox5.TabIndex = 2;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox4.Location = new System.Drawing.Point(171, 4);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(160, 84);
+            this.pictureBox4.TabIndex = 1;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox3.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(161, 84);
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
             // 
             // label1
             // 
@@ -648,54 +696,6 @@
             this.btn_save.Text = "Сохранить изображение";
             this.btn_save.UseVisualStyleBackColor = true;
             // 
-            // весьЭкранF11ToolStripMenuItem
-            // 
-            this.весьЭкранF11ToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.весьЭкранF11ToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
-            this.весьЭкранF11ToolStripMenuItem.Name = "весьЭкранF11ToolStripMenuItem";
-            this.весьЭкранF11ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.весьЭкранF11ToolStripMenuItem.Text = "Весь экран [F11]";
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.pictureBox5);
-            this.panel7.Controls.Add(this.pictureBox4);
-            this.panel7.Controls.Add(this.pictureBox3);
-            this.panel7.Location = new System.Drawing.Point(4, 125);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(513, 231);
-            this.panel7.TabIndex = 7;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(161, 84);
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(171, 4);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(160, 84);
-            this.pictureBox4.TabIndex = 1;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox5.Location = new System.Drawing.Point(337, 3);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(160, 84);
-            this.pictureBox5.TabIndex = 2;
-            this.pictureBox5.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -717,16 +717,16 @@
             this.menuStrip1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trk_bright)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_contrast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).EndInit();
-            this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

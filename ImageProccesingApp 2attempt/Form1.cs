@@ -347,59 +347,6 @@ namespace ImageProccesingApp_2attempt
 			}
 		}
 
-		// Фильтры (заглушки - можно реализовать свои алгоритмы)
-		private void Btn_f1_Click(object sender, EventArgs e)
-		{
-			ApplyFilter(1);
-		}
-
-		private void Btn_f2_Click(object sender, EventArgs e)
-		{
-			ApplyFilter(2);
-		}
-
-		private void Btn_f3_Click(object sender, EventArgs e)
-		{
-			ApplyFilter(3);
-		}
-
-		private void Btn_f4_Click(object sender, EventArgs e)
-		{
-			ApplyFilter(4);
-		}
-
-		private void Btn_f5_Click(object sender, EventArgs e)
-		{
-			ApplyFilter(5);
-		}
-
-		private void ApplyFilter(int filterNumber)
-		{
-			if (originalImage == null) return;
-
-			// Здесь можно реализовать различные фильтры
-			// Это пример - просто инвертирование цветов для демонстрации
-			processedImage = new Bitmap(originalImage.Width, originalImage.Height);
-
-			for (int y = 0; y < originalImage.Height; y++)
-			{
-				for (int x = 0; x < originalImage.Width; x++)
-				{
-					Color pixel = originalImage.GetPixel(x, y);
-
-					// Пример фильтра - инверсия цветов
-					Color newPixel = Color.FromArgb(
-						255 - pixel.R,
-						255 - pixel.G,
-						255 - pixel.B);
-
-					processedImage.SetPixel(x, y, newPixel);
-				}
-			}
-
-			pictureBox1.Image = processedImage;
-		}
-
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			// Инициализация при загрузке формы
