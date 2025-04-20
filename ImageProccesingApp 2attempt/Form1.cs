@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ImageProccesingApp_2attempt
@@ -16,8 +18,8 @@ namespace ImageProccesingApp_2attempt
         public Form1()
 		{
 			InitializeComponent();
-
-			menuStrip1.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
+            Color_Picker_Panel.Visible = false; // Скрываем панель при запуске
+            menuStrip1.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
 			openToolStripMenuItem.Click += delegate
 			{
 				openToolStripMenuItem.BackColor = Color.Red;
@@ -43,8 +45,7 @@ namespace ImageProccesingApp_2attempt
 			btn_zoom.Click += Btn_zoom_Click;
 			btn_resize.Click += Btn_resize_Click;
 			btn_reload.Click += Btn_reload_Click;
-			btn_rotate.Click += Btn_rotate_Click;
-            filters_binaris.Click += filters_binaris_Click_1;
+			filters_binaris.Click += filters_binaris_Click_1;
             ToolStripMenuItem_Rotate.Click += ToolStripMenuItem_Rotate_Click;
             copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
 			pasteToolStripMenuItem.Click += pasteToolStripMenuItem_Click;
@@ -987,11 +988,126 @@ namespace ImageProccesingApp_2attempt
 
         }
 
-        // В конструкторе Form1 добавьте (если еще не добавлено):
+        private void СоханитьctrlSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void DrawHistogram(Bitmap image, PictureBox pictureBox, Color channelColor, bool isBrightness = false)
+        {
+            if (image == null || pictureBox == null || pictureBox.Width <= 10 || pictureBox.Height <= 10)
+                return;
+
+            try
+            {
+                // 1. Создаем гистограмму (без unsafe)
+                int[] histogram = new int[256];
+
+                for (int y = 0; y < image.Height; y++)
+                {
+                    for (int x = 0; x < image.Width; x++)
+                    {
+                        Color pixel = image.GetPixel(x, y);
+
+                        int value = isBrightness ?
+                            (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11) :
+                            channelColor.R == 255 ? pixel.R :
+                            channelColor.G == 255 ? pixel.G : pixel.B;
+
+                        histogram[value]++;
+                    }
+                }
+
+                // 2. Нормализуем и рисуем
+                int maxCount = histogram.Max();
+                if (maxCount == 0) maxCount = 1;
+
+                Bitmap histImage = new Bitmap(pictureBox.Width, pictureBox.Height);
+                using (Graphics g = Graphics.FromImage(histImage))
+                {
+                    g.Clear(Color.White);
+                    Pen pen = new Pen(channelColor, 1.5f);
+
+                    float columnWidth = (float)pictureBox.Width / 256;
+                    float scale = (float)pictureBox.Height / maxCount;
+
+                    for (int i = 0; i < 256; i++)
+                    {
+                        float height = histogram[i] * scale;
+                        float x = i * columnWidth;
+                        g.DrawLine(pen, x, pictureBox.Height, x, pictureBox.Height - height);
+                    }
+
+                    // Добавляем рамку
+                    g.DrawRectangle(Pens.Black, 0, 0, histImage.Width - 1, histImage.Height - 1);
+                }
+
+                // 3. Обновляем PictureBox
+                if (pictureBox.Image != null)
+                    pictureBox.Image.Dispose();
+
+                pictureBox.Image = histImage;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при построении гистограммы: {ex.Message}");
+            }
+        }
+        public void UpdateAllHistograms()
+        {
+            if (laterImage == null)
+            {
+                // Очищаем PictureBox, если нет изображения
+                histogramBox_r.Image?.Dispose();
+                histogramBox_g.Image?.Dispose();
+                histogramBox_b.Image?.Dispose();
+                histogramBox_light.Image?.Dispose();
+
+                histogramBox_r.Image = null;
+                histogramBox_g.Image = null;
+                histogramBox_b.Image = null;
+                histogramBox_light.Image = null;
+                return;
+            }
+
+            DrawRedHistogram();
+            DrawGreenHistogram();
+            DrawBlueHistogram();
+            DrawBrightnessHistogram();
+        }
+        private void DrawRedHistogram()
+        {
+            DrawHistogram(laterImage, histogramBox_r, Color.Red);
+        }
+
+        private void DrawGreenHistogram()
+        {
+            DrawHistogram(laterImage, histogramBox_g, Color.Green);
+        }
+
+        private void DrawBlueHistogram()
+        {
+            DrawHistogram(laterImage, histogramBox_b, Color.Blue);
+        }
+
+        private void DrawBrightnessHistogram()
+        {
+            DrawHistogram(laterImage, histogramBox_light, Color.Gray, true);
+        }
+
+        private void цветподробноToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Переключаем видимость панели
+            Color_Picker_Panel.Visible = !Color_Picker_Panel.Visible;
+
+            // Обновляем текст пункта меню в зависимости от состояния
+            цветподробноToolStripMenuItem.Text = Color_Picker_Panel.Visible
+                ? "Скрыть панель цвета"
+                : "Показать панель цвета";
+        }
     }
-    //Класс для измения цвета при наведении на кнопки
+    
+	//Класс для измения цвета при наведении на кнопки
     public class MyOrangeColorTable : ProfessionalColorTable
 	{
 		// Основные цвета для подсветки
@@ -1011,5 +1127,7 @@ namespace ImageProccesingApp_2attempt
 
 		// Граница меню
 		public override Color MenuBorder => Color.LightGray;
+
 	}
+
 }
