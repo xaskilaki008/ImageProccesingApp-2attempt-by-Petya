@@ -44,8 +44,9 @@ namespace ImageProccesingApp_2attempt
 			btn_resize.Click += Btn_resize_Click;
 			btn_reload.Click += Btn_reload_Click;
 			btn_rotate.Click += Btn_rotate_Click;
-			filters_binaris.Click += filters_binaris_Click_1;
-			copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
+            filters_binaris.Click += filters_binaris_Click_1;
+            ToolStripMenuItem_Rotate.Click += ToolStripMenuItem_Rotate_Click;
+            copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
 			pasteToolStripMenuItem.Click += pasteToolStripMenuItem_Click;
 			// Добавьте в конструктор Form1() после инициализации других элементов:
 			this.KeyPreview = true; // Для обработки горячих клавиш
@@ -288,9 +289,18 @@ namespace ImageProccesingApp_2attempt
                                                            // Очищаем redoHistory при новом действии
             redoHistory.Clear();
         }
+        private void ToolStripMenuItem_Rotate_Click(object sender, EventArgs e)
+        {
+            if (processedImage == null) return;
 
-		// Обработка изменений трекбаров
-		private void TrackBar_Scroll(object sender, EventArgs e)
+            processedImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            pictureBox1.Image = processedImage;
+            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+                                                           // Очищаем redoHistory при новом действии
+            redoHistory.Clear();
+        }
+        // Обработка изменений трекбаров
+        private void TrackBar_Scroll(object sender, EventArgs e)
 		{
 			if (originalImage == null) return;
 
@@ -943,6 +953,40 @@ namespace ImageProccesingApp_2attempt
         {
 
         }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void построитьУбратьГистограммыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Проверяем текущее состояние панели
+            if (barchartpanel.Visible)
+            {
+                // Если панель видима - скрываем её
+                barchartpanel.Visible = false;
+                // Можно также изменить текст пункта меню, чтобы отразить следующее действие
+                построитьУбратьГистограммыToolStripMenuItem.Text = "Построить гистограммы";
+            }
+            else
+            {
+                // Если панель скрыта - показываем её
+                barchartpanel.Visible = true;
+                // Изменяем текст пункта меню
+                построитьУбратьГистограммыToolStripMenuItem.Text = "Убрать гистограммы";
+
+                // Если нужно перестроить гистограммы при каждом открытии
+                // Здесь можно вызвать метод, который строит гистограммы
+                // Например: BuildHistograms(laterImage);
+            }
+        }
+
+        private void btn_rotate_Click(object sender, EventArgs e)
+        {
+
+        }
+
         // В конструкторе Form1 добавьте (если еще не добавлено):
 
 

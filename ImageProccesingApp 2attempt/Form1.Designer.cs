@@ -53,19 +53,20 @@
             this.увеличитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.весьЭкранF11ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.соToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Rotate = new System.Windows.Forms.ToolStripMenuItem();
+            this.построитьУбратьГистограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.barchartpanel = new System.Windows.Forms.Panel();
+            this.histogramBox_light = new System.Windows.Forms.PictureBox();
+            this.histogramBox_b = new System.Windows.Forms.PictureBox();
+            this.histogramBox_g = new System.Windows.Forms.PictureBox();
+            this.histogramBox_r = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_zoom = new System.Windows.Forms.Button();
             this.btn_center = new System.Windows.Forms.Button();
             this.btn_stretch = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btn_rotate = new System.Windows.Forms.Button();
             this.Brightnes = new System.Windows.Forms.Label();
             this.trk_bright = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
@@ -86,10 +87,11 @@
             this.panel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.barchartpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_light)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_b)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_g)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trk_bright)).BeginInit();
@@ -134,7 +136,6 @@
             this.button1.TabIndex = 7;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.back_button);
             this.button1.Click += new System.EventHandler(this.back_button_Click);
             // 
             // pictureBox1
@@ -353,7 +354,8 @@
             // 
             this.изображениеToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.изображениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.соToolStripMenuItem});
+            this.ToolStripMenuItem_Rotate,
+            this.построитьУбратьГистограммыToolStripMenuItem});
             this.изображениеToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.изображениеToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.изображениеToolStripMenuItem.Name = "изображениеToolStripMenuItem";
@@ -361,14 +363,23 @@
             this.изображениеToolStripMenuItem.Text = "Изображение";
             this.изображениеToolStripMenuItem.Click += new System.EventHandler(this.picture_ToolStripMenuItem_Click);
             // 
-            // соToolStripMenuItem
+            // ToolStripMenuItem_Rotate
             // 
-            this.соToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.соToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
-            this.соToolStripMenuItem.Name = "соToolStripMenuItem";
-            this.соToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
-            this.соToolStripMenuItem.Text = "Повернуть";
-            this.соToolStripMenuItem.Click += new System.EventHandler(this.Rotate_ToolStripMenuItem_Click);
+            this.ToolStripMenuItem_Rotate.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.ToolStripMenuItem_Rotate.ForeColor = System.Drawing.Color.Sienna;
+            this.ToolStripMenuItem_Rotate.Name = "ToolStripMenuItem_Rotate";
+            this.ToolStripMenuItem_Rotate.Size = new System.Drawing.Size(326, 26);
+            this.ToolStripMenuItem_Rotate.Text = "Повернуть 90°";
+            this.ToolStripMenuItem_Rotate.Click += new System.EventHandler(this.ToolStripMenuItem_Rotate_Click);
+            // 
+            // построитьУбратьГистограммыToolStripMenuItem
+            // 
+            this.построитьУбратьГистограммыToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.построитьУбратьГистограммыToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
+            this.построитьУбратьГистограммыToolStripMenuItem.Name = "построитьУбратьГистограммыToolStripMenuItem";
+            this.построитьУбратьГистограммыToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.построитьУбратьГистограммыToolStripMenuItem.Text = "Построить/Убрать гистограммы";
+            this.построитьУбратьГистограммыToolStripMenuItem.Click += new System.EventHandler(this.построитьУбратьГистограммыToolStripMenuItem_Click);
             // 
             // panel5
             // 
@@ -376,7 +387,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.AutoSize = true;
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.panel5.Controls.Add(this.panel7);
+            this.panel5.Controls.Add(this.barchartpanel);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Controls.Add(this.btn_zoom);
             this.panel5.Controls.Add(this.btn_center);
@@ -388,45 +399,56 @@
             this.panel5.Size = new System.Drawing.Size(522, 359);
             this.panel5.TabIndex = 1;
             // 
-            // panel7
+            // barchartpanel
             // 
-            this.panel7.Controls.Add(this.pictureBox5);
-            this.panel7.Controls.Add(this.pictureBox4);
-            this.panel7.Controls.Add(this.pictureBox3);
-            this.panel7.Location = new System.Drawing.Point(4, 125);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(513, 231);
-            this.panel7.TabIndex = 7;
+            this.barchartpanel.Controls.Add(this.histogramBox_light);
+            this.barchartpanel.Controls.Add(this.histogramBox_b);
+            this.barchartpanel.Controls.Add(this.histogramBox_g);
+            this.barchartpanel.Controls.Add(this.histogramBox_r);
+            this.barchartpanel.Location = new System.Drawing.Point(4, 125);
+            this.barchartpanel.Name = "barchartpanel";
+            this.barchartpanel.Size = new System.Drawing.Size(513, 231);
+            this.barchartpanel.TabIndex = 7;
+            this.barchartpanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
-            // pictureBox5
+            // histogramBox_light
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox5.Location = new System.Drawing.Point(337, 3);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(160, 84);
-            this.pictureBox5.TabIndex = 2;
-            this.pictureBox5.TabStop = false;
+            this.histogramBox_light.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.histogramBox_light.Location = new System.Drawing.Point(4, 95);
+            this.histogramBox_light.Name = "histogramBox_light";
+            this.histogramBox_light.Size = new System.Drawing.Size(327, 127);
+            this.histogramBox_light.TabIndex = 3;
+            this.histogramBox_light.TabStop = false;
             // 
-            // pictureBox4
+            // histogramBox_b
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(171, 4);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(160, 84);
-            this.pictureBox4.TabIndex = 1;
-            this.pictureBox4.TabStop = false;
+            this.histogramBox_b.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.histogramBox_b.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.histogramBox_b.Location = new System.Drawing.Point(337, 3);
+            this.histogramBox_b.Name = "histogramBox_b";
+            this.histogramBox_b.Size = new System.Drawing.Size(160, 84);
+            this.histogramBox_b.TabIndex = 2;
+            this.histogramBox_b.TabStop = false;
             // 
-            // pictureBox3
+            // histogramBox_g
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(161, 84);
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
+            this.histogramBox_g.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.histogramBox_g.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.histogramBox_g.Location = new System.Drawing.Point(171, 4);
+            this.histogramBox_g.Name = "histogramBox_g";
+            this.histogramBox_g.Size = new System.Drawing.Size(160, 84);
+            this.histogramBox_g.TabIndex = 1;
+            this.histogramBox_g.TabStop = false;
+            // 
+            // histogramBox_r
+            // 
+            this.histogramBox_r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.histogramBox_r.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.histogramBox_r.Location = new System.Drawing.Point(4, 4);
+            this.histogramBox_r.Name = "histogramBox_r";
+            this.histogramBox_r.Size = new System.Drawing.Size(161, 84);
+            this.histogramBox_r.TabIndex = 0;
+            this.histogramBox_r.TabStop = false;
             // 
             // label1
             // 
@@ -508,7 +530,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.AutoSize = true;
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.panel6.Controls.Add(this.btn_rotate);
             this.panel6.Controls.Add(this.Brightnes);
             this.panel6.Controls.Add(this.trk_bright);
             this.panel6.Controls.Add(this.label6);
@@ -529,21 +550,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(933, 190);
             this.panel6.TabIndex = 2;
-            // 
-            // btn_rotate
-            // 
-            this.btn_rotate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_rotate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_rotate.FlatAppearance.BorderSize = 2;
-            this.btn_rotate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_rotate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_rotate.Location = new System.Drawing.Point(237, 149);
-            this.btn_rotate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_rotate.Name = "btn_rotate";
-            this.btn_rotate.Size = new System.Drawing.Size(91, 38);
-            this.btn_rotate.TabIndex = 10;
-            this.btn_rotate.Text = "Rotate 90°";
-            this.btn_rotate.UseVisualStyleBackColor = true;
             // 
             // Brightnes
             // 
@@ -744,10 +750,11 @@
             this.menuStrip1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.barchartpanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_light)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_b)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_g)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_r)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -773,7 +780,6 @@
         private System.Windows.Forms.Button btn_center;
         private System.Windows.Forms.Button btn_stretch;
         private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.Button btn_rotate;
         private System.Windows.Forms.Button btn_reload;
         private System.Windows.Forms.Button btn_resize;
         private System.Windows.Forms.TextBox txt_imgpath;
@@ -789,30 +795,32 @@
         private System.Windows.Forms.TrackBar trk_contrast;
         private System.Windows.Forms.Label Brightnes;
         private System.Windows.Forms.TrackBar trk_bright;
+        private System.Windows.Forms.Panel barchartpanel;
+        private System.Windows.Forms.PictureBox histogramBox_b;
+        private System.Windows.Forms.PictureBox histogramBox_g;
+        private System.Windows.Forms.PictureBox histogramBox_r;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem filters_tsmenu;
-        private System.Windows.Forms.ToolStripMenuItem filters_binaris;
-        private System.Windows.Forms.ToolStripMenuItem filters_shadesofgrey;
-        private System.Windows.Forms.ToolStripMenuItem filters_negative;
         private System.Windows.Forms.ToolStripMenuItem file_tsmenu;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem filters_tsmenu;
+        private System.Windows.Forms.ToolStripMenuItem filters_binaris;
+        private System.Windows.Forms.ToolStripMenuItem filters_shadesofgrey;
+        private System.Windows.Forms.ToolStripMenuItem filters_negative;
         private System.Windows.Forms.ToolStripMenuItem видToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem нормальныйToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem растянутыйToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem поЦентруToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem увеличитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem изображениеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem соToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem весьЭкранF11ToolStripMenuItem;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripMenuItem изображениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Rotate;
+        private System.Windows.Forms.PictureBox histogramBox_light;
+        private System.Windows.Forms.ToolStripMenuItem построитьУбратьГистограммыToolStripMenuItem;
     }
 }
 
