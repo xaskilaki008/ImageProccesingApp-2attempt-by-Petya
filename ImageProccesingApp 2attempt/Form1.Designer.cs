@@ -47,6 +47,7 @@
             this.filters_binaris = new System.Windows.Forms.ToolStripMenuItem();
             this.filters_shadesofgrey = new System.Windows.Forms.ToolStripMenuItem();
             this.filters_negative = new System.Windows.Forms.ToolStripMenuItem();
+            this.цветподробноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.нормальныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.растянутыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +69,14 @@
             this.btn_stretch = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.Color_Picker_Panel = new System.Windows.Forms.Panel();
+            this.change_parammetrs_button = new System.Windows.Forms.Button();
+            this.Brightnes = new System.Windows.Forms.Label();
+            this.trk_bright = new System.Windows.Forms.TrackBar();
+            this.label6 = new System.Windows.Forms.Label();
+            this.trk_contrast = new System.Windows.Forms.TrackBar();
+            this.label4 = new System.Windows.Forms.Label();
+            this.trk_hue = new System.Windows.Forms.TrackBar();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_size = new System.Windows.Forms.Label();
@@ -77,15 +86,6 @@
             this.btn_reload = new System.Windows.Forms.Button();
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.Color_Picker_Panel = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.trk_hue = new System.Windows.Forms.TrackBar();
-            this.label6 = new System.Windows.Forms.Label();
-            this.trk_contrast = new System.Windows.Forms.TrackBar();
-            this.Brightnes = new System.Windows.Forms.Label();
-            this.trk_bright = new System.Windows.Forms.TrackBar();
-            this.change_parammetrs_button = new System.Windows.Forms.Button();
-            this.цветподробноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -99,9 +99,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel6.SuspendLayout();
             this.Color_Picker_Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trk_contrast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_bright)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_contrast)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -287,7 +287,7 @@
             this.filters_binaris.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.filters_binaris.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_binaris.Name = "filters_binaris";
-            this.filters_binaris.Size = new System.Drawing.Size(224, 26);
+            this.filters_binaris.Size = new System.Drawing.Size(204, 26);
             this.filters_binaris.Text = "Бинаризация";
             this.filters_binaris.Click += new System.EventHandler(this.filters_binaris_Click_1);
             // 
@@ -296,7 +296,7 @@
             this.filters_shadesofgrey.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.filters_shadesofgrey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_shadesofgrey.Name = "filters_shadesofgrey";
-            this.filters_shadesofgrey.Size = new System.Drawing.Size(224, 26);
+            this.filters_shadesofgrey.Size = new System.Drawing.Size(204, 26);
             this.filters_shadesofgrey.Text = "Оттенки серого";
             this.filters_shadesofgrey.Click += new System.EventHandler(this.filters_shadesofgrey_Click);
             // 
@@ -305,9 +305,18 @@
             this.filters_negative.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.filters_negative.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_negative.Name = "filters_negative";
-            this.filters_negative.Size = new System.Drawing.Size(224, 26);
+            this.filters_negative.Size = new System.Drawing.Size(204, 26);
             this.filters_negative.Text = "Негатив";
             this.filters_negative.Click += new System.EventHandler(this.filters_negative_Click);
+            // 
+            // цветподробноToolStripMenuItem
+            // 
+            this.цветподробноToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.цветподробноToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.цветподробноToolStripMenuItem.Name = "цветподробноToolStripMenuItem";
+            this.цветподробноToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.цветподробноToolStripMenuItem.Text = "Цвет (подробно)";
+            this.цветподробноToolStripMenuItem.Click += new System.EventHandler(this.цветподробноToolStripMenuItem_Click);
             // 
             // видToolStripMenuItem
             // 
@@ -562,6 +571,98 @@
             this.panel6.Size = new System.Drawing.Size(933, 190);
             this.panel6.TabIndex = 2;
             // 
+            // Color_Picker_Panel
+            // 
+            this.Color_Picker_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Color_Picker_Panel.Controls.Add(this.change_parammetrs_button);
+            this.Color_Picker_Panel.Controls.Add(this.Brightnes);
+            this.Color_Picker_Panel.Controls.Add(this.trk_bright);
+            this.Color_Picker_Panel.Controls.Add(this.label6);
+            this.Color_Picker_Panel.Controls.Add(this.trk_contrast);
+            this.Color_Picker_Panel.Controls.Add(this.label4);
+            this.Color_Picker_Panel.Controls.Add(this.trk_hue);
+            this.Color_Picker_Panel.Location = new System.Drawing.Point(264, 94);
+            this.Color_Picker_Panel.Name = "Color_Picker_Panel";
+            this.Color_Picker_Panel.Size = new System.Drawing.Size(628, 83);
+            this.Color_Picker_Panel.TabIndex = 27;
+            // 
+            // change_parammetrs_button
+            // 
+            this.change_parammetrs_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.change_parammetrs_button.Location = new System.Drawing.Point(40, 45);
+            this.change_parammetrs_button.Name = "change_parammetrs_button";
+            this.change_parammetrs_button.Size = new System.Drawing.Size(93, 35);
+            this.change_parammetrs_button.TabIndex = 29;
+            this.change_parammetrs_button.Text = "Применить";
+            this.change_parammetrs_button.UseVisualStyleBackColor = false;
+            this.change_parammetrs_button.Click += new System.EventHandler(this.change_parammetrs_button_Click);
+            // 
+            // Brightnes
+            // 
+            this.Brightnes.AllowDrop = true;
+            this.Brightnes.AutoEllipsis = true;
+            this.Brightnes.AutoSize = true;
+            this.Brightnes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Brightnes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Brightnes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Brightnes.Location = new System.Drawing.Point(397, 3);
+            this.Brightnes.Name = "Brightnes";
+            this.Brightnes.Size = new System.Drawing.Size(63, 16);
+            this.Brightnes.TabIndex = 28;
+            this.Brightnes.Text = "Brightnes";
+            // 
+            // trk_bright
+            // 
+            this.trk_bright.Location = new System.Drawing.Point(459, 0);
+            this.trk_bright.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.trk_bright.Name = "trk_bright";
+            this.trk_bright.Size = new System.Drawing.Size(140, 56);
+            this.trk_bright.TabIndex = 27;
+            // 
+            // label6
+            // 
+            this.label6.AllowDrop = true;
+            this.label6.AutoEllipsis = true;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label6.Location = new System.Drawing.Point(193, 3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Contrast";
+            // 
+            // trk_contrast
+            // 
+            this.trk_contrast.Location = new System.Drawing.Point(255, 0);
+            this.trk_contrast.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.trk_contrast.Name = "trk_contrast";
+            this.trk_contrast.Size = new System.Drawing.Size(140, 56);
+            this.trk_contrast.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.AllowDrop = true;
+            this.label4.AutoEllipsis = true;
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(14, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 16);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Hue";
+            // 
+            // trk_hue
+            // 
+            this.trk_hue.Location = new System.Drawing.Point(58, 0);
+            this.trk_hue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.trk_hue.Name = "trk_hue";
+            this.trk_hue.Size = new System.Drawing.Size(140, 56);
+            this.trk_hue.TabIndex = 23;
+            // 
             // label5
             // 
             this.label5.AllowDrop = true;
@@ -674,106 +775,6 @@
             this.btn_save.Text = "Сохранить изображение";
             this.btn_save.UseVisualStyleBackColor = true;
             // 
-            // Color_Picker_Panel
-            // 
-            this.Color_Picker_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Color_Picker_Panel.Controls.Add(this.change_parammetrs_button);
-            this.Color_Picker_Panel.Controls.Add(this.Brightnes);
-            this.Color_Picker_Panel.Controls.Add(this.trk_bright);
-            this.Color_Picker_Panel.Controls.Add(this.label6);
-            this.Color_Picker_Panel.Controls.Add(this.trk_contrast);
-            this.Color_Picker_Panel.Controls.Add(this.label4);
-            this.Color_Picker_Panel.Controls.Add(this.trk_hue);
-            this.Color_Picker_Panel.Location = new System.Drawing.Point(264, 94);
-            this.Color_Picker_Panel.Name = "Color_Picker_Panel";
-            this.Color_Picker_Panel.Size = new System.Drawing.Size(628, 83);
-            this.Color_Picker_Panel.TabIndex = 27;
-            // 
-            // label4
-            // 
-            this.label4.AllowDrop = true;
-            this.label4.AutoEllipsis = true;
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(14, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 16);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Hue";
-            // 
-            // trk_hue
-            // 
-            this.trk_hue.Location = new System.Drawing.Point(58, 0);
-            this.trk_hue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.trk_hue.Name = "trk_hue";
-            this.trk_hue.Size = new System.Drawing.Size(140, 56);
-            this.trk_hue.TabIndex = 23;
-            // 
-            // label6
-            // 
-            this.label6.AllowDrop = true;
-            this.label6.AutoEllipsis = true;
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(193, 3);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 16);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "Contrast";
-            // 
-            // trk_contrast
-            // 
-            this.trk_contrast.Location = new System.Drawing.Point(255, 0);
-            this.trk_contrast.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.trk_contrast.Name = "trk_contrast";
-            this.trk_contrast.Size = new System.Drawing.Size(140, 56);
-            this.trk_contrast.TabIndex = 25;
-            // 
-            // Brightnes
-            // 
-            this.Brightnes.AllowDrop = true;
-            this.Brightnes.AutoEllipsis = true;
-            this.Brightnes.AutoSize = true;
-            this.Brightnes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Brightnes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Brightnes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Brightnes.Location = new System.Drawing.Point(397, 3);
-            this.Brightnes.Name = "Brightnes";
-            this.Brightnes.Size = new System.Drawing.Size(63, 16);
-            this.Brightnes.TabIndex = 28;
-            this.Brightnes.Text = "Brightnes";
-            // 
-            // trk_bright
-            // 
-            this.trk_bright.Location = new System.Drawing.Point(459, 0);
-            this.trk_bright.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.trk_bright.Name = "trk_bright";
-            this.trk_bright.Size = new System.Drawing.Size(140, 56);
-            this.trk_bright.TabIndex = 27;
-            // 
-            // change_parammetrs_button
-            // 
-            this.change_parammetrs_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.change_parammetrs_button.Location = new System.Drawing.Point(40, 45);
-            this.change_parammetrs_button.Name = "change_parammetrs_button";
-            this.change_parammetrs_button.Size = new System.Drawing.Size(93, 35);
-            this.change_parammetrs_button.TabIndex = 29;
-            this.change_parammetrs_button.Text = "Применить";
-            this.change_parammetrs_button.UseVisualStyleBackColor = false;
-            // 
-            // цветподробноToolStripMenuItem
-            // 
-            this.цветподробноToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.цветподробноToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.цветподробноToolStripMenuItem.Name = "цветподробноToolStripMenuItem";
-            this.цветподробноToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.цветподробноToolStripMenuItem.Text = "Цвет (подробно)";
-            this.цветподробноToolStripMenuItem.Click += new System.EventHandler(this.цветподробноToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -805,9 +806,9 @@
             this.panel6.PerformLayout();
             this.Color_Picker_Panel.ResumeLayout(false);
             this.Color_Picker_Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trk_contrast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_bright)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_contrast)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

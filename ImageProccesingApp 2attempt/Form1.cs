@@ -1105,9 +1105,14 @@ namespace ImageProccesingApp_2attempt
                 ? "Скрыть панель цвета"
                 : "Показать панель цвета";
         }
+
+        private void change_parammetrs_button_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-    
-	//Класс для измения цвета при наведении на кнопки
+
+    //Класс для измения цвета при наведении на кнопки
     public class MyOrangeColorTable : ProfessionalColorTable
 	{
 		// Основные цвета для подсветки
