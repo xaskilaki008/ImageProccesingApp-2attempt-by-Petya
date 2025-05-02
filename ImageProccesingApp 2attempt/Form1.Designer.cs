@@ -58,11 +58,11 @@
             this.ToolStripMenuItem_Rotate = new System.Windows.Forms.ToolStripMenuItem();
             this.построитьУбратьГистограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_zoom = new System.Windows.Forms.Button();
             this.btn_center = new System.Windows.Forms.Button();
             this.btn_stretch = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.Color_Picker_Panel = new System.Windows.Forms.Panel();
             this.change_parammetrs_button = new System.Windows.Forms.Button();
@@ -81,14 +81,6 @@
             this.btn_reload = new System.Windows.Forms.Button();
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.barchartpanel = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.histogramBox_light = new System.Windows.Forms.PictureBox();
-            this.histogramBox_r = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -100,11 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trk_bright)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_contrast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).BeginInit();
-            this.barchartpanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_light)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_r)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -122,7 +109,7 @@
             this.panel1.Location = new System.Drawing.Point(1, 4);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(525, 359);
+            this.panel1.Size = new System.Drawing.Size(634, 359);
             this.panel1.TabIndex = 0;
             // 
             // button2
@@ -156,7 +143,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(11, 26);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(501, 321);
+            this.pictureBox1.Size = new System.Drawing.Size(610, 321);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -396,17 +383,16 @@
             this.ToolStripMenuItem_Rotate.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ToolStripMenuItem_Rotate.ForeColor = System.Drawing.Color.Sienna;
             this.ToolStripMenuItem_Rotate.Name = "ToolStripMenuItem_Rotate";
-            this.ToolStripMenuItem_Rotate.Size = new System.Drawing.Size(326, 26);
+            this.ToolStripMenuItem_Rotate.Size = new System.Drawing.Size(269, 26);
             this.ToolStripMenuItem_Rotate.Text = "Повернуть 90°";
-            this.ToolStripMenuItem_Rotate.Click += new System.EventHandler(this.ToolStripMenuItem_Rotate_Click);
             // 
             // построитьУбратьГистограммыToolStripMenuItem
             // 
             this.построитьУбратьГистограммыToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.построитьУбратьГистограммыToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.построитьУбратьГистограммыToolStripMenuItem.Name = "построитьУбратьГистограммыToolStripMenuItem";
-            this.построитьУбратьГистограммыToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
-            this.построитьУбратьГистограммыToolStripMenuItem.Text = "Построить/Убрать гистограммы";
+            this.построитьУбратьГистограммыToolStripMenuItem.Size = new System.Drawing.Size(372, 26);
+            this.построитьУбратьГистограммыToolStripMenuItem.Text = "Построить гистограммы в новом окне";
             this.построитьУбратьГистограммыToolStripMenuItem.Click += new System.EventHandler(this.построитьУбратьГистограммыToolStripMenuItem_Click);
             // 
             // panel5
@@ -415,24 +401,37 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.AutoSize = true;
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.panel5.Controls.Add(this.pictureBox2);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Controls.Add(this.btn_zoom);
             this.panel5.Controls.Add(this.btn_center);
             this.panel5.Controls.Add(this.btn_stretch);
-            this.panel5.Controls.Add(this.pictureBox2);
-            this.panel5.Location = new System.Drawing.Point(482, 4);
+            this.panel5.Location = new System.Drawing.Point(628, 4);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(506, 359);
+            this.panel5.Size = new System.Drawing.Size(355, 359);
             this.panel5.TabIndex = 1;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.pictureBox2.Location = new System.Drawing.Point(80, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(155, 102);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoEllipsis = true;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Location = new System.Drawing.Point(318, 107);
+            this.label1.Location = new System.Drawing.Point(127, 106);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 16);
             this.label1.TabIndex = 6;
@@ -441,12 +440,13 @@
             // 
             // btn_zoom
             // 
+            this.btn_zoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_zoom.AutoSize = true;
             this.btn_zoom.FlatAppearance.BorderSize = 3;
             this.btn_zoom.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_zoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_zoom.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_zoom.Location = new System.Drawing.Point(403, 82);
+            this.btn_zoom.Location = new System.Drawing.Point(252, 82);
             this.btn_zoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_zoom.Name = "btn_zoom";
             this.btn_zoom.Size = new System.Drawing.Size(100, 39);
@@ -457,12 +457,13 @@
             // 
             // btn_center
             // 
+            this.btn_center.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_center.AutoSize = true;
             this.btn_center.FlatAppearance.BorderSize = 3;
             this.btn_center.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_center.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_center.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_center.Location = new System.Drawing.Point(403, 46);
+            this.btn_center.Location = new System.Drawing.Point(252, 46);
             this.btn_center.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_center.Name = "btn_center";
             this.btn_center.Size = new System.Drawing.Size(100, 39);
@@ -473,12 +474,13 @@
             // 
             // btn_stretch
             // 
+            this.btn_stretch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_stretch.AutoSize = true;
             this.btn_stretch.FlatAppearance.BorderSize = 3;
             this.btn_stretch.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_stretch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_stretch.ForeColor = System.Drawing.Color.LightSalmon;
-            this.btn_stretch.Location = new System.Drawing.Point(403, 9);
+            this.btn_stretch.Location = new System.Drawing.Point(252, 9);
             this.btn_stretch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_stretch.Name = "btn_stretch";
             this.btn_stretch.Size = new System.Drawing.Size(100, 39);
@@ -486,19 +488,6 @@
             this.btn_stretch.Text = "Stretch";
             this.btn_stretch.UseVisualStyleBackColor = true;
             this.btn_stretch.Click += new System.EventHandler(this.btn_stretch_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.pictureBox2.Location = new System.Drawing.Point(222, 4);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(155, 102);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // panel6
             // 
@@ -726,102 +715,11 @@
             this.btn_save.Text = "Сохранить изображение";
             this.btn_save.UseVisualStyleBackColor = true;
             // 
-            // barchartpanel
-            // 
-            this.barchartpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.barchartpanel.Controls.Add(this.label8);
-            this.barchartpanel.Controls.Add(this.pictureBox3);
-            this.barchartpanel.Controls.Add(this.pictureBox4);
-            this.barchartpanel.Controls.Add(this.label7);
-            this.barchartpanel.Controls.Add(this.label2);
-            this.barchartpanel.Controls.Add(this.histogramBox_light);
-            this.barchartpanel.Controls.Add(this.histogramBox_r);
-            this.barchartpanel.Location = new System.Drawing.Point(75, 50);
-            this.barchartpanel.Name = "barchartpanel";
-            this.barchartpanel.Size = new System.Drawing.Size(740, 453);
-            this.barchartpanel.TabIndex = 8;
-            this.barchartpanel.Paint += new System.Windows.Forms.PaintEventHandler(this.barchartpanel_Paint);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Impact", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(129, 18);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(314, 41);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Панель гистограмм";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.White;
-            this.pictureBox3.Location = new System.Drawing.Point(308, 278);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(236, 175);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.White;
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(308, 87);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(236, 175);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox4.TabIndex = 11;
-            this.pictureBox4.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(55, 259);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 16);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Гистограмма цвета";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 65);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 16);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Гистограмма яркости";
-            // 
-            // histogramBox_light
-            // 
-            this.histogramBox_light.BackColor = System.Drawing.Color.White;
-            this.histogramBox_light.Location = new System.Drawing.Point(23, 275);
-            this.histogramBox_light.Name = "histogramBox_light";
-            this.histogramBox_light.Size = new System.Drawing.Size(236, 175);
-            this.histogramBox_light.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.histogramBox_light.TabIndex = 3;
-            this.histogramBox_light.TabStop = false;
-            // 
-            // histogramBox_r
-            // 
-            this.histogramBox_r.BackColor = System.Drawing.Color.White;
-            this.histogramBox_r.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.histogramBox_r.Location = new System.Drawing.Point(23, 84);
-            this.histogramBox_r.Name = "histogramBox_r";
-            this.histogramBox_r.Size = new System.Drawing.Size(236, 175);
-            this.histogramBox_r.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.histogramBox_r.TabIndex = 0;
-            this.histogramBox_r.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(983, 560);
-            this.Controls.Add(this.barchartpanel);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
@@ -846,12 +744,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trk_bright)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_contrast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).EndInit();
-            this.barchartpanel.ResumeLayout(false);
-            this.barchartpanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_light)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_r)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -866,7 +758,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btn_zoom;
         private System.Windows.Forms.Button btn_center;
         private System.Windows.Forms.Button btn_stretch;
@@ -911,14 +802,7 @@
         private System.Windows.Forms.TrackBar trk_bright;
         private System.Windows.Forms.Button change_parammetrs_button;
         private System.Windows.Forms.ToolStripMenuItem цветподробноToolStripMenuItem;
-        private System.Windows.Forms.PictureBox histogramBox_light;
-        private System.Windows.Forms.PictureBox histogramBox_r;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label label8;
-        internal System.Windows.Forms.Panel barchartpanel;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

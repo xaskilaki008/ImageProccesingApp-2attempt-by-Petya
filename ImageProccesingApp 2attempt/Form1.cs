@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -18,6 +19,9 @@ namespace ImageProccesingApp_2attempt
         public Form1()
 		{
 			InitializeComponent();
+
+            
+            
             Color_Picker_Panel.Visible = false; // Скрываем панель при запуске
             menuStrip1.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
 			openToolStripMenuItem.Click += delegate
@@ -58,9 +62,15 @@ namespace ImageProccesingApp_2attempt
 			trk_bright.Scroll += TrackBar_Scroll;
 
 		}
+		histograms f2;
+		private void построитьУбратьГистограммыToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			f2 = new histograms();
+			f2.Show();
+		}
 
-		// Загрузка изображения
-		private void Btn_open_Click(object sender, EventArgs e)
+        // Загрузка изображения
+        private void Btn_open_Click(object sender, EventArgs e)
 		{
 			using (OpenFileDialog openFileDialog = new OpenFileDialog())
 			{
@@ -947,7 +957,7 @@ namespace ImageProccesingApp_2attempt
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+			
         }
 
         private void back_button(object sender, EventArgs e)
@@ -958,29 +968,6 @@ namespace ImageProccesingApp_2attempt
         private void panel7_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void построитьУбратьГистограммыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Проверяем текущее состояние панели
-            if (barchartpanel.Visible)
-            {
-                // Если панель видима - скрываем её
-                barchartpanel.Visible = false;
-                // Можно также изменить текст пункта меню, чтобы отразить следующее действие
-                построитьУбратьГистограммыToolStripMenuItem.Text = "Построить гистограммы";
-            }
-            else
-            {
-                // Если панель скрыта - показываем её
-                barchartpanel.Visible = true;
-                // Изменяем текст пункта меню
-                построитьУбратьГистограммыToolStripMenuItem.Text = "Убрать гистограммы";
-
-                // Если нужно перестроить гистограммы при каждом открытии
-                // Здесь можно вызвать метод, который строит гистограммы
-                // Например: BuildHistograms(laterImage);
-            }
         }
 
         private void btn_rotate_Click(object sender, EventArgs e)
@@ -1053,18 +1040,8 @@ namespace ImageProccesingApp_2attempt
                 MessageBox.Show($"Ошибка при построении гистограммы: {ex.Message}");
             }
         }
+     
 
-        private void DrawRedHistogram()
-        {
-            DrawHistogram(laterImage, histogramBox_r, Color.Red);
-        }
-
-        
-
-        private void DrawBrightnessHistogram()
-        {
-            DrawHistogram(laterImage, histogramBox_light, Color.Gray, true);
-        }
 
         private void цветподробноToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1099,7 +1076,7 @@ namespace ImageProccesingApp_2attempt
 
         private void barchartpanel_Paint(object sender, PaintEventArgs e)
         {
-            barchartpanel.Visible = false;
+            
         }
     }
 
