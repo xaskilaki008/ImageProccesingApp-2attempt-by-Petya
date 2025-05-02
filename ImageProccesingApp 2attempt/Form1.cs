@@ -1096,6 +1096,11 @@ namespace ImageProccesingApp_2attempt
         {
 
         }
+
+        private void barchartpanel_Paint(object sender, PaintEventArgs e)
+        {
+            barchartpanel.Visible = false;
+        }
     }
 
     //Класс для измения цвета при наведении на кнопки

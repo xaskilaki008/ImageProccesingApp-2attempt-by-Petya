@@ -82,13 +82,13 @@
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.barchartpanel = new System.Windows.Forms.Panel();
-            this.histogramBox_light = new System.Windows.Forms.PictureBox();
-            this.histogramBox_r = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.histogramBox_light = new System.Windows.Forms.PictureBox();
+            this.histogramBox_r = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -101,10 +101,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trk_contrast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).BeginInit();
             this.barchartpanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_light)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_light)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_r)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -738,37 +738,42 @@
             this.barchartpanel.Controls.Add(this.histogramBox_r);
             this.barchartpanel.Location = new System.Drawing.Point(75, 50);
             this.barchartpanel.Name = "barchartpanel";
-            this.barchartpanel.Size = new System.Drawing.Size(594, 453);
+            this.barchartpanel.Size = new System.Drawing.Size(740, 453);
             this.barchartpanel.TabIndex = 8;
+            this.barchartpanel.Paint += new System.Windows.Forms.PaintEventHandler(this.barchartpanel_Paint);
             // 
-            // histogramBox_light
+            // label8
             // 
-            this.histogramBox_light.BackColor = System.Drawing.Color.White;
-            this.histogramBox_light.Location = new System.Drawing.Point(23, 275);
-            this.histogramBox_light.Name = "histogramBox_light";
-            this.histogramBox_light.Size = new System.Drawing.Size(236, 175);
-            this.histogramBox_light.TabIndex = 3;
-            this.histogramBox_light.TabStop = false;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Impact", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(129, 18);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(314, 41);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Панель гистограмм";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // histogramBox_r
+            // pictureBox3
             // 
-            this.histogramBox_r.BackColor = System.Drawing.Color.White;
-            this.histogramBox_r.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.histogramBox_r.Location = new System.Drawing.Point(23, 84);
-            this.histogramBox_r.Name = "histogramBox_r";
-            this.histogramBox_r.Size = new System.Drawing.Size(236, 175);
-            this.histogramBox_r.TabIndex = 0;
-            this.histogramBox_r.TabStop = false;
+            this.pictureBox3.BackColor = System.Drawing.Color.White;
+            this.pictureBox3.Location = new System.Drawing.Point(308, 278);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(236, 175);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
             // 
-            // label2
+            // pictureBox4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 65);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 16);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Гистограмма яркости";
+            this.pictureBox4.BackColor = System.Drawing.Color.White;
+            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox4.Location = new System.Drawing.Point(308, 87);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(236, 175);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox4.TabIndex = 11;
+            this.pictureBox4.TabStop = false;
             // 
             // label7
             // 
@@ -780,36 +785,36 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "Гистограмма цвета";
             // 
-            // pictureBox3
+            // label2
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.White;
-            this.pictureBox3.Location = new System.Drawing.Point(308, 278);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(236, 175);
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(42, 65);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(147, 16);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Гистограмма яркости";
             // 
-            // pictureBox4
+            // histogramBox_light
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.White;
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(308, 87);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(236, 175);
-            this.pictureBox4.TabIndex = 11;
-            this.pictureBox4.TabStop = false;
+            this.histogramBox_light.BackColor = System.Drawing.Color.White;
+            this.histogramBox_light.Location = new System.Drawing.Point(23, 275);
+            this.histogramBox_light.Name = "histogramBox_light";
+            this.histogramBox_light.Size = new System.Drawing.Size(236, 175);
+            this.histogramBox_light.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.histogramBox_light.TabIndex = 3;
+            this.histogramBox_light.TabStop = false;
             // 
-            // label8
+            // histogramBox_r
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Impact", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(129, 18);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(322, 42);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Панель гистограмм";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            this.histogramBox_r.BackColor = System.Drawing.Color.White;
+            this.histogramBox_r.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.histogramBox_r.Location = new System.Drawing.Point(23, 84);
+            this.histogramBox_r.Name = "histogramBox_r";
+            this.histogramBox_r.Size = new System.Drawing.Size(236, 175);
+            this.histogramBox_r.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.histogramBox_r.TabIndex = 0;
+            this.histogramBox_r.TabStop = false;
             // 
             // Form1
             // 
@@ -843,10 +848,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).EndInit();
             this.barchartpanel.ResumeLayout(false);
             this.barchartpanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_light)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_r)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_light)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_r)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -906,7 +911,6 @@
         private System.Windows.Forms.TrackBar trk_bright;
         private System.Windows.Forms.Button change_parammetrs_button;
         private System.Windows.Forms.ToolStripMenuItem цветподробноToolStripMenuItem;
-        private System.Windows.Forms.Panel barchartpanel;
         private System.Windows.Forms.PictureBox histogramBox_light;
         private System.Windows.Forms.PictureBox histogramBox_r;
         private System.Windows.Forms.Label label7;
@@ -914,6 +918,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label8;
+        internal System.Windows.Forms.Panel barchartpanel;
     }
 }
 
