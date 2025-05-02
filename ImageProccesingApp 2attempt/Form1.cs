@@ -1053,42 +1053,13 @@ namespace ImageProccesingApp_2attempt
                 MessageBox.Show($"Ошибка при построении гистограммы: {ex.Message}");
             }
         }
-        public void UpdateAllHistograms()
-        {
-            if (laterImage == null)
-            {
-                // Очищаем PictureBox, если нет изображения
-                histogramBox_r.Image?.Dispose();
-                histogramBox_g.Image?.Dispose();
-                histogramBox_b.Image?.Dispose();
-                histogramBox_light.Image?.Dispose();
 
-                histogramBox_r.Image = null;
-                histogramBox_g.Image = null;
-                histogramBox_b.Image = null;
-                histogramBox_light.Image = null;
-                return;
-            }
-
-            DrawRedHistogram();
-            DrawGreenHistogram();
-            DrawBlueHistogram();
-            DrawBrightnessHistogram();
-        }
         private void DrawRedHistogram()
         {
             DrawHistogram(laterImage, histogramBox_r, Color.Red);
         }
 
-        private void DrawGreenHistogram()
-        {
-            DrawHistogram(laterImage, histogramBox_g, Color.Green);
-        }
-
-        private void DrawBlueHistogram()
-        {
-            DrawHistogram(laterImage, histogramBox_b, Color.Blue);
-        }
+        
 
         private void DrawBrightnessHistogram()
         {
@@ -1107,6 +1078,21 @@ namespace ImageProccesingApp_2attempt
         }
 
         private void change_parammetrs_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void histogramBox_b_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void histogramBox_g_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }
