@@ -525,6 +525,7 @@
             this.Color_Picker_Panel.Name = "Color_Picker_Panel";
             this.Color_Picker_Panel.Size = new System.Drawing.Size(628, 83);
             this.Color_Picker_Panel.TabIndex = 27;
+            this.Color_Picker_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Color_Picker_Panel_Paint);
             // 
             // change_parammetrs_button
             // 
@@ -602,6 +603,7 @@
             this.trk_hue.Name = "trk_hue";
             this.trk_hue.Size = new System.Drawing.Size(140, 56);
             this.trk_hue.TabIndex = 23;
+            this.trk_hue.Scroll += new System.EventHandler(this.trk_hue_Scroll);
             // 
             // label5
             // 
