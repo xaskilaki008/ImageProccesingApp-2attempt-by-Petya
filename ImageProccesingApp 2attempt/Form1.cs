@@ -308,26 +308,7 @@ namespace ImageProccesingApp_2attempt
                                                            // Очищаем redoHistory при новом действии
             redoHistory.Clear();
         }
-        // Обработка изменений трекбаров
-        private void TrackBar_Scroll(object sender, EventArgs e)
-        {
-            if (originalImage == null) return;
-
-            try
-            {
-                // Применение эффектов к изображению
-                float hue = trk_hue.Value / 100f;
-                float contrast = 1 + trk_contrast.Value / 100f;
-                float brightness = 1 + trk_bright.Value / 100f;
-
-                processedImage = AdjustImage(originalImage, hue, contrast, brightness);
-                pictureBox1.Image = processedImage;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error adjusting image: {ex.Message}");
-            }
-        }
+        
 
         // Метод для настройки изображения (цвет, контраст, яркость)
         private Bitmap AdjustImage(Bitmap image, float hue, float contrast, float brightness)
@@ -1053,39 +1034,57 @@ namespace ImageProccesingApp_2attempt
                 : "Показать панель цвета";
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool isPreviewMode = true; // Режим предпросмотра
+
+        private void TrackBar_Scroll(object sender, EventArgs e)
+        {
+            if (isPreviewMode && originalImage != null)
+            {
+                try
+                {
+                    float hue = trk_hue.Value / 100f;
+                    float contrast = 1 + trk_contrast.Value / 100f;
+                    float brightness = 1 + trk_bright.Value / 100f;
+
+                    var previewImage = AdjustImage(originalImage, hue, contrast, brightness);
+                    pictureBox1.Image = previewImage;
+                }
+                catch { /* Игнорируем ошибки в предпросмотре */ }
+            }
+        }
+
         private void change_parammetrs_button_Click(object sender, EventArgs e)
         {
+            if (originalImage == null) return;
 
-        }
+            try
+            {
+                // Отключаем предпросмотр на время применения
+                isPreviewMode = false;
 
-        private void histogramBox_b_Click(object sender, EventArgs e)
-        {
+                // Получаем значения с трекбаров
+                float hue = trk_hue.Value / 100f;
+                float contrast = 1 + trk_contrast.Value / 100f;
+                float brightness = 1 + trk_bright.Value / 100f;
 
-        }
-
-        private void histogramBox_g_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void barchartpanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Color_Picker_Panel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void trk_hue_Scroll(object sender, EventArgs e)
-        {
-
+                // Применяем эффекты окончательно
+                processedImage = AdjustImage(originalImage, hue, contrast, brightness);
+                pictureBox1.Image = processedImage;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adjusting image: {ex.Message}");
+            }
+            finally
+            {
+                // Включаем предпросмотр обратно
+                isPreviewMode = true;
+            }
         }
     }
 

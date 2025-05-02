@@ -115,17 +115,18 @@
             // button2
             // 
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(348, 4);
+            this.button2.Location = new System.Drawing.Point(444, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(30, 23);
             this.button2.TabIndex = 8;
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(324, 4);
+            this.button1.Location = new System.Drawing.Point(408, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 23);
             this.button1.TabIndex = 7;
@@ -383,7 +384,7 @@
             this.ToolStripMenuItem_Rotate.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ToolStripMenuItem_Rotate.ForeColor = System.Drawing.Color.Sienna;
             this.ToolStripMenuItem_Rotate.Name = "ToolStripMenuItem_Rotate";
-            this.ToolStripMenuItem_Rotate.Size = new System.Drawing.Size(269, 26);
+            this.ToolStripMenuItem_Rotate.Size = new System.Drawing.Size(372, 26);
             this.ToolStripMenuItem_Rotate.Text = "Повернуть 90°";
             // 
             // построитьУбратьГистограммыToolStripMenuItem
@@ -494,7 +495,7 @@
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.AutoSize = true;
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel6.Controls.Add(this.Color_Picker_Panel);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Controls.Add(this.label3);
@@ -505,15 +506,15 @@
             this.panel6.Controls.Add(this.btn_reload);
             this.panel6.Controls.Add(this.btn_resize);
             this.panel6.Controls.Add(this.btn_save);
-            this.panel6.Location = new System.Drawing.Point(0, 370);
+            this.panel6.Location = new System.Drawing.Point(0, 355);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(983, 190);
+            this.panel6.Size = new System.Drawing.Size(983, 205);
             this.panel6.TabIndex = 2;
             // 
             // Color_Picker_Panel
             // 
-            this.Color_Picker_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Color_Picker_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Color_Picker_Panel.Controls.Add(this.change_parammetrs_button);
             this.Color_Picker_Panel.Controls.Add(this.Brightnes);
             this.Color_Picker_Panel.Controls.Add(this.trk_bright);
@@ -523,16 +524,18 @@
             this.Color_Picker_Panel.Controls.Add(this.trk_hue);
             this.Color_Picker_Panel.Location = new System.Drawing.Point(264, 94);
             this.Color_Picker_Panel.Name = "Color_Picker_Panel";
-            this.Color_Picker_Panel.Size = new System.Drawing.Size(628, 83);
+            this.Color_Picker_Panel.Size = new System.Drawing.Size(628, 99);
             this.Color_Picker_Panel.TabIndex = 27;
-            this.Color_Picker_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Color_Picker_Panel_Paint);
             // 
             // change_parammetrs_button
             // 
-            this.change_parammetrs_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.change_parammetrs_button.Location = new System.Drawing.Point(40, 45);
+            this.change_parammetrs_button.AutoSize = true;
+            this.change_parammetrs_button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.change_parammetrs_button.BackColor = System.Drawing.Color.DimGray;
+            this.change_parammetrs_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.change_parammetrs_button.Location = new System.Drawing.Point(41, 61);
             this.change_parammetrs_button.Name = "change_parammetrs_button";
-            this.change_parammetrs_button.Size = new System.Drawing.Size(93, 35);
+            this.change_parammetrs_button.Size = new System.Drawing.Size(92, 28);
             this.change_parammetrs_button.TabIndex = 29;
             this.change_parammetrs_button.Text = "Применить";
             this.change_parammetrs_button.UseVisualStyleBackColor = false;
@@ -543,21 +546,23 @@
             this.Brightnes.AllowDrop = true;
             this.Brightnes.AutoEllipsis = true;
             this.Brightnes.AutoSize = true;
-            this.Brightnes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Brightnes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Brightnes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Brightnes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Brightnes.Location = new System.Drawing.Point(397, 3);
+            this.Brightnes.Font = new System.Drawing.Font("MV Boli", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Brightnes.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Brightnes.Location = new System.Drawing.Point(390, 5);
             this.Brightnes.Name = "Brightnes";
-            this.Brightnes.Size = new System.Drawing.Size(63, 16);
+            this.Brightnes.Size = new System.Drawing.Size(63, 17);
             this.Brightnes.TabIndex = 28;
             this.Brightnes.Text = "Brightnes";
             // 
             // trk_bright
             // 
+            this.trk_bright.AutoSize = false;
             this.trk_bright.Location = new System.Drawing.Point(459, 0);
-            this.trk_bright.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.trk_bright.Margin = new System.Windows.Forms.Padding(1);
             this.trk_bright.Name = "trk_bright";
-            this.trk_bright.Size = new System.Drawing.Size(140, 56);
+            this.trk_bright.Size = new System.Drawing.Size(140, 36);
             this.trk_bright.TabIndex = 27;
             // 
             // label6
@@ -565,21 +570,23 @@
             this.label6.AllowDrop = true;
             this.label6.AutoEllipsis = true;
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(193, 3);
+            this.label6.Font = new System.Drawing.Font("MV Boli", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label6.Location = new System.Drawing.Point(193, 5);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.Size = new System.Drawing.Size(61, 17);
             this.label6.TabIndex = 26;
             this.label6.Text = "Contrast";
             // 
             // trk_contrast
             // 
+            this.trk_contrast.AutoSize = false;
             this.trk_contrast.Location = new System.Drawing.Point(255, 0);
-            this.trk_contrast.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.trk_contrast.Margin = new System.Windows.Forms.Padding(1);
             this.trk_contrast.Name = "trk_contrast";
-            this.trk_contrast.Size = new System.Drawing.Size(140, 56);
+            this.trk_contrast.Size = new System.Drawing.Size(140, 36);
             this.trk_contrast.TabIndex = 25;
             // 
             // label4
@@ -587,23 +594,25 @@
             this.label4.AllowDrop = true;
             this.label4.AutoEllipsis = true;
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(14, 3);
+            this.label4.Font = new System.Drawing.Font("MV Boli", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label4.Location = new System.Drawing.Point(11, 5);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 16);
+            this.label4.Size = new System.Drawing.Size(30, 17);
             this.label4.TabIndex = 24;
             this.label4.Text = "Hue";
             // 
             // trk_hue
             // 
-            this.trk_hue.Location = new System.Drawing.Point(58, 0);
-            this.trk_hue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.trk_hue.AutoSize = false;
+            this.trk_hue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.trk_hue.Location = new System.Drawing.Point(47, 0);
+            this.trk_hue.Margin = new System.Windows.Forms.Padding(1);
             this.trk_hue.Name = "trk_hue";
-            this.trk_hue.Size = new System.Drawing.Size(140, 56);
+            this.trk_hue.Size = new System.Drawing.Size(140, 36);
             this.trk_hue.TabIndex = 23;
-            this.trk_hue.Scroll += new System.EventHandler(this.trk_hue_Scroll);
             // 
             // label5
             // 
@@ -679,7 +688,7 @@
             this.btn_reload.FlatAppearance.BorderSize = 2;
             this.btn_reload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_reload.Location = new System.Drawing.Point(120, 149);
+            this.btn_reload.Location = new System.Drawing.Point(120, 164);
             this.btn_reload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_reload.Name = "btn_reload";
             this.btn_reload.Size = new System.Drawing.Size(91, 38);
@@ -694,7 +703,7 @@
             this.btn_resize.FlatAppearance.BorderSize = 2;
             this.btn_resize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_resize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_resize.Location = new System.Drawing.Point(3, 149);
+            this.btn_resize.Location = new System.Drawing.Point(3, 164);
             this.btn_resize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_resize.Name = "btn_resize";
             this.btn_resize.Size = new System.Drawing.Size(91, 38);
