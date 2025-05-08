@@ -166,12 +166,11 @@ namespace ImageProccesingApp_2attempt
         {
             if (originalImage != null)
             {
+                undoHistory.Push(new Bitmap(processedImage)); // Сохраняем текущее состояние
+
+                processedImage?.Dispose();
                 processedImage = new Bitmap(originalImage);
                 pictureBox1.Image = processedImage;
-
-                txt_width.Text = originalImage.Width.ToString();
-                txt_hight.Text = originalImage.Height.ToString();
-                lbl_size.Text = $"{originalImage.Width} x {originalImage.Height}";
 
                 // Сброс трекбаров
                 trk_hue.Value = 0;
@@ -550,12 +549,12 @@ namespace ImageProccesingApp_2attempt
                     DropDownStyle = ComboBoxStyle.DropDownList
                 };
                 cmbMode.Items.AddRange(new object[] {
-            "По яркости (общий)",
-            "По красному каналу",
-            "По зеленому каналу",
-            "По синему каналу",
-            "Адаптивная бинаризация"
-            });
+                "По яркости (общий)",
+                "По красному каналу",
+                "По зеленому каналу",
+                "По синему каналу",
+                "Адаптивная бинаризация"
+                });
                 cmbMode.SelectedIndex = 0;
 
                 // Трекбар для порога
@@ -989,7 +988,7 @@ namespace ImageProccesingApp_2attempt
 
         private void change_parammetrs_button_Click(object sender, EventArgs e)
         {
-            if (originalImage == null)
+            if (processedImage == null) // Используем processedImage вместо originalImage
             {
                 MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -998,22 +997,27 @@ namespace ImageProccesingApp_2attempt
 
             try
             {
-                // 1. Получаем текущие значения с ползунков
+                // Сохраняем текущее состояние для возможного отката
+                undoHistory.Push(new Bitmap(processedImage));
+                redoHistory.Clear();
+
+                // Получаем значения с ползунков
                 float hue = trk_hue.Value / 100f;
                 float contrast = 1 + trk_contrast.Value / 100f;
                 float brightness = 1 + trk_bright.Value / 100f;
 
-                // 2. Применяем изменения к изображению
-                processedImage = AdjustImage(originalImage, hue, contrast, brightness);
-                pictureBox1.Image = processedImage;
+                // Применяем изменения к ТЕКУЩЕМУ обработанному изображению
+                Bitmap newImage = AdjustImage(processedImage, hue, contrast, brightness);
 
-                // 3. Сбрасываем ползунки в 0
+                // Обновляем изображения
+                processedImage.Dispose(); // Освобождаем старый ресурс
+                processedImage = newImage;
+                pictureBox1.Image = newImage;
+
+                // Сбрасываем ползунки в 0
                 trk_hue.Value = 0;
                 trk_contrast.Value = 0;
                 trk_bright.Value = 0;
-
-                // (Опционально) Обновляем текстовые метки
-                
             }
             catch (Exception ex)
             {
