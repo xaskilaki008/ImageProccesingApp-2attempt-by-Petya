@@ -65,7 +65,6 @@
             this.btn_stretch = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.Color_Picker_Panel = new System.Windows.Forms.Panel();
-            this.change_parammetrs_button = new System.Windows.Forms.Button();
             this.Brightnes = new System.Windows.Forms.Label();
             this.trk_bright = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
@@ -81,6 +80,7 @@
             this.btn_reload = new System.Windows.Forms.Button();
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
+            this.change_parammetrs_button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -526,19 +526,16 @@
             this.Color_Picker_Panel.Name = "Color_Picker_Panel";
             this.Color_Picker_Panel.Size = new System.Drawing.Size(628, 99);
             this.Color_Picker_Panel.TabIndex = 27;
+            this.Color_Picker_Panel.Click += new System.EventHandler(this.change_parammetrs_button_Click);
             // 
             // change_parammetrs_button
             // 
-            this.change_parammetrs_button.AutoSize = true;
-            this.change_parammetrs_button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.change_parammetrs_button.BackColor = System.Drawing.Color.DimGray;
-            this.change_parammetrs_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.change_parammetrs_button.Location = new System.Drawing.Point(41, 61);
+            this.change_parammetrs_button.Location = new System.Drawing.Point(145, 61);
             this.change_parammetrs_button.Name = "change_parammetrs_button";
-            this.change_parammetrs_button.Size = new System.Drawing.Size(92, 28);
-            this.change_parammetrs_button.TabIndex = 29;
+            this.change_parammetrs_button.Size = new System.Drawing.Size(109, 28);
+            this.change_parammetrs_button.TabIndex = 30;
             this.change_parammetrs_button.Text = "Применить";
-            this.change_parammetrs_button.UseVisualStyleBackColor = false;
+            this.change_parammetrs_button.UseVisualStyleBackColor = true;
             this.change_parammetrs_button.Click += new System.EventHandler(this.change_parammetrs_button_Click);
             // 
             // Brightnes
@@ -811,9 +808,10 @@
         private System.Windows.Forms.TrackBar trk_hue;
         private System.Windows.Forms.Label Brightnes;
         private System.Windows.Forms.TrackBar trk_bright;
-        private System.Windows.Forms.Button change_parammetrs_button;
         private System.Windows.Forms.ToolStripMenuItem цветподробноToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button change_parammetrs_button;
+        
     }
 }
 
