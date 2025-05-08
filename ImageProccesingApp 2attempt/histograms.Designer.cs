@@ -11,15 +11,7 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
+        
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -118,19 +110,22 @@
             this.histogramBox_bright.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.histogramBox_bright.TabIndex = 14;
             this.histogramBox_bright.TabStop = false;
-            
             // 
             // histograms_rebuild
             // 
+            this.histograms_rebuild.AllowDrop = true;
             this.histograms_rebuild.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.histograms_rebuild.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.histograms_rebuild.FlatAppearance.BorderSize = 0;
+            this.histograms_rebuild.FlatAppearance.BorderColor = System.Drawing.Color.Purple;
+            this.histograms_rebuild.FlatAppearance.BorderSize = 3;
+            this.histograms_rebuild.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.histograms_rebuild.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.histograms_rebuild.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.histograms_rebuild.Location = new System.Drawing.Point(499, 45);
             this.histograms_rebuild.Name = "histograms_rebuild";
-            this.histograms_rebuild.Size = new System.Drawing.Size(124, 46);
+            this.histograms_rebuild.Size = new System.Drawing.Size(74, 58);
             this.histograms_rebuild.TabIndex = 10;
-            this.histograms_rebuild.Text = "Построить гистограммы";
+            this.histograms_rebuild.Text = "в новом окне";
             this.histograms_rebuild.UseVisualStyleBackColor = false;
             this.histograms_rebuild.Click += new System.EventHandler(this.histograms_rebuild_Click);
             // 

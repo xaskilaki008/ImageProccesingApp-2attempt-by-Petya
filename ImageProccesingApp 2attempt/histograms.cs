@@ -1,91 +1,148 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace ImageProccesingApp_2attempt
+
 {
     public partial class histograms : Form
     {
-        Graphics graphColored, graphMainImage;
-        private Bitmap processedImage;
-
-        // Конструктор, принимающий Bitmap
+        private readonly Bitmap processedImage;
+        private const int HistWidth = 256;
+        private const int HistHeight = 100;
         public histograms(Bitmap img)
         {
+            if (img == null)
+                throw new ArgumentNullException(nameof(img));
+
             InitializeComponent();
-            this.processedImage = img;
-            // Здесь можно сразу использовать image для построения гистограммы
+            this.processedImage = new Bitmap(img); ;
+
+            // Автоматически строим гистограмму при открытии формы
+            this.Shown += (s, e) => BuildHistograms();
         }
-
-        // Выбранный цвет
-        Color currentColor;
-        // Выбранный регион
-        Point currentRegion;
-        bool isPaint = false;
-
-        public histograms()
+        // Единственный конструктор, требующий изображение
+        protected override void Dispose(bool disposing)
         {
-            InitializeComponent();
+            if (disposing)
+            {
+                processedImage?.Dispose();
+            }
+            base.Dispose(disposing);
+        }   
 
+        private void BuildHistograms()
+        {
+            try
+            {
+                // 1. Создаем битмапы для гистограмм
+                Bitmap brightnessHist = new Bitmap(HistWidth, HistHeight);
+                Bitmap colorHist = new Bitmap(HistWidth, HistHeight);
+
+                // 2. Массивы для подсчета частот
+                int[] brightnessValues = new int[256];
+                int[] redValues = new int[256];
+                int[] greenValues = new int[256];
+                int[] blueValues = new int[256];
+
+                // 3. Сбор статистики
+                for (int x = 0; x < processedImage.Width; x++)
+                {
+                    for (int y = 0; y < processedImage.Height; y++)
+                    {
+                        Color pixel = processedImage.GetPixel(x, y);
+
+                        int brightness = Clamp((int)(0.34 * pixel.R + 0.5 * pixel.G + 0.16 * pixel.B), 0, 255);
+                        brightnessValues[brightness]++;
+                        redValues[pixel.R]++;
+                        greenValues[pixel.G]++;
+                        blueValues[pixel.B]++;
+                    }
+                }
+
+                // 4. Нормализация и отрисовка
+                DrawHistogram(brightnessHist, brightnessValues, Color.Black);
+                DrawColorHistogram(colorHist, redValues, greenValues, blueValues);
+
+                // 5. Отображение
+                histogramBox_bright.Image = brightnessHist;
+                histogramBox_color.Image = colorHist;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка построения гистограммы: {ex.Message}",
+                              "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        private void DrawHistogram(Bitmap bitmap, int[] values, Color color)
+        {
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                g.Clear(Color.White);
+                int maxValue = GetMaxValue(values);
+
+                for (int i = 0; i < values.Length; i++)
+                {
+                    int height = (int)((values[i] / (float)maxValue) * HistHeight);
+                    g.DrawLine(new Pen(color), i, HistHeight, i, HistHeight - height);
+                }
+            }
+        }
+
+        private void DrawColorHistogram(Bitmap bitmap, int[] red, int[] green, int[] blue)
+        {
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                g.Clear(Color.White);
+                int maxRed = GetMaxValue(red);
+                int maxGreen = GetMaxValue(green);
+                int maxBlue = GetMaxValue(blue);
+
+                for (int i = 0; i < 256; i++)
+                {
+                    int rHeight = (int)((red[i] / (float)maxRed) * HistHeight);
+                    int gHeight = (int)((green[i] / (float)maxGreen) * HistHeight);
+                    int bHeight = (int)((blue[i] / (float)maxBlue) * HistHeight);
+
+                    g.DrawLine(Pens.Red, i, HistHeight, i, HistHeight - rHeight);
+                    g.DrawLine(Pens.Green, i, HistHeight, i, HistHeight - gHeight);
+                    g.DrawLine(Pens.Blue, i, HistHeight, i, HistHeight - bHeight);
+                }
+            }
+        }
+
+        private int GetMaxValue(int[] values)
+        {
+            int max = 0;
+            foreach (int value in values)
+            {
+                if (value > max) max = value;
+            }
+            return max == 0 ? 1 : max; // Чтобы избежать деления на 0
+        }
+
+        private static int Clamp(int value, int min, int max)
+        {
+            return value < min ? min : value > max ? max : value;
+        }
 
         private void histograms_rebuild_Click(object sender, EventArgs e)
         {
-            // Построить гистограмму
-            isPaint = false;
-            int[] brightly = new int[processedImage.Width * processedImage.Height];
-            Bitmap bipmapGist = new Bitmap(256, processedImage.Width * processedImage.Height);
-            Graphics graphBrightly = Graphics.FromImage(bipmapGist);
-            histogramBox_bright.Image = bipmapGist;
-            Dictionary<int, List<int>> dictRed = new Dictionary<int, List<int>>();
-            Dictionary<int, List<int>> dictGreen = new Dictionary<int, List<int>>();
-            Dictionary<int, List<int>> dictBlue = new Dictionary<int, List<int>>();
-
-            Pen pen = new Pen(Color.Black);
-            int x = 0, y = 0;
-            for (int i = 0; i < processedImage.Width; i++)
+            if (processedImage == null)
             {
-                List<int> red = new List<int>();
-                List<int> green = new List<int>();
-                List<int> blue = new List<int>();
-                for (int j = 0; j < processedImage.Height; j++)
-                {
-                    int r = Convert.ToInt32(processedImage.GetPixel(i, j).R);
-                    int g = Convert.ToInt32(processedImage.GetPixel(i, j).G);
-                    int b = Convert.ToInt32(processedImage.GetPixel(i, j).B);
-                    red.Add(r);
-                    green.Add(g);
-                    blue.Add(b);
-
-                    brightly[y] = (int)(0.34 * r + 0.5 * g + 0.16 * b); // получили яркость
-                    graphBrightly.DrawLine(pen, new Point(x, 0), new Point(x, brightly[y]));
-                    y++;
-
-                }
-                dictRed.Add(x, red);
-                dictBlue.Add(x, blue);
-                dictGreen.Add(x, green);
-                x++;
+                MessageBox.Show("Сначала обработайте изображение!");
+                return;
             }
-            Bitmap gist1 = new Bitmap(256, processedImage.Width * processedImage.Height);
-            graphColored = Graphics.FromImage(gist1);
-            histogramBox_color.Image = gist1;
-            Drawing(dictRed, new Pen(Color.Red));
-            Drawing(dictGreen, new Pen(Color.Green));
-            Drawing(dictBlue, new Pen(Color.Blue));
+
+            // Передаем processedImage в конструктор
+            var histForm = new histograms(processedImage);
+            histForm.Show();
         }
-        private void Drawing(Dictionary<int, List<int>> colors, Pen pen)
+
+        private void label1_Click(object sender, EventArgs e)
         {
-            for (int x = 0; x < colors.Keys.Count; x++)
-            {
-                for (int y = 0; y < colors[x].Count; y++)
-                {
-                    int color = colors[x][y];
-                    graphColored.DrawLine(pen, new Point(x, 0), new Point(x, color));
-                }
-            }
+
         }
     }
 }

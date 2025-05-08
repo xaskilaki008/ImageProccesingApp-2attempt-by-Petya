@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ImageProccesingApp_2attempt
@@ -40,7 +42,6 @@ namespace ImageProccesingApp_2attempt
             trk_bright.Value = 0;
 
             // Подписка на события
-            btn_save.Click += Btn_save_Click;
             нормальныйToolStripMenuItem.Click += нормальныйToolStripMenuItem_Click;
             btn_stretch.Click += Btn_stretch_Click;
             btn_center.Click += Btn_center_Click;
@@ -63,41 +64,15 @@ namespace ImageProccesingApp_2attempt
         histograms f2;
         private void построитьУбратьГистограммыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            f2 = new histograms();
-            f2.Show();
-        }
-
-        // Загрузка изображения
-        private void Btn_open_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            if (processedImage == null)
             {
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        originalImage = new Bitmap(openFileDialog.FileName);
-                        processedImage = new Bitmap(originalImage);
-
-                        pictureBox1.Image = originalImage;
-                        pictureBox2.Image = originalImage;
-
-                        txt_imgpath.Text = openFileDialog.FileName;
-                        lbl_size.Text = $"{originalImage.Width} x {originalImage.Height}";
-                        txt_width.Text = originalImage.Width.ToString();
-                        txt_hight.Text = originalImage.Height.ToString();
-
-                        // Установка режимов отображения
-                        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-                        pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error loading image: {ex.Message}");
-                    }
-                }
+                MessageBox.Show("Сначала обработайте изображение!");
+                return;
             }
+
+            // Передаем processedImage в конструктор
+            var histForm = new histograms(processedImage);
+            histForm.Show();
         }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -129,43 +104,6 @@ namespace ImageProccesingApp_2attempt
                     }
                 }
             }
-        }
-        // Сохранение изображения
-        private void Btn_save_Click(object sender, EventArgs e)
-        {
-            if (processedImage == null) return;
-
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.Filter = "JPEG Image|*.jpg|PNG Image|*.png|Bitmap Image|*.bmp";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        string extension = Path.GetExtension(saveFileDialog.FileName).ToLower();
-                        switch (extension)
-                        {
-                            case ".jpg":
-                            case ".jpeg":
-                                processedImage.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
-                                break;
-                            case ".png":
-                                processedImage.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
-                                break;
-                            case ".bmp":
-                                processedImage.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Bmp);
-                                break;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error saving image: {ex.Message}");
-                    }
-                }
-            }
-            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
-                                                           // Очищаем redoHistory при новом действии
-            redoHistory.Clear();
         }
 
         // Режимы отображения изображения
@@ -409,9 +347,10 @@ namespace ImageProccesingApp_2attempt
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Инициализация при загрузке формы
+            
         }
 
+            
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             // Можно реализовать предпросмотр или другие функции
@@ -1041,50 +980,51 @@ namespace ImageProccesingApp_2attempt
 
         private bool isPreviewMode = true; // Режим предпросмотра
 
+        private DateTime lastScrollTime = DateTime.MinValue;
+
         private void TrackBar_Scroll(object sender, EventArgs e)
         {
-            if (isPreviewMode && originalImage != null)
-            {
-                try
-                {
-                    float hue = trk_hue.Value / 100f;
-                    float contrast = 1 + trk_contrast.Value / 100f;
-                    float brightness = 1 + trk_bright.Value / 100f;
-
-                    var previewImage = AdjustImage(originalImage, hue, contrast, brightness);
-                    pictureBox1.Image = previewImage;
-                }
-                catch { /* Игнорируем ошибки в предпросмотре */ }
-            }
+            // Пусто! Никаких действий при движении ползунков
         }
 
         private void change_parammetrs_button_Click(object sender, EventArgs e)
         {
-            if (originalImage == null) return;
+            if (originalImage == null)
+            {
+                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             try
             {
-                // Отключаем предпросмотр на время применения
-                isPreviewMode = false;
-
-                // Получаем значения с трекбаров
+                // 1. Получаем текущие значения с ползунков
                 float hue = trk_hue.Value / 100f;
                 float contrast = 1 + trk_contrast.Value / 100f;
                 float brightness = 1 + trk_bright.Value / 100f;
 
-                // Применяем эффекты окончательно
+                // 2. Применяем изменения к изображению
                 processedImage = AdjustImage(originalImage, hue, contrast, brightness);
                 pictureBox1.Image = processedImage;
+
+                // 3. Сбрасываем ползунки в 0
+                trk_hue.Value = 0;
+                trk_contrast.Value = 0;
+                trk_bright.Value = 0;
+
+                // (Опционально) Обновляем текстовые метки
+                
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error adjusting image: {ex.Message}");
+                MessageBox.Show($"Ошибка при обработке: {ex.Message}", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                // Включаем предпросмотр обратно
-                isPreviewMode = true;
-            }
+        }
+
+        private void change_parammetrs_button_Click1(object sender, EventArgs e)
+        {
+
         }
     }
 

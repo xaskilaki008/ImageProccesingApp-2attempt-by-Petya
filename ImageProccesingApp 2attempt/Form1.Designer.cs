@@ -65,6 +65,7 @@
             this.btn_stretch = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.Color_Picker_Panel = new System.Windows.Forms.Panel();
+            this.change_parammetrs_button = new System.Windows.Forms.Button();
             this.Brightnes = new System.Windows.Forms.Label();
             this.trk_bright = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
@@ -80,7 +81,6 @@
             this.btn_reload = new System.Windows.Forms.Button();
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.change_parammetrs_button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -110,7 +110,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(634, 359);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 1;
             // 
             // button2
             // 
@@ -118,7 +118,7 @@
             this.button2.Location = new System.Drawing.Point(444, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(30, 23);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 1;
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -129,7 +129,7 @@
             this.button1.Location = new System.Drawing.Point(408, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 23);
-            this.button1.TabIndex = 7;
+            this.button1.TabIndex = 2;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.back_button_Click);
@@ -157,7 +157,7 @@
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(933, 190);
-            this.panel3.TabIndex = 2;
+            this.panel3.TabIndex = 4;
             // 
             // panel4
             // 
@@ -165,7 +165,7 @@
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(241, 359);
-            this.panel4.TabIndex = 1;
+            this.panel4.TabIndex = 0;
             // 
             // panel2
             // 
@@ -173,7 +173,7 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(241, 359);
-            this.panel2.TabIndex = 1;
+            this.panel2.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -193,7 +193,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
             this.menuStrip1.Size = new System.Drawing.Size(355, 24);
-            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
@@ -411,7 +411,7 @@
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(355, 359);
-            this.panel5.TabIndex = 1;
+            this.panel5.TabIndex = 0;
             // 
             // pictureBox2
             // 
@@ -435,7 +435,7 @@
             this.label1.Location = new System.Drawing.Point(127, 106);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 16);
-            this.label1.TabIndex = 6;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Start Image";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -451,7 +451,7 @@
             this.btn_zoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_zoom.Name = "btn_zoom";
             this.btn_zoom.Size = new System.Drawing.Size(100, 39);
-            this.btn_zoom.TabIndex = 5;
+            this.btn_zoom.TabIndex = 0;
             this.btn_zoom.Text = "Zoom";
             this.btn_zoom.UseVisualStyleBackColor = true;
             this.btn_zoom.Click += new System.EventHandler(this.btn_zoom_Click);
@@ -468,7 +468,7 @@
             this.btn_center.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_center.Name = "btn_center";
             this.btn_center.Size = new System.Drawing.Size(100, 39);
-            this.btn_center.TabIndex = 4;
+            this.btn_center.TabIndex = 1;
             this.btn_center.Text = "Center";
             this.btn_center.UseVisualStyleBackColor = true;
             this.btn_center.Click += new System.EventHandler(this.btn_center_Click);
@@ -525,7 +525,7 @@
             this.Color_Picker_Panel.Location = new System.Drawing.Point(264, 94);
             this.Color_Picker_Panel.Name = "Color_Picker_Panel";
             this.Color_Picker_Panel.Size = new System.Drawing.Size(628, 99);
-            this.Color_Picker_Panel.TabIndex = 27;
+            this.Color_Picker_Panel.TabIndex = 0;
             this.Color_Picker_Panel.Click += new System.EventHandler(this.change_parammetrs_button_Click);
             // 
             // change_parammetrs_button
@@ -533,7 +533,7 @@
             this.change_parammetrs_button.Location = new System.Drawing.Point(145, 61);
             this.change_parammetrs_button.Name = "change_parammetrs_button";
             this.change_parammetrs_button.Size = new System.Drawing.Size(109, 28);
-            this.change_parammetrs_button.TabIndex = 30;
+            this.change_parammetrs_button.TabIndex = 0;
             this.change_parammetrs_button.Text = "Применить";
             this.change_parammetrs_button.UseVisualStyleBackColor = true;
             this.change_parammetrs_button.Click += new System.EventHandler(this.change_parammetrs_button_Click);
@@ -550,7 +550,7 @@
             this.Brightnes.Location = new System.Drawing.Point(390, 5);
             this.Brightnes.Name = "Brightnes";
             this.Brightnes.Size = new System.Drawing.Size(63, 17);
-            this.Brightnes.TabIndex = 28;
+            this.Brightnes.TabIndex = 3;
             this.Brightnes.Text = "Brightnes";
             // 
             // trk_bright
@@ -560,7 +560,7 @@
             this.trk_bright.Margin = new System.Windows.Forms.Padding(1);
             this.trk_bright.Name = "trk_bright";
             this.trk_bright.Size = new System.Drawing.Size(140, 36);
-            this.trk_bright.TabIndex = 27;
+            this.trk_bright.TabIndex = 4;
             // 
             // label6
             // 
@@ -574,7 +574,7 @@
             this.label6.Location = new System.Drawing.Point(193, 5);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 17);
-            this.label6.TabIndex = 26;
+            this.label6.TabIndex = 5;
             this.label6.Text = "Contrast";
             // 
             // trk_contrast
@@ -584,7 +584,7 @@
             this.trk_contrast.Margin = new System.Windows.Forms.Padding(1);
             this.trk_contrast.Name = "trk_contrast";
             this.trk_contrast.Size = new System.Drawing.Size(140, 36);
-            this.trk_contrast.TabIndex = 25;
+            this.trk_contrast.TabIndex = 2;
             // 
             // label4
             // 
@@ -598,7 +598,7 @@
             this.label4.Location = new System.Drawing.Point(11, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 17);
-            this.label4.TabIndex = 24;
+            this.label4.TabIndex = 0;
             this.label4.Text = "Hue";
             // 
             // trk_hue
@@ -609,7 +609,7 @@
             this.trk_hue.Margin = new System.Windows.Forms.Padding(1);
             this.trk_hue.Name = "trk_hue";
             this.trk_hue.Size = new System.Drawing.Size(140, 36);
-            this.trk_hue.TabIndex = 23;
+            this.trk_hue.TabIndex = 1;
             // 
             // label5
             // 
@@ -622,7 +622,7 @@
             this.label5.Location = new System.Drawing.Point(149, 75);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 16);
-            this.label5.TabIndex = 20;
+            this.label5.TabIndex = 7;
             this.label5.Text = "Hight";
             // 
             // label3
@@ -636,7 +636,7 @@
             this.label3.Location = new System.Drawing.Point(21, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 16);
-            this.label3.TabIndex = 19;
+            this.label3.TabIndex = 8;
             this.label3.Text = "Width";
             // 
             // lbl_size
@@ -650,7 +650,7 @@
             this.lbl_size.Location = new System.Drawing.Point(95, 11);
             this.lbl_size.Name = "lbl_size";
             this.lbl_size.Size = new System.Drawing.Size(74, 16);
-            this.lbl_size.TabIndex = 7;
+            this.lbl_size.TabIndex = 1;
             this.lbl_size.Text = "Image Size";
             // 
             // txt_hight
@@ -659,7 +659,7 @@
             this.txt_hight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_hight.Name = "txt_hight";
             this.txt_hight.Size = new System.Drawing.Size(100, 22);
-            this.txt_hight.TabIndex = 18;
+            this.txt_hight.TabIndex = 6;
             this.txt_hight.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // txt_width
@@ -668,7 +668,7 @@
             this.txt_width.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_width.Name = "txt_width";
             this.txt_width.Size = new System.Drawing.Size(100, 22);
-            this.txt_width.TabIndex = 17;
+            this.txt_width.TabIndex = 5;
             // 
             // txt_imgpath
             // 
@@ -677,7 +677,7 @@
             this.txt_imgpath.Multiline = true;
             this.txt_imgpath.Name = "txt_imgpath";
             this.txt_imgpath.Size = new System.Drawing.Size(423, 38);
-            this.txt_imgpath.TabIndex = 16;
+            this.txt_imgpath.TabIndex = 0;
             // 
             // btn_reload
             // 
@@ -689,7 +689,7 @@
             this.btn_reload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_reload.Name = "btn_reload";
             this.btn_reload.Size = new System.Drawing.Size(91, 38);
-            this.btn_reload.TabIndex = 9;
+            this.btn_reload.TabIndex = 3;
             this.btn_reload.Text = "Reset";
             this.btn_reload.UseVisualStyleBackColor = true;
             this.btn_reload.Click += new System.EventHandler(this.btn_reload_Click);
@@ -704,7 +704,7 @@
             this.btn_resize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_resize.Name = "btn_resize";
             this.btn_resize.Size = new System.Drawing.Size(91, 38);
-            this.btn_resize.TabIndex = 8;
+            this.btn_resize.TabIndex = 2;
             this.btn_resize.Text = "Resize";
             this.btn_resize.UseVisualStyleBackColor = true;
             this.btn_resize.Click += new System.EventHandler(this.btn_resize_Click);
@@ -719,7 +719,7 @@
             this.btn_save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(240, 38);
-            this.btn_save.TabIndex = 7;
+            this.btn_save.TabIndex = 4;
             this.btn_save.Text = "Сохранить изображение";
             this.btn_save.UseVisualStyleBackColor = true;
             // 
