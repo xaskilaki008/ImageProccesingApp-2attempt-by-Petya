@@ -1074,7 +1074,75 @@ namespace ImageProccesingApp_2attempt
 
             return resultImage;
         }
+        public static Bitmap LaplaceEdgeDetection(Bitmap originalImage, int brightnessThreshold = 100)
+        {
+            Bitmap resultImage = new Bitmap(originalImage.Width, originalImage.Height);
 
+            // Ядро Лапласа (вариант 1: стандартное)
+            int[,] laplaceKernel = new int[3, 3]
+            {
+        { -1, -1, -1 },
+        { -1,  8, -1 },
+        { -1, -1, -1 }
+            };
+
+            // Альтернативные ядра (раскомментируйте нужное):
+            // Вариант 2 (диагональное усиление):
+            // int[,] laplaceKernel = new int[3, 3] { { 0, -1, 0 }, { -1, 4, -1 }, { 0, -1, 0 } };
+
+            for (int y = 1; y < originalImage.Height - 1; y++)
+            {
+                for (int x = 1; x < originalImage.Width - 1; x++)
+                {
+                    int sum = 0;
+
+                    // Применяем ядро Лапласа 3x3
+                    for (int ky = -1; ky <= 1; ky++)
+                    {
+                        for (int kx = -1; kx <= 1; kx++)
+                        {
+                            Color pixel = originalImage.GetPixel(x + kx, y + ky);
+                            int brightness = GetBrightness(pixel);
+                            int kernelValue = laplaceKernel[ky + 1, kx + 1];
+                            sum += brightness * kernelValue;
+                        }
+                    }
+
+                    // Коррекция яркости и ограничение диапазона [0, 255]
+                    sum = Math.Max(0, Math.Min(sum + brightnessThreshold, 255));
+
+                    // Записываем результат (одинаковое значение для R, G, B)
+                    resultImage.SetPixel(x, y, Color.FromArgb(sum, sum, sum));
+                }
+            }
+
+            return resultImage;
+        }
+
+        private void laplaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                Bitmap original = new Bitmap(pictureBox1.Image);
+                Bitmap result = LaplaceEdgeDetection(original, brightnessThreshold: 150); // Порог можно настроить
+
+                // Открываем результат в новом окне
+                FormResult resultForm = new FormResult(result);
+                resultForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка обработки: {ex.Message}", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 
     //Класс для измения цвета при наведении на кнопки

@@ -76,7 +76,7 @@
             this.btn_reload = new System.Windows.Forms.Button();
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.Laplas_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.laplas_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.методРобертсаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -331,7 +331,7 @@
             this.highlighting_toolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.highlighting_toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Kirsha_toolStripMenuItem,
-            this.Laplas_ToolStripMenuItem,
+            this.laplas_ToolStripMenuItem,
             this.методРобертсаToolStripMenuItem});
             this.highlighting_toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.highlighting_toolStripMenuItem2.ForeColor = System.Drawing.Color.Sienna;
@@ -488,6 +488,7 @@
             this.change_parammetrs_button.TabIndex = 0;
             this.change_parammetrs_button.Text = "Применить";
             this.change_parammetrs_button.UseVisualStyleBackColor = true;
+            this.change_parammetrs_button.UseWaitCursor = true;
             this.change_parammetrs_button.Click += new System.EventHandler(this.change_parammetrs_button_Click);
             // 
             // Brightnes
@@ -504,6 +505,7 @@
             this.Brightnes.Size = new System.Drawing.Size(63, 17);
             this.Brightnes.TabIndex = 3;
             this.Brightnes.Text = "Brightnes";
+            this.Brightnes.UseWaitCursor = true;
             // 
             // trk_bright
             // 
@@ -513,6 +515,7 @@
             this.trk_bright.Name = "trk_bright";
             this.trk_bright.Size = new System.Drawing.Size(140, 36);
             this.trk_bright.TabIndex = 4;
+            this.trk_bright.UseWaitCursor = true;
             // 
             // label6
             // 
@@ -528,6 +531,7 @@
             this.label6.Size = new System.Drawing.Size(61, 17);
             this.label6.TabIndex = 5;
             this.label6.Text = "Contrast";
+            this.label6.UseWaitCursor = true;
             // 
             // trk_contrast
             // 
@@ -537,6 +541,7 @@
             this.trk_contrast.Name = "trk_contrast";
             this.trk_contrast.Size = new System.Drawing.Size(140, 36);
             this.trk_contrast.TabIndex = 2;
+            this.trk_contrast.UseWaitCursor = true;
             // 
             // label4
             // 
@@ -552,6 +557,7 @@
             this.label4.Size = new System.Drawing.Size(30, 17);
             this.label4.TabIndex = 0;
             this.label4.Text = "Hue";
+            this.label4.UseWaitCursor = true;
             // 
             // trk_hue
             // 
@@ -674,12 +680,13 @@
             this.btn_save.Text = "Сохранить изображение";
             this.btn_save.UseVisualStyleBackColor = true;
             // 
-            // Laplas_ToolStripMenuItem
+            // laplas_ToolStripMenuItem
             // 
-            this.Laplas_ToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
-            this.Laplas_ToolStripMenuItem.Name = "Laplas_ToolStripMenuItem";
-            this.Laplas_ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
-            this.Laplas_ToolStripMenuItem.Text = "Метод Лапласа ";
+            this.laplas_ToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
+            this.laplas_ToolStripMenuItem.Name = "laplas_ToolStripMenuItem";
+            this.laplas_ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.laplas_ToolStripMenuItem.Text = "Метод Лапласа ";
+            this.laplas_ToolStripMenuItem.Click += new System.EventHandler(this.laplaceToolStripMenuItem_Click);
             // 
             // методРобертсаToolStripMenuItem
             // 
@@ -773,7 +780,7 @@
         private System.Windows.Forms.Button change_parammetrs_button;
         private System.Windows.Forms.ToolStripMenuItem highlighting_toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem Kirsha_toolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem Laplas_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem laplas_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem методРобертсаToolStripMenuItem;
     }
 }
