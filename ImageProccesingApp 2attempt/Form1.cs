@@ -433,23 +433,33 @@ namespace ImageProccesingApp_2attempt
         {
             try
             {
-                if (pictureBox1.Image != null)
-                {
-                    // Копируем текущее изображение в буфер обмена
-                    Clipboard.SetImage(pictureBox1.Image);
-                    MessageBox.Show("Изображение скопировано в буфер обмена", "Успех",
-                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
+                if (pictureBox1.Image == null)
                 {
                     MessageBox.Show("Нет изображения для копирования", "Ошибка",
                                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
+
+                // Очищаем буфер обмена (опционально)
+                Clipboard.Clear();
+
+                // Копируем изображение
+                Clipboard.SetImage(pictureBox1.Image);
+
+                // Можно заменить MessageBox на статус в интерфейсе, например:
+                // statusLabel.Text = "Изображение скопировано!";
+                MessageBox.Show("Изображение скопировано в буфер обмена", "Успех",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (ExternalException)
+            {
+                MessageBox.Show("Буфер обмена занят другим приложением", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при копировании: {ex.Message}", "Ошибка",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -804,6 +814,7 @@ namespace ImageProccesingApp_2attempt
 
             if (processedImage != null)
             {
+                undoHistory.Push(new Bitmap(processedImage)); // Сохраняем ДО очистки
                 processedImage.Dispose();
                 processedImage = null;
             }
