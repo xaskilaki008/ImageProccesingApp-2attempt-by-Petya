@@ -29,7 +29,7 @@ namespace ImageProccesingApp_2attempt
                 processedImage?.Dispose();
             }
             base.Dispose(disposing);
-        }   
+        }
 
         private void BuildHistograms()
         {
@@ -37,7 +37,9 @@ namespace ImageProccesingApp_2attempt
             {
                 // 1. Создаем битмапы для гистограмм
                 Bitmap brightnessHist = new Bitmap(HistWidth, HistHeight);
-                Bitmap colorHist = new Bitmap(HistWidth, HistHeight);
+                Bitmap redHist = new Bitmap(HistWidth, HistHeight);
+                Bitmap greenHist = new Bitmap(HistWidth, HistHeight);
+                Bitmap blueHist = new Bitmap(HistWidth, HistHeight);
 
                 // 2. Массивы для подсчета частот
                 int[] brightnessValues = new int[256];
@@ -62,11 +64,15 @@ namespace ImageProccesingApp_2attempt
 
                 // 4. Нормализация и отрисовка
                 DrawHistogram(brightnessHist, brightnessValues, Color.Black);
-                DrawColorHistogram(colorHist, redValues, greenValues, blueValues);
+                DrawHistogram(redHist, redValues, Color.Red);
+                DrawHistogram(greenHist, greenValues, Color.Green);
+                DrawHistogram(blueHist, blueValues, Color.Blue);
 
-                // 5. Отображение
+                // 5. Отображение в соответствующих PictureBox
                 histogramBox_bright.Image = brightnessHist;
-                histogramBox_color.Image = colorHist;
+                histogramBox_red.Image = redHist;
+                histogramBox_green.Image = greenHist;
+                histogramBox_blue.Image = blueHist;
             }
             catch (Exception ex)
             {
@@ -90,27 +96,8 @@ namespace ImageProccesingApp_2attempt
             }
         }
 
-        private void DrawColorHistogram(Bitmap bitmap, int[] red, int[] green, int[] blue)
-        {
-            using (Graphics g = Graphics.FromImage(bitmap))
-            {
-                g.Clear(Color.White);
-                int maxRed = GetMaxValue(red);
-                int maxGreen = GetMaxValue(green);
-                int maxBlue = GetMaxValue(blue);
 
-                for (int i = 0; i < 256; i++)
-                {
-                    int rHeight = (int)((red[i] / (float)maxRed) * HistHeight);
-                    int gHeight = (int)((green[i] / (float)maxGreen) * HistHeight);
-                    int bHeight = (int)((blue[i] / (float)maxBlue) * HistHeight);
-
-                    g.DrawLine(Pens.Red, i, HistHeight, i, HistHeight - rHeight);
-                    g.DrawLine(Pens.Green, i, HistHeight, i, HistHeight - gHeight);
-                    g.DrawLine(Pens.Blue, i, HistHeight, i, HistHeight - bHeight);
-                }
-            }
-        }
+       
 
         private int GetMaxValue(int[] values)
         {

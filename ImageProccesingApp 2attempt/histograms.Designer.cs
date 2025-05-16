@@ -24,13 +24,18 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.histogramBox_color = new System.Windows.Forms.PictureBox();
+            this.histogramBox_red = new System.Windows.Forms.PictureBox();
             this.histogramBox_bright = new System.Windows.Forms.PictureBox();
-            this.histograms_rebuild = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.histogramBox_blue = new System.Windows.Forms.PictureBox();
+            this.histogramBox_green = new System.Windows.Forms.PictureBox();
             this.barchartpanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_color)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_red)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.histogramBox_bright)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_blue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_green)).BeginInit();
             this.SuspendLayout();
             // 
             // barchartpanel
@@ -39,14 +44,18 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.barchartpanel.AutoSize = true;
             this.barchartpanel.BackColor = System.Drawing.Color.Gray;
+            this.barchartpanel.Controls.Add(this.label3);
+            this.barchartpanel.Controls.Add(this.label1);
+            this.barchartpanel.Controls.Add(this.histogramBox_blue);
+            this.barchartpanel.Controls.Add(this.histogramBox_green);
             this.barchartpanel.Controls.Add(this.label8);
             this.barchartpanel.Controls.Add(this.label7);
             this.barchartpanel.Controls.Add(this.label2);
-            this.barchartpanel.Controls.Add(this.histogramBox_color);
+            this.barchartpanel.Controls.Add(this.histogramBox_red);
             this.barchartpanel.Controls.Add(this.histogramBox_bright);
             this.barchartpanel.Location = new System.Drawing.Point(12, 6);
             this.barchartpanel.Name = "barchartpanel";
-            this.barchartpanel.Size = new System.Drawing.Size(461, 465);
+            this.barchartpanel.Size = new System.Drawing.Size(985, 465);
             this.barchartpanel.TabIndex = 9;
             // 
             // label8
@@ -70,9 +79,9 @@
             this.label7.Location = new System.Drawing.Point(52, 257);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 16);
+            this.label7.Size = new System.Drawing.Size(212, 16);
             this.label7.TabIndex = 17;
-            this.label7.Text = "Гистограмма цвета";
+            this.label7.Text = "🔴 Гистограмма красного цвета";
             // 
             // label2
             // 
@@ -82,21 +91,21 @@
             this.label2.Location = new System.Drawing.Point(39, 63);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 16);
+            this.label2.Size = new System.Drawing.Size(162, 16);
             this.label2.TabIndex = 16;
-            this.label2.Text = "Гистограмма яркости";
+            this.label2.Text = "🌈 Гистограмма яркости";
             // 
-            // histogramBox_color
+            // histogramBox_red
             // 
-            this.histogramBox_color.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.histogramBox_red.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.histogramBox_color.BackColor = System.Drawing.Color.White;
-            this.histogramBox_color.Location = new System.Drawing.Point(20, 273);
-            this.histogramBox_color.Name = "histogramBox_color";
-            this.histogramBox_color.Size = new System.Drawing.Size(400, 175);
-            this.histogramBox_color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.histogramBox_color.TabIndex = 15;
-            this.histogramBox_color.TabStop = false;
+            this.histogramBox_red.BackColor = System.Drawing.Color.White;
+            this.histogramBox_red.Location = new System.Drawing.Point(20, 273);
+            this.histogramBox_red.Name = "histogramBox_red";
+            this.histogramBox_red.Size = new System.Drawing.Size(428, 175);
+            this.histogramBox_red.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.histogramBox_red.TabIndex = 15;
+            this.histogramBox_red.TabStop = false;
             // 
             // histogramBox_bright
             // 
@@ -106,42 +115,73 @@
             this.histogramBox_bright.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.histogramBox_bright.Location = new System.Drawing.Point(20, 82);
             this.histogramBox_bright.Name = "histogramBox_bright";
-            this.histogramBox_bright.Size = new System.Drawing.Size(400, 175);
+            this.histogramBox_bright.Size = new System.Drawing.Size(428, 175);
             this.histogramBox_bright.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.histogramBox_bright.TabIndex = 14;
             this.histogramBox_bright.TabStop = false;
             // 
-            // histograms_rebuild
+            // label3
             // 
-            this.histograms_rebuild.AllowDrop = true;
-            this.histograms_rebuild.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.histograms_rebuild.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.histograms_rebuild.FlatAppearance.BorderColor = System.Drawing.Color.Purple;
-            this.histograms_rebuild.FlatAppearance.BorderSize = 3;
-            this.histograms_rebuild.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.histograms_rebuild.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.histograms_rebuild.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.histograms_rebuild.Location = new System.Drawing.Point(499, 45);
-            this.histograms_rebuild.Name = "histograms_rebuild";
-            this.histograms_rebuild.Size = new System.Drawing.Size(74, 58);
-            this.histograms_rebuild.TabIndex = 10;
-            this.histograms_rebuild.Text = "в новом окне";
-            this.histograms_rebuild.UseVisualStyleBackColor = false;
-            this.histograms_rebuild.Click += new System.EventHandler(this.histograms_rebuild_Click);
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(621, 257);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(197, 16);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "🔴 Гистограмма синего цвета";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(621, 63);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(214, 16);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "🔴 Гистограмма зеленого цвета";
+            // 
+            // histogramBox_blue
+            // 
+            this.histogramBox_blue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.histogramBox_blue.BackColor = System.Drawing.Color.White;
+            this.histogramBox_blue.Location = new System.Drawing.Point(523, 273);
+            this.histogramBox_blue.Name = "histogramBox_blue";
+            this.histogramBox_blue.Size = new System.Drawing.Size(408, 175);
+            this.histogramBox_blue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.histogramBox_blue.TabIndex = 24;
+            this.histogramBox_blue.TabStop = false;
+            // 
+            // histogramBox_green
+            // 
+            this.histogramBox_green.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.histogramBox_green.BackColor = System.Drawing.Color.White;
+            this.histogramBox_green.Location = new System.Drawing.Point(523, 82);
+            this.histogramBox_green.Name = "histogramBox_green";
+            this.histogramBox_green.Size = new System.Drawing.Size(404, 175);
+            this.histogramBox_green.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.histogramBox_green.TabIndex = 23;
+            this.histogramBox_green.TabStop = false;
             // 
             // histograms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 476);
-            this.Controls.Add(this.histograms_rebuild);
             this.Controls.Add(this.barchartpanel);
             this.Name = "histograms";
             this.Text = "histograms";
             this.barchartpanel.ResumeLayout(false);
             this.barchartpanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_color)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_red)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.histogramBox_bright)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_blue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histogramBox_green)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,9 +193,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox histogramBox_color;
+        private System.Windows.Forms.PictureBox histogramBox_red;
         private System.Windows.Forms.PictureBox histogramBox_bright;
-        private System.Windows.Forms.Button histograms_rebuild;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox histogramBox_blue;
+        private System.Windows.Forms.PictureBox histogramBox_green;
     }
 }

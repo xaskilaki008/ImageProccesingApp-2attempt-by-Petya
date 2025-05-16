@@ -528,52 +528,74 @@ namespace ImageProccesingApp_2attempt
             pictureBox1.Image = binary;
             processedImage = new Bitmap(binary); // Сохраняем результат
         }
-        //функция для бинаризации--------------------
         private void filters_binaris_Click_1(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null) return;
 
-            // Создаем диалог для выбора параметров бинаризации
             using (var form = new Form())
             {
                 form.Text = "Параметры бинаризации";
-                form.Size = new Size(300, 200);
+                form.Size = new Size(300, 250);
                 form.FormBorderStyle = FormBorderStyle.FixedDialog;
                 form.StartPosition = FormStartPosition.CenterParent;
 
-                // Комбобокс для выбора режима
-                var cmbMode = new ComboBox()
+                // Радиокнопки для выбора типа бинаризации
+                var rbBrightness = new RadioButton()
                 {
-                    Location = new Point(10, 10),
-                    Width = 250,
-                    DropDownStyle = ComboBoxStyle.DropDownList
+                    Text = "По яркости (чёрно-белая)",
+                    Checked = true,
+                    Location = new Point(10, 10)
                 };
-                cmbMode.Items.AddRange(new object[] {
-                "По яркости (общий)",
-                "По красному каналу",
-                "По зеленому каналу",
-                "По синему каналу",
-                "Адаптивная бинаризация"
-                });
-                cmbMode.SelectedIndex = 0;
 
-                // Трекбар для порога
+                var rbColor = new RadioButton()
+                {
+                    Text = "По выбранному цвету",
+                    Location = new Point(10, 40)
+                };
+
+                // Кнопка выбора цвета (только для режима "По цвету")
+                var btnPickColor = new Button()
+                {
+                    Text = "Выбрать цвет...",
+                    Location = new Point(30, 70),
+                    Enabled = false
+                };
+                Color targetColor = Color.Red; // Цвет по умолчанию
+
+                rbColor.CheckedChanged += (s, ev) =>
+                {
+                    btnPickColor.Enabled = rbColor.Checked;
+                };
+
+                btnPickColor.Click += (s, ev) =>
+                {
+                    using (ColorDialog colorDialog = new ColorDialog())
+                    {
+                        if (colorDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            targetColor = colorDialog.Color;
+                            btnPickColor.BackColor = targetColor;
+                        }
+                    }
+                };
+
+                // Трекбар для порога (общий для обоих режимов)
                 var lblThreshold = new Label()
                 {
-                    Text = "Порог бинаризации: 180",
-                    Location = new Point(10, 40)
+                    Text = "Чувствительность: 50",
+                    Location = new Point(10, 110)
                 };
                 var trkThreshold = new TrackBar()
                 {
-                    Minimum = 0,
-                    Maximum = 255,
-                    Value = 180, // Увеличенный порог по умолчанию
-                    Location = new Point(10, 60),
+                    Minimum = 1,
+                    Maximum = 100,
+                    Value = 50,
+                    Location = new Point(10, 130),
                     Width = 200
                 };
                 trkThreshold.Scroll += (s, ev) =>
                 {
-                    lblThreshold.Text = $"Порог бинаризации: {trkThreshold.Value}";
+                    lblThreshold.Text = $"Чувствительность: {trkThreshold.Value}";
                 };
 
                 // Кнопка применения
@@ -581,10 +603,13 @@ namespace ImageProccesingApp_2attempt
                 {
                     Text = "Применить",
                     DialogResult = DialogResult.OK,
-                    Location = new Point(10, 100)
+                    Location = new Point(10, 170)
                 };
 
-                form.Controls.AddRange(new Control[] { cmbMode, lblThreshold, trkThreshold, btnApply });
+                form.Controls.AddRange(new Control[] {
+            rbBrightness, rbColor, btnPickColor,
+            lblThreshold, trkThreshold, btnApply
+        });
 
                 if (form.ShowDialog(this) == DialogResult.OK)
                 {
@@ -599,26 +624,25 @@ namespace ImageProccesingApp_2attempt
                             Color pixel = original.GetPixel(x, y);
                             Color binaryColor = Color.Black;
 
-                            switch (cmbMode.SelectedIndex)
+                            if (rbBrightness.Checked)
                             {
-                                case 0: // По яркости
-                                    int gray = (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11);
-                                    binaryColor = gray > threshold ? Color.White : Color.Black;
-                                    break;
-                                case 1: // По красному каналу
-                                    binaryColor = pixel.R > threshold ? Color.White : Color.Black;
-                                    break;
-                                case 2: // По зеленому каналу
-                                    binaryColor = pixel.G > threshold ? Color.White : Color.Black;
-                                    break;
-                                case 3: // По синему каналу
-                                    binaryColor = pixel.B > threshold ? Color.White : Color.Black;
-                                    break;
-                                case 4: // Адаптивная бинаризация
-                                    int avg = (pixel.R + pixel.G + pixel.B) / 3;
-                                    int localThreshold = threshold + (avg - 128) / 2;
-                                    binaryColor = avg > localThreshold ? Color.White : Color.Black;
-                                    break;
+                                // Режим по яркости
+                                int gray = (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11);
+                                binaryColor = gray > threshold * 2.55 ? Color.White : Color.Black;
+                            }
+                            else
+                            {
+                                // Режим по цвету (проверка близости к выбранному цвету)
+                                double colorDistance = Math.Sqrt(
+                                    Math.Pow(pixel.R - targetColor.R, 2) +
+                                    Math.Pow(pixel.G - targetColor.G, 2) +
+                                    Math.Pow(pixel.B - targetColor.B, 2));
+
+                                // Чем выше threshold, тем меньше чувствительность
+                                double maxDistance = 441.67; // Максимальное расстояние между цветами (~√(255²+255²+255²))
+                                double sensitivity = (100 - threshold) / 100.0;
+
+                                binaryColor = colorDistance < (maxDistance * sensitivity) ? Color.White : Color.Black;
                             }
 
                             binary.SetPixel(x, y, binaryColor);
@@ -629,8 +653,7 @@ namespace ImageProccesingApp_2attempt
                     processedImage = new Bitmap(binary);
                 }
             }
-            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
-                                                           // Очищаем redoHistory при новом действии
+            undoHistory.Push(new Bitmap(processedImage));
             redoHistory.Clear();
         }
 
