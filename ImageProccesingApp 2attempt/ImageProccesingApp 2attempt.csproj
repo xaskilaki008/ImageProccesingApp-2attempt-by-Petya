@@ -64,6 +64,7 @@
     <Compile Include="histograms.Designer.cs">
       <DependentUpon>histograms.cs</DependentUpon>
     </Compile>
+    <Compile Include="IMyOrangeColorTable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

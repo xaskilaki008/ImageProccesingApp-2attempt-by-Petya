@@ -15,7 +15,7 @@ namespace ImageProccesingApp_2attempt
         public FormResult(Image resultImage)
         {
             InitializeComponent();
-            this.Text = "Результат фильтра Кирша";
+            this.Text = "Результат фильтра";
 
             // Настройка PictureBox для отображения результата
             PictureBox pictureBoxResult = new PictureBox

@@ -1,4 +1,6 @@
-﻿namespace ImageProccesingApp_2attempt
+﻿using System.Windows.Forms;
+
+namespace ImageProccesingApp_2attempt
 {
     partial class Form1
     {
@@ -52,6 +54,8 @@
             this.построитьУбратьГистограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highlighting_toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Kirsha_toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.laplas_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.методРобертсаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -76,8 +80,15 @@
             this.btn_reload = new System.Windows.Forms.Button();
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.laplas_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.методРобертсаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -348,6 +359,22 @@
             this.Kirsha_toolStripMenuItem.Text = "Выделение Кирша";
             this.Kirsha_toolStripMenuItem.Click += new System.EventHandler(this.kirsha_toolStripMenuItem_Click);
             // 
+            // laplas_ToolStripMenuItem
+            // 
+            this.laplas_ToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
+            this.laplas_ToolStripMenuItem.Name = "laplas_ToolStripMenuItem";
+            this.laplas_ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.laplas_ToolStripMenuItem.Text = "Метод Лапласа ";
+            this.laplas_ToolStripMenuItem.Click += new System.EventHandler(this.laplaceToolStripMenuItem_Click);
+            // 
+            // методРобертсаToolStripMenuItem
+            // 
+            this.методРобертсаToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.методРобертсаToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
+            this.методРобертсаToolStripMenuItem.Name = "методРобертсаToolStripMenuItem";
+            this.методРобертсаToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.методРобертсаToolStripMenuItem.Text = "Метод Робертса";
+            // 
             // panel5
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -464,6 +491,15 @@
             // Color_Picker_Panel
             // 
             this.Color_Picker_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Color_Picker_Panel.Controls.Add(this.label14);
+            this.Color_Picker_Panel.Controls.Add(this.label13);
+            this.Color_Picker_Panel.Controls.Add(this.label12);
+            this.Color_Picker_Panel.Controls.Add(this.label10);
+            this.Color_Picker_Panel.Controls.Add(this.label11);
+            this.Color_Picker_Panel.Controls.Add(this.label8);
+            this.Color_Picker_Panel.Controls.Add(this.label9);
+            this.Color_Picker_Panel.Controls.Add(this.label7);
+            this.Color_Picker_Panel.Controls.Add(this.label2);
             this.Color_Picker_Panel.Controls.Add(this.change_parammetrs_button);
             this.Color_Picker_Panel.Controls.Add(this.Brightnes);
             this.Color_Picker_Panel.Controls.Add(this.trk_bright);
@@ -680,21 +716,104 @@
             this.btn_save.Text = "Сохранить изображение";
             this.btn_save.UseVisualStyleBackColor = true;
             // 
-            // laplas_ToolStripMenuItem
+            // label2
             // 
-            this.laplas_ToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
-            this.laplas_ToolStripMenuItem.Name = "laplas_ToolStripMenuItem";
-            this.laplas_ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
-            this.laplas_ToolStripMenuItem.Text = "Метод Лапласа ";
-            this.laplas_ToolStripMenuItem.Click += new System.EventHandler(this.laplaceToolStripMenuItem_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(47, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "-180";
             // 
-            // методРобертсаToolStripMenuItem
+            // label7
             // 
-            this.методРобертсаToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.методРобертсаToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
-            this.методРобертсаToolStripMenuItem.Name = "методРобертсаToolStripMenuItem";
-            this.методРобертсаToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
-            this.методРобертсаToolStripMenuItem.Text = "Метод Робертса";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(159, 29);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 15);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "180";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(364, 29);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(28, 15);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "100";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(252, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(32, 15);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "-100";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(569, 29);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(28, 15);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "100";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(457, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 15);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "-100";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(111, 32);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(14, 15);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(318, 37);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(14, 15);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "0";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(523, 32);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(14, 15);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "0";
             // 
             // Form1
             // 
@@ -728,6 +847,43 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+        private void InitializeFiltersMenu()
+        {
+            // Создаем подменю для шумов
+            ToolStripMenuItem noiseMenu = new ToolStripMenuItem("Add Noise");
+
+            // Добавляем варианты шума "соль-перец"
+            ToolStripMenuItem saltPepperMenu = new ToolStripMenuItem("Salt and Pepper");
+            saltPepperMenu.DropDownItems.Add("0.1", null, (s, e) => AddSaltAndPepperNoise(0.1));
+            saltPepperMenu.DropDownItems.Add("0.2", null, (s, e) => AddSaltAndPepperNoise(0.2));
+            saltPepperMenu.DropDownItems.Add("0.3", null, (s, e) => AddSaltAndPepperNoise(0.3));
+            saltPepperMenu.DropDownItems.Add("0.4", null, (s, e) => AddSaltAndPepperNoise(0.4));
+
+            noiseMenu.DropDownItems.Add(saltPepperMenu);
+            filters_tsmenu.DropDownItems.Add(noiseMenu);
+
+            // Создаем подменю для восстанавливающих фильтров
+            ToolStripMenuItem restoreMenu = new ToolStripMenuItem("Restoration Filters");
+
+            // Добавляем варианты сглаживающего фильтра
+            ToolStripMenuItem smoothingMenu = new ToolStripMenuItem("Smoothing Filter");
+            smoothingMenu.DropDownItems.Add("3x3", null, (s, e) => ApplySmoothingFilter(3));
+            smoothingMenu.DropDownItems.Add("5x5", null, (s, e) => ApplySmoothingFilter(5));
+            smoothingMenu.DropDownItems.Add("7x7", null, (s, e) => ApplySmoothingFilter(7));
+
+            // Добавляем варианты медианного фильтра
+            ToolStripMenuItem medianMenu = new ToolStripMenuItem("Median Filter");
+            medianMenu.DropDownItems.Add("3x3", null, (s, e) => ApplyMedianFilter(3));
+            medianMenu.DropDownItems.Add("5x5", null, (s, e) => ApplyMedianFilter(5));
+            medianMenu.DropDownItems.Add("7x7", null, (s, e) => ApplyMedianFilter(7));
+
+            restoreMenu.DropDownItems.Add(smoothingMenu);
+            restoreMenu.DropDownItems.Add(medianMenu);
+            filters_tsmenu.DropDownItems.Add(restoreMenu);
+
+            // Добавляем кнопку для сброса к оригинальному изображению
+            filters_tsmenu.DropDownItems.Add("Reset", null, (s, e) => ResetImage());
         }
 
         #endregion
@@ -782,6 +938,15 @@
         private System.Windows.Forms.ToolStripMenuItem Kirsha_toolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem laplas_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem методРобертсаToolStripMenuItem;
+        private Label label7;
+        private Label label2;
+        private Label label8;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        private Label label14;
+        private Label label13;
     }
 }
 
