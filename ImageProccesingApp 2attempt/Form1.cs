@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -42,7 +43,6 @@ namespace ImageProccesingApp_2attempt
             trk_bright.Value = 0;
 
             // Подписка на события
-            нормальныйToolStripMenuItem.Click += нормальныйToolStripMenuItem_Click;
             btn_stretch.Click += Btn_stretch_Click;
             btn_center.Click += Btn_center_Click;
             btn_zoom.Click += Btn_zoom_Click;
@@ -457,36 +457,51 @@ namespace ImageProccesingApp_2attempt
         {
             try
             {
-                if (Clipboard.ContainsImage())
-                {
-                    // Вставляем изображение из буфера обмена
-                    Image pastedImage = Clipboard.GetImage();
-
-                    // Обновляем изображения и интерфейс
-                    pictureBox1.Image = pastedImage;
-                    pictureBox2.Image = pastedImage;
-                    processedImage = new Bitmap(pastedImage);
-                    originalImage = new Bitmap(pastedImage);
-
-                    // Обновляем информацию о размере
-                    txt_width.Text = pastedImage.Width.ToString();
-                    txt_hight.Text = pastedImage.Height.ToString();
-                    lbl_size.Text = $"{pastedImage.Width} x {pastedImage.Height}";
-
-                    // Сбрасываем трекбары
-                    trk_hue.Value = 0;
-                    trk_contrast.Value = 0;
-                    trk_bright.Value = 0;
-                }
-                else
+                if (!Clipboard.ContainsImage())
                 {
                     MessageBox.Show("В буфере обмена нет изображения", "Информация",
                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
+
+                Image pastedImage = Clipboard.GetImage();
+                if (pastedImage == null)
+                {
+                    MessageBox.Show("Не удалось получить изображение из буфера", "Ошибка",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Освобождаем старые изображения, если они есть
+                pictureBox1.Image?.Dispose();
+                pictureBox2.Image?.Dispose();
+                originalImage?.Dispose();
+                processedImage?.Dispose();
+
+                // Обновляем изображения
+                pictureBox1.Image = (Image)pastedImage.Clone();
+                pictureBox2.Image = (Image)pastedImage.Clone();
+                processedImage = new Bitmap(pastedImage);
+                originalImage = new Bitmap(pastedImage);
+
+                // Обновляем информацию о размере
+                txt_width.Text = pastedImage.Width.ToString();
+                txt_hight.Text = pastedImage.Height.ToString();
+                lbl_size.Text = $"{pastedImage.Width} x {pastedImage.Height}";
+
+                // Сбрасываем трекбары
+                trk_hue.Value = 0;
+                trk_contrast.Value = 0;
+                trk_bright.Value = 0;
+            }
+            catch (ExternalException ex)
+            {
+                MessageBox.Show($"Ошибка доступа к буферу обмена: {ex.Message}", "Ошибка",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при вставке: {ex.Message}", "Ошибка",
+                MessageBox.Show($"Неизвестная ошибка: {ex.Message}", "Ошибка",
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -768,95 +783,15 @@ namespace ImageProccesingApp_2attempt
             pictureBox1.Image = negative;
             processedImage = new Bitmap(negative); // Сохраняем результат
         }
-        private void четоToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void BinarisToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void файлToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             menuStrip1.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
         }
 
-        private void btn_autosize_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void filters_shadesofgrey_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_open_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_normal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_stretch_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_center_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_zoom_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_reload_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_resize_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void file_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void filters_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void view_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void picture_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Rotate_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -891,36 +826,7 @@ namespace ImageProccesingApp_2attempt
             redoHistory.Clear();
         }
 
-        private void поЦентруToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void back_button(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btn_rotate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void СоханитьctrlSToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void DrawHistogram(Bitmap image, PictureBox pictureBox, Color channelColor, bool isBrightness = false)
         {
             if (image == null || pictureBox == null || pictureBox.Width <= 10 || pictureBox.Height <= 10)
@@ -1049,10 +955,6 @@ namespace ImageProccesingApp_2attempt
             }
         }
 
-        private void change_parammetrs_button_Click1(object sender, EventArgs e)
-        {
-
-        }
     }
 
     //Класс для измения цвета при наведении на кнопки

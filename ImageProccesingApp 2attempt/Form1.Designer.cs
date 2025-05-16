@@ -46,10 +46,6 @@
             this.filters_negative = new System.Windows.Forms.ToolStripMenuItem();
             this.цветподробноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.нормальныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.растянутыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.поЦентруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.увеличитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.весьЭкранF11ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Rotate = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,7 +116,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(610, 321);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panel3
             // 
@@ -184,7 +179,6 @@
             this.file_tsmenu.Name = "file_tsmenu";
             this.file_tsmenu.Size = new System.Drawing.Size(58, 24);
             this.file_tsmenu.Text = "Файл";
-            this.file_tsmenu.Click += new System.EventHandler(this.file_ToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
@@ -229,7 +223,6 @@
             this.save_ToolStripMenuItem.Name = "save_ToolStripMenuItem";
             this.save_ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.save_ToolStripMenuItem.Text = "Соханить [ctrl+S]";
-            this.save_ToolStripMenuItem.Click += new System.EventHandler(this.СоханитьctrlSToolStripMenuItem_Click);
             // 
             // filters_tsmenu
             // 
@@ -244,7 +237,6 @@
             this.filters_tsmenu.Name = "filters_tsmenu";
             this.filters_tsmenu.Size = new System.Drawing.Size(83, 24);
             this.filters_tsmenu.Text = "Фильтры";
-            this.filters_tsmenu.Click += new System.EventHandler(this.filters_ToolStripMenuItem_Click);
             // 
             // filters_binaris
             // 
@@ -286,50 +278,12 @@
             // 
             this.видToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.видToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.нормальныйToolStripMenuItem,
-            this.растянутыйToolStripMenuItem,
-            this.поЦентруToolStripMenuItem,
-            this.увеличитьToolStripMenuItem,
             this.весьЭкранF11ToolStripMenuItem});
             this.видToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.видToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.видToolStripMenuItem.Name = "видToolStripMenuItem";
             this.видToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.видToolStripMenuItem.Text = "Вид";
-            this.видToolStripMenuItem.Click += new System.EventHandler(this.view_ToolStripMenuItem_Click);
-            // 
-            // нормальныйToolStripMenuItem
-            // 
-            this.нормальныйToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.нормальныйToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
-            this.нормальныйToolStripMenuItem.Name = "нормальныйToolStripMenuItem";
-            this.нормальныйToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
-            this.нормальныйToolStripMenuItem.Text = "Нормальный";
-            // 
-            // растянутыйToolStripMenuItem
-            // 
-            this.растянутыйToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.растянутыйToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
-            this.растянутыйToolStripMenuItem.Name = "растянутыйToolStripMenuItem";
-            this.растянутыйToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
-            this.растянутыйToolStripMenuItem.Text = "Растянутый";
-            // 
-            // поЦентруToolStripMenuItem
-            // 
-            this.поЦентруToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.поЦентруToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
-            this.поЦентруToolStripMenuItem.Name = "поЦентруToolStripMenuItem";
-            this.поЦентруToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
-            this.поЦентруToolStripMenuItem.Text = "По центру";
-            this.поЦентруToolStripMenuItem.Click += new System.EventHandler(this.поЦентруToolStripMenuItem_Click);
-            // 
-            // увеличитьToolStripMenuItem
-            // 
-            this.увеличитьToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.увеличитьToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
-            this.увеличитьToolStripMenuItem.Name = "увеличитьToolStripMenuItem";
-            this.увеличитьToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
-            this.увеличитьToolStripMenuItem.Text = "Увеличить";
             // 
             // весьЭкранF11ToolStripMenuItem
             // 
@@ -350,7 +304,6 @@
             this.изображениеToolStripMenuItem.Name = "изображениеToolStripMenuItem";
             this.изображениеToolStripMenuItem.Size = new System.Drawing.Size(124, 24);
             this.изображениеToolStripMenuItem.Text = "Изображение";
-            this.изображениеToolStripMenuItem.Click += new System.EventHandler(this.picture_ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem_Rotate
             // 
@@ -427,7 +380,6 @@
             this.btn_zoom.TabIndex = 0;
             this.btn_zoom.Text = "Zoom";
             this.btn_zoom.UseVisualStyleBackColor = true;
-            this.btn_zoom.Click += new System.EventHandler(this.btn_zoom_Click);
             // 
             // btn_center
             // 
@@ -444,7 +396,6 @@
             this.btn_center.TabIndex = 1;
             this.btn_center.Text = "Center";
             this.btn_center.UseVisualStyleBackColor = true;
-            this.btn_center.Click += new System.EventHandler(this.btn_center_Click);
             // 
             // btn_stretch
             // 
@@ -461,7 +412,6 @@
             this.btn_stretch.TabIndex = 2;
             this.btn_stretch.Text = "Stretch";
             this.btn_stretch.UseVisualStyleBackColor = true;
-            this.btn_stretch.Click += new System.EventHandler(this.btn_stretch_Click);
             // 
             // panel6
             // 
@@ -665,7 +615,6 @@
             this.btn_reload.TabIndex = 3;
             this.btn_reload.Text = "Reset";
             this.btn_reload.UseVisualStyleBackColor = true;
-            this.btn_reload.Click += new System.EventHandler(this.btn_reload_Click);
             // 
             // btn_resize
             // 
@@ -680,7 +629,6 @@
             this.btn_resize.TabIndex = 2;
             this.btn_resize.Text = "Resize";
             this.btn_resize.UseVisualStyleBackColor = true;
-            this.btn_resize.Click += new System.EventHandler(this.btn_resize_Click);
             // 
             // btn_save
             // 
@@ -763,10 +711,6 @@
         private System.Windows.Forms.ToolStripMenuItem filters_shadesofgrey;
         private System.Windows.Forms.ToolStripMenuItem filters_negative;
         private System.Windows.Forms.ToolStripMenuItem видToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem нормальныйToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem растянутыйToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem поЦентруToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem увеличитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem весьЭкранF11ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изображениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Rotate;
