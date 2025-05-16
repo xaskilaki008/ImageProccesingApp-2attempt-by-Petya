@@ -27,7 +27,7 @@ namespace ImageProccesingApp_2attempt
             menuStrip1.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
             openToolStripMenuItem.Click += delegate
             {
-                openToolStripMenuItem.BackColor = Color.Red;
+                openToolStripMenuItem.BackColor = Color.Green;
             };
             // Настройка начальных значений
             trk_hue.Minimum = -180;
@@ -966,6 +966,88 @@ namespace ImageProccesingApp_2attempt
             }
         }
 
+        private void kirsha_toolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Преобразуем изображение в Bitmap (если это ещё не Bitmap)
+                Bitmap original = new Bitmap(pictureBox1.Image);
+
+                // Применяем фильтр Кирша
+                Bitmap result = KirschEdgeDetection(original);
+
+                // Открываем результат в новом окне
+                FormResult resultForm = new FormResult(result);
+                resultForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка обработки: {ex.Message}", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private static int GetBrightness(Color pixel)
+        {
+            return (int)(0.3 * pixel.R + 0.59 * pixel.G + 0.11 * pixel.B);
+        }
+        public static Bitmap KirschEdgeDetection(Bitmap originalImage, int brightnessThreshold = 100)
+        {
+            Bitmap resultImage = new Bitmap(originalImage.Width, originalImage.Height);
+
+            // Ядра Кирша (8 направлений)
+            int[][,] kernels = new int[8][,]
+            {
+        new int[3,3] { { -3, -3,  5 }, { -3,  0,  5 }, { -3, -3,  5 } },
+        new int[3,3] { { -3,  5,  5 }, { -3,  0,  5 }, { -3, -3, -3 } },
+        new int[3,3] { {  5,  5,  5 }, { -3,  0, -3 }, { -3, -3, -3 } },
+        new int[3,3] { {  5,  5, -3 }, {  5,  0, -3 }, { -3, -3, -3 } },
+        new int[3,3] { {  5, -3, -3 }, {  5,  0, -3 }, {  5, -3, -3 } },
+        new int[3,3] { { -3, -3, -3 }, {  5,  0, -3 }, {  5,  5, -3 } },
+        new int[3,3] { { -3, -3, -3 }, { -3,  0, -3 }, {  5,  5,  5 } },
+        new int[3,3] { { -3, -3, -3 }, { -3,  0,  5 }, { -3,  5,  5 } }
+            };
+
+            for (int y = 1; y < originalImage.Height - 1; y++)
+            {
+                for (int x = 1; x < originalImage.Width - 1; x++)
+                {
+                    int maxGradient = 0;
+
+                    // Применяем все 8 ядер
+                    for (int k = 0; k < 8; k++)
+                    {
+                        int gradient = 0;
+
+                        // Свёртка с ядром 3x3
+                        for (int ky = -1; ky <= 1; ky++)
+                        {
+                            for (int kx = -1; kx <= 1; kx++)
+                            {
+                                Color pixel = originalImage.GetPixel(x + kx, y + ky);
+                                int brightness = GetBrightness(pixel);
+                                gradient += brightness * kernels[k][ky + 1, kx + 1];
+                            }
+                        }
+
+                        if (gradient > maxGradient)
+                            maxGradient = gradient;
+                    }
+
+                    // Коррекция яркости и запись результата
+                    int resultValue = Math.Max(0, Math.Min(maxGradient + brightnessThreshold, 255));
+                    resultImage.SetPixel(x, y, Color.FromArgb(resultValue, resultValue, resultValue));
+                }
+            }
+
+            return resultImage;
+        }
     }
 
     //Класс для измения цвета при наведении на кнопки
