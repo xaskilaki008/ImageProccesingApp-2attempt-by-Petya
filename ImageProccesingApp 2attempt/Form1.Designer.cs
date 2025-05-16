@@ -33,7 +33,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.App_menuStrip = new System.Windows.Forms.MenuStrip();
             this.file_tsmenu = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,10 +76,12 @@
             this.btn_reload = new System.Windows.Forms.Button();
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
+            this.Laplas_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.методРобертсаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.App_menuStrip.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel6.SuspendLayout();
@@ -98,7 +100,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.menuStrip1);
+            this.panel1.Controls.Add(this.App_menuStrip);
             this.panel1.Location = new System.Drawing.Point(1, 4);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
@@ -145,26 +147,27 @@
             this.panel2.Size = new System.Drawing.Size(241, 359);
             this.panel2.TabIndex = 0;
             // 
-            // menuStrip1
+            // App_menuStrip
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Gray;
-            this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.App_menuStrip.BackColor = System.Drawing.Color.Gray;
+            this.App_menuStrip.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.App_menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.App_menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.file_tsmenu,
             this.filters_tsmenu,
             this.view_ToolStripMenuItem,
             this.image_ToolStripMenuItem,
             this.highlighting_toolStripMenuItem2});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.MinimumSize = new System.Drawing.Size(355, 24);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(634, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            this.App_menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.App_menuStrip.MinimumSize = new System.Drawing.Size(150, 24);
+            this.App_menuStrip.Name = "App_menuStrip";
+            this.App_menuStrip.Padding = new System.Windows.Forms.Padding(0);
+            this.App_menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.App_menuStrip.ShowItemToolTips = true;
+            this.App_menuStrip.Size = new System.Drawing.Size(634, 24);
+            this.App_menuStrip.TabIndex = 3;
+            this.App_menuStrip.Text = "menuStrip1";
+            this.App_menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // file_tsmenu
             // 
@@ -186,7 +189,7 @@
             this.copyToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.copyToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -195,7 +198,7 @@
             this.pasteToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pasteToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
@@ -204,7 +207,7 @@
             this.openToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.openToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.openToolStripMenuItem.Text = "Открыть";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -213,7 +216,7 @@
             this.закрытьToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.закрытьToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
-            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.закрытьToolStripMenuItem.Text = "Закрыть";
             this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
@@ -222,7 +225,7 @@
             this.save_ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.save_ToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.save_ToolStripMenuItem.Name = "save_ToolStripMenuItem";
-            this.save_ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.save_ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.save_ToolStripMenuItem.Text = "Соханить [ctrl+S]";
             // 
             // filters_tsmenu
@@ -327,7 +330,9 @@
             // 
             this.highlighting_toolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.highlighting_toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Kirsha_toolStripMenuItem});
+            this.Kirsha_toolStripMenuItem,
+            this.Laplas_ToolStripMenuItem,
+            this.методРобертсаToolStripMenuItem});
             this.highlighting_toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.highlighting_toolStripMenuItem2.ForeColor = System.Drawing.Color.Sienna;
             this.highlighting_toolStripMenuItem2.Name = "highlighting_toolStripMenuItem2";
@@ -458,7 +463,7 @@
             // 
             // Color_Picker_Panel
             // 
-            this.Color_Picker_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Color_Picker_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Color_Picker_Panel.Controls.Add(this.change_parammetrs_button);
             this.Color_Picker_Panel.Controls.Add(this.Brightnes);
             this.Color_Picker_Panel.Controls.Add(this.trk_bright);
@@ -466,10 +471,13 @@
             this.Color_Picker_Panel.Controls.Add(this.trk_contrast);
             this.Color_Picker_Panel.Controls.Add(this.label4);
             this.Color_Picker_Panel.Controls.Add(this.trk_hue);
+            this.Color_Picker_Panel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Color_Picker_Panel.Location = new System.Drawing.Point(266, 81);
             this.Color_Picker_Panel.Name = "Color_Picker_Panel";
             this.Color_Picker_Panel.Size = new System.Drawing.Size(628, 99);
             this.Color_Picker_Panel.TabIndex = 0;
+            this.Color_Picker_Panel.UseWaitCursor = true;
+            this.Color_Picker_Panel.Visible = false;
             this.Color_Picker_Panel.Click += new System.EventHandler(this.change_parammetrs_button_Click);
             // 
             // change_parammetrs_button
@@ -548,12 +556,13 @@
             // trk_hue
             // 
             this.trk_hue.AutoSize = false;
-            this.trk_hue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.trk_hue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.trk_hue.Location = new System.Drawing.Point(47, 0);
             this.trk_hue.Margin = new System.Windows.Forms.Padding(1);
             this.trk_hue.Name = "trk_hue";
             this.trk_hue.Size = new System.Drawing.Size(140, 36);
             this.trk_hue.TabIndex = 1;
+            this.trk_hue.UseWaitCursor = true;
             // 
             // label5
             // 
@@ -665,6 +674,21 @@
             this.btn_save.Text = "Сохранить изображение";
             this.btn_save.UseVisualStyleBackColor = true;
             // 
+            // Laplas_ToolStripMenuItem
+            // 
+            this.Laplas_ToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
+            this.Laplas_ToolStripMenuItem.Name = "Laplas_ToolStripMenuItem";
+            this.Laplas_ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.Laplas_ToolStripMenuItem.Text = "Метод Лапласа ";
+            // 
+            // методРобертсаToolStripMenuItem
+            // 
+            this.методРобертсаToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.методРобертсаToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
+            this.методРобертсаToolStripMenuItem.Name = "методРобертсаToolStripMenuItem";
+            this.методРобертсаToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.методРобертсаToolStripMenuItem.Text = "Метод Робертса";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -673,7 +697,7 @@
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.App_menuStrip;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -682,8 +706,8 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.App_menuStrip.ResumeLayout(false);
+            this.App_menuStrip.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -721,7 +745,7 @@
         private System.Windows.Forms.Label lbl_size;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip App_menuStrip;
         private System.Windows.Forms.ToolStripMenuItem file_tsmenu;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
@@ -749,6 +773,8 @@
         private System.Windows.Forms.Button change_parammetrs_button;
         private System.Windows.Forms.ToolStripMenuItem highlighting_toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem Kirsha_toolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Laplas_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem методРобертсаToolStripMenuItem;
     }
 }
 

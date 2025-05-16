@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Drawing.Drawing2D;
 namespace ImageProccesingApp_2attempt
 {
     public partial class Form1 : Form
@@ -17,6 +17,7 @@ namespace ImageProccesingApp_2attempt
         private Bitmap processedImage; // Обработанное изображение
         private Stack<Bitmap> undoHistory = new Stack<Bitmap>();  // История для отката
         private Stack<Bitmap> redoHistory = new Stack<Bitmap>();  // История для повтора (опционально)
+
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace ImageProccesingApp_2attempt
 
 
             Color_Picker_Panel.Visible = false; // Скрываем панель при запуске
-            menuStrip1.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
+            App_menuStrip.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
             openToolStripMenuItem.Click += delegate
             {
                 openToolStripMenuItem.BackColor = Color.Green;
@@ -798,7 +799,7 @@ namespace ImageProccesingApp_2attempt
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            menuStrip1.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
+            App_menuStrip.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
         }
 
         
@@ -911,7 +912,32 @@ namespace ImageProccesingApp_2attempt
                 ? "Скрыть панель цвета"
                 : "Показать панель цвета";
         }
+        private void ApplyRoundedCorners(Panel panel, int radius)
+        {
+            // Создаем графический путь с скругленными углами
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90); // Левый верхний
+            path.AddArc(panel.Width - radius, 0, radius, radius, 270, 90); // Правый верхний
+            path.AddArc(panel.Width - radius, panel.Height - radius, radius, radius, 0, 90); // Правый нижний
+            path.AddArc(0, panel.Height - radius, radius, radius, 90, 90); // Левый нижний
+            path.CloseFigure();
 
+            // Устанавливаем регион для панели
+            panel.Region = new Region(path);
+
+            // Настраиваем внешний вид панели
+            panel.BackColor = Color.FromArgb(240, 240, 240); // Светло-серый фон
+            panel.BorderStyle = BorderStyle.None; // Убираем стандартную рамку
+        }
+
+        // Обработчик изменения размера панели
+        private void Color_Picker_Panel_SizeChanged(object sender, EventArgs e)
+        {
+            if (Color_Picker_Panel.Visible)
+            {
+                ApplyRoundedCorners(Color_Picker_Panel, 15);
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -1048,6 +1074,7 @@ namespace ImageProccesingApp_2attempt
 
             return resultImage;
         }
+
     }
 
     //Класс для измения цвета при наведении на кнопки
