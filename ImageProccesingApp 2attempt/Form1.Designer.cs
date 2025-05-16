@@ -260,7 +260,7 @@ namespace ImageProccesingApp_2attempt
             this.filters_binaris.Name = "filters_binaris";
             this.filters_binaris.Size = new System.Drawing.Size(204, 26);
             this.filters_binaris.Text = "Бинаризация";
-            this.filters_binaris.Click += new System.EventHandler(this.filters_binaris_Click_1);
+            this.filters_binaris.Click += new System.EventHandler(this.filters_binaris_Click);
             // 
             // filters_shadesofgrey
             // 

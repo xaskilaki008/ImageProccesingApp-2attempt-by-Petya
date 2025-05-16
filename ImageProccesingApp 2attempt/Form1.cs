@@ -50,7 +50,7 @@ namespace ImageProccesingApp_2attempt
             btn_zoom.Click += Btn_zoom_Click;
             btn_resize.Click += Btn_resize_Click;
             btn_reload.Click += Btn_reload_Click;
-            filters_binaris.Click += filters_binaris_Click_1;
+            filters_binaris.Click += filters_binaris_Click;
             ToolStripMenuItem_Rotate.Click += ToolStripMenuItem_Rotate_Click;
             copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
             pasteToolStripMenuItem.Click += pasteToolStripMenuItem_Click;
@@ -627,7 +627,8 @@ namespace ImageProccesingApp_2attempt
             pictureBox1.Image = binary;
             processedImage = new Bitmap(binary); // Сохраняем результат
         }
-        private void filters_binaris_Click_1(object sender, EventArgs e)
+        //Бинаризация изображения
+        private void filters_binaris_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null) return;
 
