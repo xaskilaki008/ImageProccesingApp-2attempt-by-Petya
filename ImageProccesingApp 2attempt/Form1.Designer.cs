@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -100,8 +97,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
@@ -111,28 +106,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(634, 359);
             this.panel1.TabIndex = 1;
-            // 
-            // button2
-            // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(444, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 23);
-            this.button2.TabIndex = 1;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(408, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 23);
-            this.button1.TabIndex = 2;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.back_button_Click);
             // 
             // pictureBox1
             // 
@@ -278,7 +251,7 @@
             this.filters_binaris.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.filters_binaris.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_binaris.Name = "filters_binaris";
-            this.filters_binaris.Size = new System.Drawing.Size(204, 26);
+            this.filters_binaris.Size = new System.Drawing.Size(224, 26);
             this.filters_binaris.Text = "Бинаризация";
             this.filters_binaris.Click += new System.EventHandler(this.filters_binaris_Click_1);
             // 
@@ -287,7 +260,7 @@
             this.filters_shadesofgrey.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.filters_shadesofgrey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_shadesofgrey.Name = "filters_shadesofgrey";
-            this.filters_shadesofgrey.Size = new System.Drawing.Size(204, 26);
+            this.filters_shadesofgrey.Size = new System.Drawing.Size(224, 26);
             this.filters_shadesofgrey.Text = "Оттенки серого";
             this.filters_shadesofgrey.Click += new System.EventHandler(this.filters_shadesofgrey_Click);
             // 
@@ -296,7 +269,7 @@
             this.filters_negative.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.filters_negative.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_negative.Name = "filters_negative";
-            this.filters_negative.Size = new System.Drawing.Size(204, 26);
+            this.filters_negative.Size = new System.Drawing.Size(224, 26);
             this.filters_negative.Text = "Негатив";
             this.filters_negative.Click += new System.EventHandler(this.filters_negative_Click);
             // 
@@ -305,7 +278,7 @@
             this.цветподробноToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.цветподробноToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.цветподробноToolStripMenuItem.Name = "цветподробноToolStripMenuItem";
-            this.цветподробноToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.цветподробноToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.цветподробноToolStripMenuItem.Text = "Цвет (подробно)";
             this.цветподробноToolStripMenuItem.Click += new System.EventHandler(this.цветподробноToolStripMenuItem_Click);
             // 
@@ -779,8 +752,6 @@
         private System.Windows.Forms.Label lbl_size;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem file_tsmenu;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
