@@ -269,35 +269,6 @@ namespace ImageProccesingApp_2attempt
                 MessageBox.Show("Нет предыдущих состояний для отката.");
             }
         }
-
-        // Метод для сравнения двух изображений (по пикселям)
-        private bool AreImagesEqual(Bitmap img1, Bitmap img2)
-        {
-            if (img1 == null || img2 == null)
-                return false;
-            if (img1.Width != img2.Width || img1.Height != img2.Height)
-                return false;
-
-            for (int y = 0; y < img1.Height; y++)
-            {
-                for (int x = 0; x < img1.Width; x++)
-                {
-                    if (img1.GetPixel(x, y) != img2.GetPixel(x, y))
-                        return false;
-                }
-            }
-            return true;
-        }
-
-        // Где-то в коде (например, после применения фильтра) сохраняем предыдущее состояние:
-        private void ApplyFilter()
-        {
-            // Перед изменением processedImage сохраняем его в laterImage
-            laterImage = new Bitmap(processedImage);
-
-            // Применяем изменения к processedImage...
-            // Например: processedImage = ApplyGrayscale(processedImage);
-        }
         // Поворот изображения
         private void Btn_rotate_Click(object sender, EventArgs e)
         {
