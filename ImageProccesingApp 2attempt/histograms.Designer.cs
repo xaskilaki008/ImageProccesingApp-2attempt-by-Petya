@@ -1,4 +1,6 @@
-﻿namespace ImageProccesingApp_2attempt
+﻿using System.Windows.Forms;
+
+namespace ImageProccesingApp_2attempt
 {
     partial class histograms
     {

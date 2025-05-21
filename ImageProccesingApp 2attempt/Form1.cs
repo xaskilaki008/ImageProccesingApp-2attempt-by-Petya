@@ -1148,7 +1148,30 @@ namespace ImageProccesingApp_2attempt
 
                 return resultImage;
             }
-            private Bitmap LaplaceEdgeDetection(Bitmap sourceImage, int brightnessThreshold)
+            public static class ProgressHelper
+            {
+                private static ProgressBar _progressBar;
+                private static Form _mainForm;
+
+                // Инициализация (вызовите при старте программы)
+                public static void Initialize(ProgressBar progressBar, Form mainForm)
+                {
+                    _progressBar = progressBar;
+                    _mainForm = mainForm;
+                }
+
+                // Запуск операции с ProgressBar
+                public static async Task RunWithProgress(Func<Task> action)
+                {
+                    _progressBar.Visible = true;
+                    _progressBar.Style = ProgressBarStyle.Marquee; // Анимация
+
+                    await Task.Run(action);
+
+                    _progressBar.Visible = false;
+                }
+            }
+        private Bitmap LaplaceEdgeDetection(Bitmap sourceImage, int brightnessThreshold)
             {
                 if (sourceImage == null)
                     throw new ArgumentNullException(nameof(sourceImage));

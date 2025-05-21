@@ -105,8 +105,8 @@ namespace ImageProccesingApp_2attempt
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Silver;
             this.panel1.Controls.Add(this.pictureBox1);
@@ -121,8 +121,8 @@ namespace ImageProccesingApp_2attempt
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Cross;
@@ -259,7 +259,7 @@ namespace ImageProccesingApp_2attempt
             this.filters_binaris.BackColor = System.Drawing.SystemColors.Control;
             this.filters_binaris.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_binaris.Name = "filters_binaris";
-            this.filters_binaris.Size = new System.Drawing.Size(224, 26);
+            this.filters_binaris.Size = new System.Drawing.Size(204, 26);
             this.filters_binaris.Text = "Бинаризация";
             this.filters_binaris.Click += new System.EventHandler(this.filters_binaris_Click);
             // 
@@ -268,7 +268,7 @@ namespace ImageProccesingApp_2attempt
             this.filters_shadesofgrey.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.filters_shadesofgrey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_shadesofgrey.Name = "filters_shadesofgrey";
-            this.filters_shadesofgrey.Size = new System.Drawing.Size(224, 26);
+            this.filters_shadesofgrey.Size = new System.Drawing.Size(204, 26);
             this.filters_shadesofgrey.Text = "Оттенки серого";
             this.filters_shadesofgrey.Click += new System.EventHandler(this.filters_shadesofgrey_Click);
             // 
@@ -277,7 +277,7 @@ namespace ImageProccesingApp_2attempt
             this.filters_negative.BackColor = System.Drawing.SystemColors.Control;
             this.filters_negative.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_negative.Name = "filters_negative";
-            this.filters_negative.Size = new System.Drawing.Size(224, 26);
+            this.filters_negative.Size = new System.Drawing.Size(204, 26);
             this.filters_negative.Text = "Негатив";
             this.filters_negative.Click += new System.EventHandler(this.filters_negative_Click);
             // 
@@ -286,7 +286,7 @@ namespace ImageProccesingApp_2attempt
             this.цветподробноToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.цветподробноToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.цветподробноToolStripMenuItem.Name = "цветподробноToolStripMenuItem";
-            this.цветподробноToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.цветподробноToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.цветподробноToolStripMenuItem.Text = "Цвет (подробно)";
             this.цветподробноToolStripMenuItem.Click += new System.EventHandler(this.цветподробноToolStripMenuItem_Click);
             // 
@@ -378,7 +378,7 @@ namespace ImageProccesingApp_2attempt
             // 
             // panel5
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.AutoSize = true;
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
@@ -469,7 +469,7 @@ namespace ImageProccesingApp_2attempt
             // 
             // panel6
             // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.AutoSize = true;
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -856,8 +856,9 @@ namespace ImageProccesingApp_2attempt
             ((System.ComponentModel.ISupportInitialize)(this.trk_hue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+            }
 
-        }
+        
         private void InitializeFiltersMenu()
         {
             // Создаем подменю для шумов
