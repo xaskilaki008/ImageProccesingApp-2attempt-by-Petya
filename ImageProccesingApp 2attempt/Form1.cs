@@ -14,7 +14,6 @@ namespace ImageProccesingApp_2attempt
     public partial class Form1 : Form
     {
         private Bitmap originalImage; // Оригинальное изображение
-        private Bitmap laterImage; //Для действия назад
         private Bitmap processedImage; // Обработанное изображение
         private Stack<Bitmap> undoHistory = new Stack<Bitmap>();  // История для отката
         private Stack<Bitmap> redoHistory = new Stack<Bitmap>();  // История для повтора (опционально)
@@ -1378,7 +1377,10 @@ namespace ImageProccesingApp_2attempt
             }
         }
 
+        private void btn_stretch_Click_1(object sender, EventArgs e)
+        {
 
+        }
     }
 
     //Класс для измения цвета при наведении на кнопки
