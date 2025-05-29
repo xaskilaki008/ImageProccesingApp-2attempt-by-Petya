@@ -1228,32 +1228,43 @@ namespace ImageProccesingApp_2attempt
                 }
             }
             }
-            private void AddSaltAndPepperNoise(double probability)
+        private void AddSaltAndPepperNoise(double probability)
+        {
+            if (originalImage == null) return;
+
+            // Создаем и показываем ProgressBar
+            var progressForm = new ProgressBar();
+            progressForm.Show();
+
+            processedImage = new Bitmap(originalImage);
+            Random rand = new Random();
+
+            int totalPixels = processedImage.Width * processedImage.Height;
+            int processedPixels = 0;
+
+            for (int y = 0; y < processedImage.Height; y++)
             {
-                if (originalImage == null) return;
-
-                processedImage = new Bitmap(originalImage);
-                Random rand = new Random();
-
-                for (int y = 0; y < processedImage.Height; y++)
+                for (int x = 0; x < processedImage.Width; x++)
                 {
-                    for (int x = 0; x < processedImage.Width; x++)
+                    if (rand.NextDouble() < probability)
                     {
-                        if (rand.NextDouble() < probability)
-                        {
-                            // Соль или перец с равной вероятностью
-                            if (rand.NextDouble() < 0.5)
-                                processedImage.SetPixel(x, y, Color.White); // Соль
-                            else
-                                processedImage.SetPixel(x, y, Color.Black); // Перец
-                        }
+                        processedImage.SetPixel(x, y, rand.NextDouble() < 0.5 ? Color.White : Color.Black);
                     }
-                }
 
-                pictureBox1.Image = processedImage;
+                    // Обновляем прогресс
+                    processedPixels++;
+                    int progress = (int)((double)processedPixels / totalPixels * 100);
+                    progressForm.UpdateProgress(progress);
+
+                    // Чтобы UI не зависал
+                    Application.DoEvents();
+                }
             }
 
-            private void ApplySmoothingFilter(int apertureSize)
+            pictureBox1.Image = processedImage;
+        }
+
+        private void ApplySmoothingFilter(int apertureSize)
             {
                 if (processedImage == null) return;
 
