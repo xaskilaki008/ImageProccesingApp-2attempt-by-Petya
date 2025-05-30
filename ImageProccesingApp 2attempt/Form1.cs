@@ -949,15 +949,18 @@ namespace ImageProccesingApp_2attempt
 
             try
             {
-                // Преобразуем изображение в Bitmap (если это ещё не Bitmap)
-                Bitmap original = new Bitmap(pictureBox1.Image);
+                // Создаем и показываем ProgressBar
+                var progressForm = new ProgressBar();
+                progressForm.Show();
 
-                // Применяем фильтр Кирша
-                Bitmap result = KirschEdgeDetection(original);
+                Bitmap original = new Bitmap(pictureBox1.Image);
+                Bitmap result = KirschEdgeDetection(original, progressForm);
 
                 // Открываем результат в новом окне
                 FormResult resultForm = new FormResult(result);
                 resultForm.Show();
+
+                progressForm.Close();
             }
             catch (Exception ex)
             {
@@ -965,6 +968,77 @@ namespace ImageProccesingApp_2attempt
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private Bitmap KirschEdgeDetection(Bitmap original, ProgressBar progressForm)
+        {
+            Bitmap result = new Bitmap(original.Width, original.Height);
+            int totalPixels = original.Width * original.Height;
+            int processedPixels = 0;
+
+            // Маски Кирша
+            int[,] kirschMask1 = { { 5, 5, 5 }, { -3, 0, -3 }, { -3, -3, -3 } };
+            int[,] kirschMask2 = { { -3, 5, 5 }, { -3, 0, 5 }, { -3, -3, -3 } };
+            int[,] kirschMask3 = { { -3, -3, 5 }, { -3, 0, 5 }, { -3, -3, 5 } };
+            int[,] kirschMask4 = { { -3, -3, -3 }, { -3, 0, 5 }, { -3, 5, 5 } };
+            int[,] kirschMask5 = { { -3, -3, -3 }, { -3, 0, -3 }, { 5, 5, 5 } };
+            int[,] kirschMask6 = { { -3, -3, -3 }, { 5, 0, -3 }, { 5, 5, -3 } };
+            int[,] kirschMask7 = { { 5, -3, -3 }, { 5, 0, -3 }, { 5, -3, -3 } };
+            int[,] kirschMask8 = { { 5, 5, -3 }, { 5, 0, -3 }, { -3, -3, -3 } };
+
+            for (int y = 1; y < original.Height - 1; y++)
+            {
+                for (int x = 1; x < original.Width - 1; x++)
+                {
+                    int maxGradient = 0;
+
+                    // Применяем все 8 масок Кирша
+                    int g1 = ApplyKirschMask(original, x, y, kirschMask1);
+                    int g2 = ApplyKirschMask(original, x, y, kirschMask2);
+                    int g3 = ApplyKirschMask(original, x, y, kirschMask3);
+                    int g4 = ApplyKirschMask(original, x, y, kirschMask4);
+                    int g5 = ApplyKirschMask(original, x, y, kirschMask5);
+                    int g6 = ApplyKirschMask(original, x, y, kirschMask6);
+                    int g7 = ApplyKirschMask(original, x, y, kirschMask7);
+                    int g8 = ApplyKirschMask(original, x, y, kirschMask8);
+
+                    // Находим максимальное значение градиента
+                    maxGradient = Math.Max(maxGradient, g1);
+                    maxGradient = Math.Max(maxGradient, g2);
+                    maxGradient = Math.Max(maxGradient, g3);
+                    maxGradient = Math.Max(maxGradient, g4);
+                    maxGradient = Math.Max(maxGradient, g5);
+                    maxGradient = Math.Max(maxGradient, g6);
+                    maxGradient = Math.Max(maxGradient, g7);
+                    maxGradient = Math.Max(maxGradient, g8);
+
+                    // Нормализуем и повышаем яркость
+                    maxGradient = Math.Min(255, maxGradient + 100);
+
+                    result.SetPixel(x, y, Color.FromArgb(maxGradient, maxGradient, maxGradient));
+
+                    // Обновление прогресса
+                    processedPixels++;
+                    int progress = (int)((double)processedPixels / totalPixels * 100);
+                    progressForm.UpdateProgress(progress);
+                    Application.DoEvents();
+                }
+            }
+            return result;
+        }
+        private int ApplyKirschMask(Bitmap image, int x, int y, int[,] mask)
+        {
+            int sum = 0;
+            for (int i = -1; i <= 1; i++)
+            {
+                for (int j = -1; j <= 1; j++)
+                {
+                    Color pixel = image.GetPixel(x + j, y + i);
+                    int grayValue = (pixel.R + pixel.G + pixel.B) / 3;
+                    sum += grayValue * mask[i + 1, j + 1];
+                }
+            }
+            return Math.Abs(sum);
+        }
+
         //Функция получения якрости
         private static int GetBrightness(Color pixel)
         {
@@ -1044,71 +1118,80 @@ namespace ImageProccesingApp_2attempt
                 _progressBar.Visible = false;
             }
         }
-        private Bitmap LaplaceEdgeDetection(Bitmap sourceImage, int brightnessThreshold)
+        private void laplaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (sourceImage == null)
-                throw new ArgumentNullException(nameof(sourceImage));
-
-            Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
-
-            // Ядро оператора Лапласа
-            int[,] laplacianKernel = {
-                { -1, -1, -1 },
-                { -1,  8, -1 },
-                { -1, -1, -1 }
-            };
-
-            for (int y = 1; y < sourceImage.Height - 1; y++)
+            if (pictureBox1.Image == null)
             {
-                for (int x = 1; x < sourceImage.Width - 1; x++)
+                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Создаем и показываем ProgressBar
+                var progressForm = new ProgressBar();
+                progressForm.Show();
+
+                Bitmap original = new Bitmap(pictureBox1.Image);
+                Bitmap result = LaplaceEdgeDetection(original, 150, progressForm);
+
+                // Открываем результат в новом окне
+                FormResult resultForm = new FormResult(result);
+                resultForm.Show();
+
+                progressForm.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка обработки: {ex.Message}", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Bitmap LaplaceEdgeDetection(Bitmap original, int brightnessThreshold, ProgressBar progressForm)
+        {
+            Bitmap result = new Bitmap(original.Width, original.Height);
+            int totalPixels = original.Width * original.Height;
+            int processedPixels = 0;
+
+            // Маска Лапласа
+            int[,] laplaceMask = { { -1, -1, -1 }, { -1, 8, -1 }, { -1, -1, -1 } };
+
+            for (int y = 1; y < original.Height - 1; y++)
+            {
+                for (int x = 1; x < original.Width - 1; x++)
                 {
-                    int r = 0, g = 0, b = 0;
+                    int sum = 0;
 
-                    // Применяем ядро к окружающим пикселям
-                    for (int ky = -1; ky <= 1; ky++)
+                    // Применяем маску Лапласа
+                    for (int i = -1; i <= 1; i++)
                     {
-                        for (int kx = -1; kx <= 1; kx++)
+                        for (int j = -1; j <= 1; j++)
                         {
-                            Color pixel = sourceImage.GetPixel(x + kx, y + ky);
-                            int kernelValue = laplacianKernel[ky + 1, kx + 1];
-
-                            r += pixel.R * kernelValue;
-                            g += pixel.G * kernelValue;
-                            b += pixel.B * kernelValue;
+                            Color pixel = original.GetPixel(x + j, y + i);
+                            int grayValue = (pixel.R + pixel.G + pixel.B) / 3;
+                            sum += grayValue * laplaceMask[i + 1, j + 1];
                         }
                     }
 
-                    // Нормализация и применение порога
-                    r = Math.Abs(r) > brightnessThreshold ? 255 : 0;
-                    g = Math.Abs(g) > brightnessThreshold ? 255 : 0;
-                    b = Math.Abs(b) > brightnessThreshold ? 255 : 0;
+                    // Применяем порог яркости
+                    sum = Math.Abs(sum);
+                    if (sum < brightnessThreshold) sum = 0;
 
-                    resultImage.SetPixel(x, y, Color.FromArgb(r, g, b));
+                    // Нормализуем значение
+                    sum = Math.Min(255, sum);
+
+                    result.SetPixel(x, y, Color.FromArgb(sum, sum, sum));
+
+                    // Обновление прогресса
+                    processedPixels++;
+                    int progress = (int)((double)processedPixels / totalPixels * 100);
+                    progressForm.UpdateProgress(progress);
+                    Application.DoEvents();
                 }
             }
-
-            return resultImage;
-        }
-        private void ApplyEdgeDetection()
-        {
-            if (pictureBox1.Image != null)
-            {
-                try
-                {
-                    Bitmap original = new Bitmap(pictureBox1.Image);
-                    int threshold = 30; // Значение порога по умолчанию
-
-                    // Если у вас есть control для выбора порога, используйте его значение:
-                    // if (int.TryParse(txtThreshold.Text, out threshold)) { ... }
-
-                    Bitmap edgeImage = LaplaceEdgeDetection(original, threshold);
-                    pictureBox2.Image = edgeImage;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка при обработке изображения: {ex.Message}");
-                }
-            }
+            return result;
         }
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1263,34 +1346,6 @@ namespace ImageProccesingApp_2attempt
                 pictureBox1.Image = processedImage;
             }
         }
-
-
-
-        private void laplaceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image == null)
-            {
-                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                Bitmap original = new Bitmap(pictureBox1.Image);
-                Bitmap result = LaplaceEdgeDetection(original, brightnessThreshold: 150); // Порог можно настроить
-
-                // Открываем результат в новом окне
-                FormResult resultForm = new FormResult(result);
-                resultForm.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка обработки: {ex.Message}", "Ошибка",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void btn_stretch_Click_1(object sender, EventArgs e)
         {
 

@@ -55,6 +55,8 @@ namespace ImageProccesingApp_2attempt
             this.Kirsha_toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.laplas_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.методРобертсаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.статистическийМетодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.методУоллесаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -88,8 +90,7 @@ namespace ImageProccesingApp_2attempt
             this.btn_reload = new System.Windows.Forms.Button();
             this.btn_resize = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.статистическийМетодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.методУоллесаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.методСобелаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -326,7 +327,8 @@ namespace ImageProccesingApp_2attempt
             this.laplas_ToolStripMenuItem,
             this.методРобертсаToolStripMenuItem,
             this.статистическийМетодToolStripMenuItem,
-            this.методУоллесаToolStripMenuItem});
+            this.методУоллесаToolStripMenuItem,
+            this.методСобелаToolStripMenuItem});
             this.highlighting_toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.highlighting_toolStripMenuItem2.ForeColor = System.Drawing.Color.Sienna;
             this.highlighting_toolStripMenuItem2.Name = "highlighting_toolStripMenuItem2";
@@ -338,7 +340,7 @@ namespace ImageProccesingApp_2attempt
             this.Kirsha_toolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.Kirsha_toolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.Kirsha_toolStripMenuItem.Name = "Kirsha_toolStripMenuItem";
-            this.Kirsha_toolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.Kirsha_toolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.Kirsha_toolStripMenuItem.Text = "Выделение Кирша";
             this.Kirsha_toolStripMenuItem.Click += new System.EventHandler(this.kirsha_toolStripMenuItem_Click);
             // 
@@ -346,7 +348,7 @@ namespace ImageProccesingApp_2attempt
             // 
             this.laplas_ToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.laplas_ToolStripMenuItem.Name = "laplas_ToolStripMenuItem";
-            this.laplas_ToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.laplas_ToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.laplas_ToolStripMenuItem.Text = "Метод Лапласа ";
             this.laplas_ToolStripMenuItem.Click += new System.EventHandler(this.laplaceToolStripMenuItem_Click);
             // 
@@ -355,9 +357,23 @@ namespace ImageProccesingApp_2attempt
             this.методРобертсаToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.методРобертсаToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.методРобертсаToolStripMenuItem.Name = "методРобертсаToolStripMenuItem";
-            this.методРобертсаToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.методРобертсаToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.методРобертсаToolStripMenuItem.Text = "Метод Робертса";
             this.методРобертсаToolStripMenuItem.Click += new System.EventHandler(this.методРобертсаToolStripMenuItem_Click);
+            // 
+            // статистическийМетодToolStripMenuItem
+            // 
+            this.статистическийМетодToolStripMenuItem.Name = "статистическийМетодToolStripMenuItem";
+            this.статистическийМетодToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.статистическийМетодToolStripMenuItem.Text = "Статистический метод";
+            this.статистическийМетодToolStripMenuItem.Click += new System.EventHandler(this.статистическийМетодToolStripMenuItem_Click);
+            // 
+            // методУоллесаToolStripMenuItem
+            // 
+            this.методУоллесаToolStripMenuItem.Name = "методУоллесаToolStripMenuItem";
+            this.методУоллесаToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.методУоллесаToolStripMenuItem.Text = "Метод Уоллеса";
+            this.методУоллесаToolStripMenuItem.Click += new System.EventHandler(this.методУоллесаToolStripMenuItem_Click);
             // 
             // panel5
             // 
@@ -409,7 +425,7 @@ namespace ImageProccesingApp_2attempt
             this.btn_zoom.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_zoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_zoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btn_zoom.Location = new System.Drawing.Point(240, -6);
+            this.btn_zoom.Location = new System.Drawing.Point(240, -2);
             this.btn_zoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_zoom.Name = "btn_zoom";
             this.btn_zoom.Size = new System.Drawing.Size(100, 39);
@@ -796,19 +812,11 @@ namespace ImageProccesingApp_2attempt
             this.btn_save.Text = "Сохранить изображение";
             this.btn_save.UseVisualStyleBackColor = true;
             // 
-            // статистическийМетодToolStripMenuItem
+            // методСобелаToolStripMenuItem
             // 
-            this.статистическийМетодToolStripMenuItem.Name = "статистическийМетодToolStripMenuItem";
-            this.статистическийМетодToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
-            this.статистическийМетодToolStripMenuItem.Text = "Статистический метод";
-            this.статистическийМетодToolStripMenuItem.Click += new System.EventHandler(this.статистическийМетодToolStripMenuItem_Click);
-            // 
-            // методУоллесаToolStripMenuItem
-            // 
-            this.методУоллесаToolStripMenuItem.Name = "методУоллесаToolStripMenuItem";
-            this.методУоллесаToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
-            this.методУоллесаToolStripMenuItem.Text = "Метод Уоллеса";
-            this.методУоллесаToolStripMenuItem.Click += new System.EventHandler(this.методУоллесаToolStripMenuItem_Click);
+            this.методСобелаToolStripMenuItem.Name = "методСобелаToolStripMenuItem";
+            this.методСобелаToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.методСобелаToolStripMenuItem.Text = "Метод Собела";
             // 
             // Form1
             // 
@@ -942,6 +950,7 @@ namespace ImageProccesingApp_2attempt
         private TrackBar trk_hue;
         private ToolStripMenuItem статистическийМетодToolStripMenuItem;
         private ToolStripMenuItem методУоллесаToolStripMenuItem;
+        private ToolStripMenuItem методСобелаToolStripMenuItem;
     }
 }
 
