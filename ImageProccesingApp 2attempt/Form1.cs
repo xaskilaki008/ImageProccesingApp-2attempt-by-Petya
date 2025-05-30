@@ -57,10 +57,6 @@ namespace ImageProccesingApp_2attempt
             this.KeyPreview = true; // Для обработки горячих клавиш
             this.KeyDown += Form1_KeyDown;
 
-            trk_hue.Scroll += TrackBar_Scroll;
-            trk_contrast.Scroll += TrackBar_Scroll;
-            trk_bright.Scroll += TrackBar_Scroll;
-
         }
         histograms f2;
         private void построитьУбратьГистограммыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -195,27 +191,22 @@ namespace ImageProccesingApp_2attempt
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
-
         private void Btn_autosize_Click(object sender, EventArgs e)
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
         }
-
         private void Btn_center_Click(object sender, EventArgs e)
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
         }
-
         private void Btn_zoom_Click(object sender, EventArgs e)
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
         }
-
         // Изменение размера изображения
         private void Btn_resize_Click(object sender, EventArgs e)
         {
             if (originalImage == null) return;
-
             try
             {
                 int width = int.Parse(txt_width.Text);
@@ -233,7 +224,6 @@ namespace ImageProccesingApp_2attempt
                                                            // Очищаем redoHistory при новом действии
             redoHistory.Clear();
         }
-
         // Сброс изменений
         private void Btn_reload_Click(object sender, EventArgs e)
         {
@@ -249,23 +239,6 @@ namespace ImageProccesingApp_2attempt
                 trk_hue.Value = 0;
                 trk_contrast.Value = 0;
                 trk_bright.Value = 0;
-            }
-        }
-        // Метод для кнопки "Назад"
-        private void back_button_Click(object sender, EventArgs e)
-        {
-            if (undoHistory.Count > 0)
-            {
-                // Сохраняем текущее состояние в redoHistory (если нужно)
-                redoHistory.Push(new Bitmap(processedImage));
-
-                // Восстанавливаем предыдущее состояние
-                processedImage = new Bitmap(undoHistory.Pop());
-                pictureBox1.Image = new Bitmap(processedImage);
-            }
-            else
-            {
-                MessageBox.Show("Нет предыдущих состояний для отката.");
             }
         }
         // Поворот изображения
@@ -289,8 +262,6 @@ namespace ImageProccesingApp_2attempt
                                                            // Очищаем redoHistory при новом действии
             redoHistory.Clear();
         }
-        
-
         // Метод для настройки изображения (цвет, контраст, яркость)
         private Bitmap AdjustImage(Bitmap image, float hue, float contrast, float brightness)
         {
@@ -325,7 +296,6 @@ namespace ImageProccesingApp_2attempt
 
             return adjustedImage;
         }
-
         // Преобразование из HSB в Color
         private Color ColorFromAhsb(int alpha, float hue, float saturation, float brightness)
         {
@@ -387,30 +357,6 @@ namespace ImageProccesingApp_2attempt
                     return Color.FromArgb(alpha, iMax, iMid, iMin);
             }
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-            
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            // Можно реализовать предпросмотр или другие функции
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            // Обработка клика по метке
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            // Обработка изменения текста
-        }
-
-
-
         private void btnCopy_Click(object sender, EventArgs e)
         {
             try
@@ -605,32 +551,46 @@ namespace ImageProccesingApp_2attempt
             using (var form = new Form())
             {
                 form.Text = "Параметры бинаризации";
-                form.Size = new Size(300, 400);
+                form.Size = new Size(350, 250); // Увеличена ширина формы
                 form.FormBorderStyle = FormBorderStyle.FixedDialog;
                 form.StartPosition = FormStartPosition.CenterParent;
+                form.BackColor = Color.Lavender;
 
-                // Радиокнопки для выбора типа бинаризации
+                // Группа для радиокнопок
+                var groupBox = new GroupBox()
+                {
+                    Text = "Тип бинаризации",
+                    Location = new Point(10, 10),
+                    Size = new Size(320, 80)
+                };
+
+                // Радиокнопки
                 var rbBrightness = new RadioButton()
                 {
                     Text = "По яркости (чёрно-белая)",
                     Checked = true,
-                    Location = new Point(25, 10)
+                    Location = new Point(15, 20),
+                    AutoSize = true
                 };
 
                 var rbColor = new RadioButton()
                 {
                     Text = "По выбранному цвету",
-                    Location = new Point(25, 40)
+                    Location = new Point(15, 45),
+                    AutoSize = true
                 };
 
-                // Кнопка выбора цвета (только для режима "По цвету")
+                // Кнопка выбора цвета
                 var btnPickColor = new Button()
                 {
                     Text = "Выбрать цвет...",
-                    Location = new Point(30, 70),
-                    Enabled = false
+                    Location = new Point(200, 45),
+                    Size = new Size(100, 23),
+                    Enabled = false,
+                    BackColor = Color.Red
                 };
-                Color targetColor = Color.Red; // Цвет по умолчанию
+
+                Color targetColor = Color.Red;
 
                 rbColor.CheckedChanged += (s, ev) =>
                 {
@@ -649,20 +609,42 @@ namespace ImageProccesingApp_2attempt
                     }
                 };
 
-                // Трекбар для порога (общий для обоих режимов)
+                // Подписи и трекбар
                 var lblThreshold = new Label()
                 {
                     Text = "Чувствительность: 50",
-                    Location = new Point(10, 110)
+                    Location = new Point(10, 100),
+                    Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                    AutoSize = true
                 };
+
+                // Подпись "Меньше" слева
+                var lblLess = new Label()
+                {
+                    Text = "Меньше",
+                    Location = new Point(10, 140),
+                    AutoSize = true
+                };
+
+                // Трекбар
                 var trkThreshold = new TrackBar()
                 {
                     Minimum = 1,
                     Maximum = 100,
                     Value = 50,
-                    Location = new Point(10, 130),
-                    Width = 200
+                    Location = new Point(50, 135), // Сдвинут вправо
+                    Size = new Size(200, 45),
+                    TickFrequency = 10
                 };
+
+                // Подпись "Больше" справа
+                var lblMore = new Label()
+                {
+                    Text = "Больше",
+                    Location = new Point(260, 140),
+                    AutoSize = true
+                };
+
                 trkThreshold.Scroll += (s, ev) =>
                 {
                     lblThreshold.Text = $"Чувствительность: {trkThreshold.Value}";
@@ -673,13 +655,22 @@ namespace ImageProccesingApp_2attempt
                 {
                     Text = "Применить",
                     DialogResult = DialogResult.OK,
-                    Location = new Point(10, 170)
+                    Location = new Point(120, 170),
+                    Size = new Size(100, 30),
+                    BackColor = Color.LightSteelBlue,
+                    FlatStyle = FlatStyle.Flat
                 };
 
-                form.Controls.AddRange(new Control[] {
-            rbBrightness, rbColor, btnPickColor,
-            lblThreshold, trkThreshold, btnApply
-        });
+                groupBox.Controls.Add(rbBrightness);
+                groupBox.Controls.Add(rbColor);
+                groupBox.Controls.Add(btnPickColor);
+
+                form.Controls.Add(groupBox);
+                form.Controls.Add(lblThreshold);
+                form.Controls.Add(lblLess);
+                form.Controls.Add(trkThreshold);
+                form.Controls.Add(lblMore);
+                form.Controls.Add(btnApply);
 
                 if (form.ShowDialog(this) == DialogResult.OK)
                 {
@@ -696,20 +687,17 @@ namespace ImageProccesingApp_2attempt
 
                             if (rbBrightness.Checked)
                             {
-                                // Режим по яркости
                                 int gray = (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11);
                                 binaryColor = gray > threshold * 2.55 ? Color.White : Color.Black;
                             }
                             else
                             {
-                                // Режим по цвету (проверка близости к выбранному цвету)
                                 double colorDistance = Math.Sqrt(
                                     Math.Pow(pixel.R - targetColor.R, 2) +
                                     Math.Pow(pixel.G - targetColor.G, 2) +
                                     Math.Pow(pixel.B - targetColor.B, 2));
 
-                                // Чем выше threshold, тем меньше чувствительность
-                                double maxDistance = 441.67; // Максимальное расстояние между цветами (~√(255²+255²+255²))
+                                double maxDistance = 441.67;
                                 double sensitivity = (100 - threshold) / 100.0;
 
                                 binaryColor = colorDistance < (maxDistance * sensitivity) ? Color.White : Color.Black;
@@ -726,7 +714,6 @@ namespace ImageProccesingApp_2attempt
             undoHistory.Push(new Bitmap(processedImage));
             redoHistory.Clear();
         }
-
         private void btn_f2_Click_1(object sender, EventArgs e)
         {
             // Проверяем, загружено ли изображение в PictureBox (например, pictureBox1)
@@ -788,7 +775,6 @@ namespace ImageProccesingApp_2attempt
             // Отображаем результат
             pictureBox1.Image = grayImage;
         }
-
         private void btn_f3_Click_1(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null) return;
@@ -838,16 +824,10 @@ namespace ImageProccesingApp_2attempt
             pictureBox1.Image = negative;
             processedImage = new Bitmap(negative); // Сохраняем результат
         }
-
-        
-
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             App_menuStrip.Renderer = new ToolStripProfessionalRenderer(new MyOrangeColorTable());
         }
-
-        
-
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Освобождаем ресурсы изображений
@@ -881,71 +861,6 @@ namespace ImageProccesingApp_2attempt
                                                            // Очищаем redoHistory при новом действии
             redoHistory.Clear();
         }
-
-        
-        private void DrawHistogram(Bitmap image, PictureBox pictureBox, Color channelColor, bool isBrightness = false)
-        {
-            if (image == null || pictureBox == null || pictureBox.Width <= 10 || pictureBox.Height <= 10)
-                return;
-
-            try
-            {
-                // 1. Создаем гистограмму (без unsafe)
-                int[] histogram = new int[256];
-
-                for (int y = 0; y < image.Height; y++)
-                {
-                    for (int x = 0; x < image.Width; x++)
-                    {
-                        Color pixel = image.GetPixel(x, y);
-
-                        int value = isBrightness ?
-                            (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11) :
-                            channelColor.R == 255 ? pixel.R :
-                            channelColor.G == 255 ? pixel.G : pixel.B;
-
-                        histogram[value]++;
-                    }
-                }
-
-                // 2. Нормализуем и рисуем
-                int maxCount = histogram.Max();
-                if (maxCount == 0) maxCount = 1;
-
-                Bitmap histImage = new Bitmap(pictureBox.Width, pictureBox.Height);
-                using (Graphics g = Graphics.FromImage(histImage))
-                {
-                    g.Clear(Color.White);
-                    Pen pen = new Pen(channelColor, 1.5f);
-
-                    float columnWidth = (float)pictureBox.Width / 256;
-                    float scale = (float)pictureBox.Height / maxCount;
-
-                    for (int i = 0; i < 256; i++)
-                    {
-                        float height = histogram[i] * scale;
-                        float x = i * columnWidth;
-                        g.DrawLine(pen, x, pictureBox.Height, x, pictureBox.Height - height);
-                    }
-
-                    // Добавляем рамку
-                    g.DrawRectangle(Pens.Black, 0, 0, histImage.Width - 1, histImage.Height - 1);
-                }
-
-                // 3. Обновляем PictureBox
-                if (pictureBox.Image != null)
-                    pictureBox.Image.Dispose();
-
-                pictureBox.Image = histImage;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка при построении гистограммы: {ex.Message}");
-            }
-        }
-
-
-
         private void цветподробноToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Переключаем видимость панели
@@ -973,7 +888,6 @@ namespace ImageProccesingApp_2attempt
             panel.BackColor = Color.FromArgb(240, 240, 240); // Светло-серый фон
             panel.BorderStyle = BorderStyle.None; // Убираем стандартную рамку
         }
-
         // Обработчик изменения размера панели
         private void Color_Picker_Panel_SizeChanged(object sender, EventArgs e)
         {
@@ -982,20 +896,8 @@ namespace ImageProccesingApp_2attempt
                 ApplyRoundedCorners(Color_Picker_Panel, 15);
             }
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private bool isPreviewMode = true; // Режим предпросмотра
-
         private DateTime lastScrollTime = DateTime.MinValue;
-
-        private void TrackBar_Scroll(object sender, EventArgs e)
-        {
-            // Пусто! Никаких действий при движении ползунков
-        }
-
+        //применение параметров Scroll Bars цвета
         private void change_parammetrs_button_Click(object sender, EventArgs e)
         {
             if (processedImage == null) // Используем processedImage вместо originalImage
@@ -1035,112 +937,113 @@ namespace ImageProccesingApp_2attempt
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-            private void kirsha_toolStripMenuItem_Click(object sender, EventArgs e)
+        //4лб Фильтр выделение границ Кирша
+        private void kirsha_toolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
             {
-                if (pictureBox1.Image == null)
-                {
-                    MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                try
-                {
-                    // Преобразуем изображение в Bitmap (если это ещё не Bitmap)
-                    Bitmap original = new Bitmap(pictureBox1.Image);
-
-                    // Применяем фильтр Кирша
-                    Bitmap result = KirschEdgeDetection(original);
-
-                    // Открываем результат в новом окне
-                    FormResult resultForm = new FormResult(result);
-                    resultForm.Show();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка обработки: {ex.Message}", "Ошибка",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            private static int GetBrightness(Color pixel)
+
+            try
             {
-                return (int)(0.3 * pixel.R + 0.59 * pixel.G + 0.11 * pixel.B);
+                // Преобразуем изображение в Bitmap (если это ещё не Bitmap)
+                Bitmap original = new Bitmap(pictureBox1.Image);
+
+                // Применяем фильтр Кирша
+                Bitmap result = KirschEdgeDetection(original);
+
+                // Открываем результат в новом окне
+                FormResult resultForm = new FormResult(result);
+                resultForm.Show();
             }
-            public static Bitmap KirschEdgeDetection(Bitmap originalImage, int brightnessThreshold = 100)
+            catch (Exception ex)
             {
-                Bitmap resultImage = new Bitmap(originalImage.Width, originalImage.Height);
+                MessageBox.Show($"Ошибка обработки: {ex.Message}", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //Функция получения якрости
+        private static int GetBrightness(Color pixel)
+        {
+            return (int)(0.3 * pixel.R + 0.59 * pixel.G + 0.11 * pixel.B);
+        }
+        public static Bitmap KirschEdgeDetection(Bitmap originalImage, int brightnessThreshold = 100)
+        {
+            Bitmap resultImage = new Bitmap(originalImage.Width, originalImage.Height);
 
-                // Ядра Кирша (8 направлений)
-                int[][,] kernels = new int[8][,]
-                {
-                new int[3,3] { { -3, -3,  5 }, { -3,  0,  5 }, { -3, -3,  5 } },
-                new int[3,3] { { -3,  5,  5 }, { -3,  0,  5 }, { -3, -3, -3 } },
-                new int[3,3] { {  5,  5,  5 }, { -3,  0, -3 }, { -3, -3, -3 } },
-                new int[3,3] { {  5,  5, -3 }, {  5,  0, -3 }, { -3, -3, -3 } },
-                new int[3,3] { {  5, -3, -3 }, {  5,  0, -3 }, {  5, -3, -3 } },
-                new int[3,3] { { -3, -3, -3 }, {  5,  0, -3 }, {  5,  5, -3 } },
-                new int[3,3] { { -3, -3, -3 }, { -3,  0, -3 }, {  5,  5,  5 } },
-                new int[3,3] { { -3, -3, -3 }, { -3,  0,  5 }, { -3,  5,  5 } }
-                };
+            // Ядра Кирша (8 направлений)
+            int[][,] kernels = new int[8][,]
+            {
+            new int[3,3] { { -3, -3,  5 }, { -3,  0,  5 }, { -3, -3,  5 } },
+            new int[3,3] { { -3,  5,  5 }, { -3,  0,  5 }, { -3, -3, -3 } },
+            new int[3,3] { {  5,  5,  5 }, { -3,  0, -3 }, { -3, -3, -3 } },
+            new int[3,3] { {  5,  5, -3 }, {  5,  0, -3 }, { -3, -3, -3 } },
+            new int[3,3] { {  5, -3, -3 }, {  5,  0, -3 }, {  5, -3, -3 } },
+            new int[3,3] { { -3, -3, -3 }, {  5,  0, -3 }, {  5,  5, -3 } },
+            new int[3,3] { { -3, -3, -3 }, { -3,  0, -3 }, {  5,  5,  5 } },
+            new int[3,3] { { -3, -3, -3 }, { -3,  0,  5 }, { -3,  5,  5 } }
+            };
 
-                for (int y = 1; y < originalImage.Height - 1; y++)
+            for (int y = 1; y < originalImage.Height - 1; y++)
+            {
+                for (int x = 1; x < originalImage.Width - 1; x++)
                 {
-                    for (int x = 1; x < originalImage.Width - 1; x++)
+                    int maxGradient = 0;
+
+                    // Применяем все 8 ядер
+                    for (int k = 0; k < 8; k++)
                     {
-                        int maxGradient = 0;
+                        int gradient = 0;
 
-                        // Применяем все 8 ядер
-                        for (int k = 0; k < 8; k++)
+                        // Свёртка с ядром 3x3
+                        for (int ky = -1; ky <= 1; ky++)
                         {
-                            int gradient = 0;
-
-                            // Свёртка с ядром 3x3
-                            for (int ky = -1; ky <= 1; ky++)
+                            for (int kx = -1; kx <= 1; kx++)
                             {
-                                for (int kx = -1; kx <= 1; kx++)
-                                {
-                                    Color pixel = originalImage.GetPixel(x + kx, y + ky);
-                                    int brightness = GetBrightness(pixel);
-                                    gradient += brightness * kernels[k][ky + 1, kx + 1];
-                                }
+                                Color pixel = originalImage.GetPixel(x + kx, y + ky);
+                                int brightness = GetBrightness(pixel);
+                                gradient += brightness * kernels[k][ky + 1, kx + 1];
                             }
-
-                            if (gradient > maxGradient)
-                                maxGradient = gradient;
                         }
 
-                        // Коррекция яркости и запись результата
-                        int resultValue = Math.Max(0, Math.Min(maxGradient + brightnessThreshold, 255));
-                        resultImage.SetPixel(x, y, Color.FromArgb(resultValue, resultValue, resultValue));
+                        if (gradient > maxGradient)
+                            maxGradient = gradient;
                     }
-                }
 
-                return resultImage;
+                    // Коррекция яркости и запись результата
+                    int resultValue = Math.Max(0, Math.Min(maxGradient + brightnessThreshold, 255));
+                    resultImage.SetPixel(x, y, Color.FromArgb(resultValue, resultValue, resultValue));
+                }
             }
-            public static class ProgressHelper
+
+            return resultImage;
+        }
+        public static class ProgressHelper
+        {
+            private static ProgressBar _progressBar;
+            private static Form _mainForm;
+
+            // Инициализация (вызовите при старте программы)
+            public static void Initialize(ProgressBar progressBar, Form mainForm)
             {
-                private static ProgressBar _progressBar;
-                private static Form _mainForm;
-
-                // Инициализация (вызовите при старте программы)
-                public static void Initialize(ProgressBar progressBar, Form mainForm)
-                {
-                    _progressBar = progressBar;
-                    _mainForm = mainForm;
-                }
-
-                // Запуск операции с ProgressBar
-                public static async Task RunWithProgress(Func<Task> action)
-                {
-                    _progressBar.Visible = true;
-                    _progressBar.Style = ProgressBarStyle.Marquee; // Анимация
-
-                    await Task.Run(action);
-
-                    _progressBar.Visible = false;
-                }
+                _progressBar = progressBar;
+                _mainForm = mainForm;
             }
+
+            // Запуск операции с ProgressBar
+            public static async Task RunWithProgress(Func<Task> action)
+            {
+                _progressBar.Visible = true;
+                _progressBar.Style = ProgressBarStyle.Marquee; // Анимация
+
+                await Task.Run(action);
+
+                _progressBar.Visible = false;
+            }
+        }
         private Bitmap LaplaceEdgeDetection(Bitmap sourceImage, int brightnessThreshold)
             {
                 if (sourceImage == null)

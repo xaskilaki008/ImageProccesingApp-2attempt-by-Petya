@@ -417,7 +417,6 @@ namespace ImageProccesingApp_2attempt
             this.label1.Size = new System.Drawing.Size(75, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Start Image";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btn_zoom
             // 
@@ -754,7 +753,7 @@ namespace ImageProccesingApp_2attempt
             this.txt_hight.Name = "txt_hight";
             this.txt_hight.Size = new System.Drawing.Size(100, 22);
             this.txt_hight.TabIndex = 6;
-            this.txt_hight.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+
             // 
             // txt_width
             // 
@@ -827,7 +826,6 @@ namespace ImageProccesingApp_2attempt
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
