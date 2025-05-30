@@ -116,7 +116,7 @@ namespace ImageProccesingApp_2attempt
             this.panel1.Location = new System.Drawing.Point(1, 4);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(635, 384);
+            this.panel1.Size = new System.Drawing.Size(635, 368);
             this.panel1.TabIndex = 1;
             // 
             // pictureBox1
@@ -129,7 +129,7 @@ namespace ImageProccesingApp_2attempt
             this.pictureBox1.Location = new System.Drawing.Point(11, 32);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(611, 336);
+            this.pictureBox1.Size = new System.Drawing.Size(611, 320);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -259,7 +259,7 @@ namespace ImageProccesingApp_2attempt
             this.filters_binaris.BackColor = System.Drawing.SystemColors.Control;
             this.filters_binaris.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_binaris.Name = "filters_binaris";
-            this.filters_binaris.Size = new System.Drawing.Size(204, 26);
+            this.filters_binaris.Size = new System.Drawing.Size(224, 26);
             this.filters_binaris.Text = "Бинаризация";
             this.filters_binaris.Click += new System.EventHandler(this.filters_binaris_Click);
             // 
@@ -268,7 +268,7 @@ namespace ImageProccesingApp_2attempt
             this.filters_shadesofgrey.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.filters_shadesofgrey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_shadesofgrey.Name = "filters_shadesofgrey";
-            this.filters_shadesofgrey.Size = new System.Drawing.Size(204, 26);
+            this.filters_shadesofgrey.Size = new System.Drawing.Size(224, 26);
             this.filters_shadesofgrey.Text = "Оттенки серого";
             this.filters_shadesofgrey.Click += new System.EventHandler(this.filters_shadesofgrey_Click);
             // 
@@ -277,7 +277,7 @@ namespace ImageProccesingApp_2attempt
             this.filters_negative.BackColor = System.Drawing.SystemColors.Control;
             this.filters_negative.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_negative.Name = "filters_negative";
-            this.filters_negative.Size = new System.Drawing.Size(204, 26);
+            this.filters_negative.Size = new System.Drawing.Size(224, 26);
             this.filters_negative.Text = "Негатив";
             this.filters_negative.Click += new System.EventHandler(this.filters_negative_Click);
             // 
@@ -286,7 +286,7 @@ namespace ImageProccesingApp_2attempt
             this.цветподробноToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.цветподробноToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.цветподробноToolStripMenuItem.Name = "цветподробноToolStripMenuItem";
-            this.цветподробноToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.цветподробноToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.цветподробноToolStripMenuItem.Text = "Цвет (подробно)";
             this.цветподробноToolStripMenuItem.Click += new System.EventHandler(this.цветподробноToolStripMenuItem_Click);
             // 
@@ -390,7 +390,7 @@ namespace ImageProccesingApp_2attempt
             this.panel5.Location = new System.Drawing.Point(628, 4);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(355, 384);
+            this.panel5.Size = new System.Drawing.Size(355, 368);
             this.panel5.TabIndex = 0;
             // 
             // pictureBox2
@@ -487,7 +487,7 @@ namespace ImageProccesingApp_2attempt
             this.panel6.Location = new System.Drawing.Point(0, 374);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(983, 212);
+            this.panel6.Size = new System.Drawing.Size(983, 186);
             this.panel6.TabIndex = 2;
             // 
             // Color_Picker_Panel
@@ -779,7 +779,7 @@ namespace ImageProccesingApp_2attempt
             this.btn_reload.FlatAppearance.BorderSize = 2;
             this.btn_reload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btn_reload.Location = new System.Drawing.Point(129, 142);
+            this.btn_reload.Location = new System.Drawing.Point(128, 142);
             this.btn_reload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_reload.Name = "btn_reload";
             this.btn_reload.Size = new System.Drawing.Size(91, 38);
@@ -793,7 +793,7 @@ namespace ImageProccesingApp_2attempt
             this.btn_resize.FlatAppearance.BorderSize = 2;
             this.btn_resize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_resize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btn_resize.Location = new System.Drawing.Point(1, 140);
+            this.btn_resize.Location = new System.Drawing.Point(0, 140);
             this.btn_resize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_resize.Name = "btn_resize";
             this.btn_resize.Size = new System.Drawing.Size(91, 38);

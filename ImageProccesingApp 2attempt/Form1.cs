@@ -605,7 +605,7 @@ namespace ImageProccesingApp_2attempt
             using (var form = new Form())
             {
                 form.Text = "Параметры бинаризации";
-                form.Size = new Size(300, 250);
+                form.Size = new Size(300, 400);
                 form.FormBorderStyle = FormBorderStyle.FixedDialog;
                 form.StartPosition = FormStartPosition.CenterParent;
 
@@ -614,13 +614,13 @@ namespace ImageProccesingApp_2attempt
                 {
                     Text = "По яркости (чёрно-белая)",
                     Checked = true,
-                    Location = new Point(10, 10)
+                    Location = new Point(25, 10)
                 };
 
                 var rbColor = new RadioButton()
                 {
                     Text = "По выбранному цвету",
-                    Location = new Point(10, 40)
+                    Location = new Point(25, 40)
                 };
 
                 // Кнопка выбора цвета (только для режима "По цвету")
