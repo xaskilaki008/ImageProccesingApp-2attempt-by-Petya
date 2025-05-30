@@ -1045,14 +1045,14 @@ namespace ImageProccesingApp_2attempt
             }
         }
         private Bitmap LaplaceEdgeDetection(Bitmap sourceImage, int brightnessThreshold)
-            {
-                if (sourceImage == null)
-                    throw new ArgumentNullException(nameof(sourceImage));
+        {
+            if (sourceImage == null)
+                throw new ArgumentNullException(nameof(sourceImage));
 
-                Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
+            Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
 
-                // Ядро оператора Лапласа
-                int[,] laplacianKernel = {
+            // Ядро оператора Лапласа
+            int[,] laplacianKernel = {
                 { -1, -1, -1 },
                 { -1,  8, -1 },
                 { -1, -1, -1 }
@@ -1088,30 +1088,30 @@ namespace ImageProccesingApp_2attempt
             }
 
             return resultImage;
-            }
-            private void ApplyEdgeDetection()
+        }
+        private void ApplyEdgeDetection()
+        {
+            if (pictureBox1.Image != null)
             {
-                if (pictureBox1.Image != null)
+                try
                 {
-                    try
-                    {
-                        Bitmap original = new Bitmap(pictureBox1.Image);
-                        int threshold = 30; // Значение порога по умолчанию
+                    Bitmap original = new Bitmap(pictureBox1.Image);
+                    int threshold = 30; // Значение порога по умолчанию
 
-                        // Если у вас есть control для выбора порога, используйте его значение:
-                        // if (int.TryParse(txtThreshold.Text, out threshold)) { ... }
+                    // Если у вас есть control для выбора порога, используйте его значение:
+                    // if (int.TryParse(txtThreshold.Text, out threshold)) { ... }
 
-                        Bitmap edgeImage = LaplaceEdgeDetection(original, threshold);
-                        pictureBox2.Image = edgeImage;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Ошибка при обработке изображения: {ex.Message}");
-                    }
+                    Bitmap edgeImage = LaplaceEdgeDetection(original, threshold);
+                    pictureBox2.Image = edgeImage;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при обработке изображения: {ex.Message}");
                 }
             }
-            private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-            {
+        }
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             if (pictureBox1.Image != null)
             {
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -1130,7 +1130,7 @@ namespace ImageProccesingApp_2attempt
                     }
                 }
             }
-            }
+        }
         private void AddSaltAndPepperNoise(double probability)
         {
             if (originalImage == null) return;
@@ -1168,103 +1168,103 @@ namespace ImageProccesingApp_2attempt
         }
 
         private void ApplySmoothingFilter(int apertureSize)
+        {
+            if (processedImage == null) return;
+
+            Bitmap tempImage = new Bitmap(processedImage);
+            int offset = apertureSize / 2;
+
+            for (int y = offset; y < processedImage.Height - offset; y++)
             {
-                if (processedImage == null) return;
-
-                Bitmap tempImage = new Bitmap(processedImage);
-                int offset = apertureSize / 2;
-
-                for (int y = offset; y < processedImage.Height - offset; y++)
+                for (int x = offset; x < processedImage.Width - offset; x++)
                 {
-                    for (int x = offset; x < processedImage.Width - offset; x++)
+                    int totalR = 0, totalG = 0, totalB = 0;
+                    int pixelCount = 0;
+
+                    for (int fy = -offset; fy <= offset; fy++)
                     {
-                        int totalR = 0, totalG = 0, totalB = 0;
-                        int pixelCount = 0;
-
-                        for (int fy = -offset; fy <= offset; fy++)
+                        for (int fx = -offset; fx <= offset; fx++)
                         {
-                            for (int fx = -offset; fx <= offset; fx++)
-                            {
-                                Color pixel = processedImage.GetPixel(x + fx, y + fy);
-                                totalR += pixel.R;
-                                totalG += pixel.G;
-                                totalB += pixel.B;
-                                pixelCount++;
-                            }
+                            Color pixel = processedImage.GetPixel(x + fx, y + fy);
+                            totalR += pixel.R;
+                            totalG += pixel.G;
+                            totalB += pixel.B;
+                            pixelCount++;
                         }
-
-                        int avgR = totalR / pixelCount;
-                        int avgG = totalG / pixelCount;
-                        int avgB = totalB / pixelCount;
-
-                        tempImage.SetPixel(x, y, Color.FromArgb(avgR, avgG, avgB));
                     }
-                }
 
-                processedImage = tempImage;
+                    int avgR = totalR / pixelCount;
+                    int avgG = totalG / pixelCount;
+                    int avgB = totalB / pixelCount;
+
+                    tempImage.SetPixel(x, y, Color.FromArgb(avgR, avgG, avgB));
+                }
+            }
+
+            processedImage = tempImage;
+            pictureBox1.Image = processedImage;
+        }
+
+        private void ApplyMedianFilter(int apertureSize)
+        {
+            if (processedImage == null) return;
+
+            Bitmap tempImage = new Bitmap(processedImage);
+            int offset = apertureSize / 2;
+            int pixelCount = apertureSize * apertureSize;
+            int medianIndex = pixelCount / 2;
+
+            for (int y = offset; y < processedImage.Height - offset; y++)
+            {
+                for (int x = offset; x < processedImage.Width - offset; x++)
+                {
+                    // Массивы для хранения значений каналов
+                    int[] rValues = new int[pixelCount];
+                    int[] gValues = new int[pixelCount];
+                    int[] bValues = new int[pixelCount];
+                    int index = 0;
+
+                    // Собираем значения пикселей в окрестности
+                    for (int fy = -offset; fy <= offset; fy++)
+                    {
+                        for (int fx = -offset; fx <= offset; fx++)
+                        {
+                            Color pixel = processedImage.GetPixel(x + fx, y + fy);
+                            rValues[index] = pixel.R;
+                            gValues[index] = pixel.G;
+                            bValues[index] = pixel.B;
+                            index++;
+                        }
+                    }
+
+                    // Сортируем массивы
+                    Array.Sort(rValues);
+                    Array.Sort(gValues);
+                    Array.Sort(bValues);
+
+                    // Берем медианное значение
+                    int medianR = rValues[medianIndex];
+                    int medianG = gValues[medianIndex];
+                    int medianB = bValues[medianIndex];
+
+                    tempImage.SetPixel(x, y, Color.FromArgb(medianR, medianG, medianB));
+                }
+            }
+
+            processedImage = tempImage;
+            pictureBox1.Image = processedImage;
+        }
+
+        private void ResetImage()
+        {
+            if (originalImage != null)
+            {
+                processedImage = new Bitmap(originalImage);
                 pictureBox1.Image = processedImage;
             }
+        }
 
-            private void ApplyMedianFilter(int apertureSize)
-            {
-                if (processedImage == null) return;
 
-                Bitmap tempImage = new Bitmap(processedImage);
-                int offset = apertureSize / 2;
-                int pixelCount = apertureSize * apertureSize;
-                int medianIndex = pixelCount / 2;
-
-                for (int y = offset; y < processedImage.Height - offset; y++)
-                {
-                    for (int x = offset; x < processedImage.Width - offset; x++)
-                    {
-                        // Массивы для хранения значений каналов
-                        int[] rValues = new int[pixelCount];
-                        int[] gValues = new int[pixelCount];
-                        int[] bValues = new int[pixelCount];
-                        int index = 0;
-
-                        // Собираем значения пикселей в окрестности
-                        for (int fy = -offset; fy <= offset; fy++)
-                        {
-                            for (int fx = -offset; fx <= offset; fx++)
-                            {
-                                Color pixel = processedImage.GetPixel(x + fx, y + fy);
-                                rValues[index] = pixel.R;
-                                gValues[index] = pixel.G;
-                                bValues[index] = pixel.B;
-                                index++;
-                            }
-                        }
-
-                        // Сортируем массивы
-                        Array.Sort(rValues);
-                        Array.Sort(gValues);
-                        Array.Sort(bValues);
-
-                        // Берем медианное значение
-                        int medianR = rValues[medianIndex];
-                        int medianG = gValues[medianIndex];
-                        int medianB = bValues[medianIndex];
-
-                        tempImage.SetPixel(x, y, Color.FromArgb(medianR, medianG, medianB));
-                    }
-                }
-
-                processedImage = tempImage;
-                pictureBox1.Image = processedImage;
-            }
-
-            private void ResetImage()
-            {
-                if (originalImage != null)
-                {
-                    processedImage = new Bitmap(originalImage);
-                    pictureBox1.Image = processedImage;
-                }
-            }
-            
-        
 
         private void laplaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1295,29 +1295,242 @@ namespace ImageProccesingApp_2attempt
         {
 
         }
+
+        private void методРобертсаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Создаем и показываем ProgressBar
+                var progressForm = new ProgressBar();
+                progressForm.Show();
+
+                Bitmap original = new Bitmap(pictureBox1.Image);
+                Bitmap result = RobertsEdgeDetection(original, progressForm);
+
+                // Открываем результат в новом окне
+                FormResult resultForm = new FormResult(result);
+                resultForm.Show();
+
+                progressForm.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка обработки: {ex.Message}", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private Bitmap RobertsEdgeDetection(Bitmap original, ProgressBar progressForm)
+        {
+            Bitmap result = new Bitmap(original.Width, original.Height);
+            int totalPixels = original.Width * original.Height;
+            int processedPixels = 0;
+
+            for (int y = 0; y < original.Height - 1; y++)
+            {
+                for (int x = 0; x < original.Width - 1; x++)
+                {
+                    Color c1 = original.GetPixel(x, y);
+                    Color c2 = original.GetPixel(x + 1, y + 1);
+                    Color c3 = original.GetPixel(x + 1, y);
+                    Color c4 = original.GetPixel(x, y + 1);
+
+                    int gx = c1.R - c2.R;
+                    int gy = c1.R - c3.R - c4.R + c2.R;
+                    int gradient = (int)Math.Sqrt(gx * gx + gy * gy);
+                    gradient = Math.Min(255, gradient + 100); // Повышение порога яркости
+
+                    result.SetPixel(x, y, Color.FromArgb(gradient, gradient, gradient));
+
+                    // Обновление прогресса
+                    processedPixels++;
+                    int progress = (int)((double)processedPixels / totalPixels * 100);
+                    progressForm.UpdateProgress(progress);
+                    Application.DoEvents();
+                }
+            }
+            return result;
+        }
+        private void статистическийМетодToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                var progressForm = new ProgressBar();
+                progressForm.Show();
+
+                Bitmap original = new Bitmap(pictureBox1.Image);
+                Bitmap result = StatisticalEdgeDetection(original, progressForm);
+
+                FormResult resultForm = new FormResult(result);
+                resultForm.Show();
+
+                progressForm.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка обработки: {ex.Message}", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Bitmap StatisticalEdgeDetection(Bitmap original, ProgressBar progressForm)
+        {
+            Bitmap result = new Bitmap(original.Width, original.Height);
+            int totalPixels = original.Width * original.Height;
+            int processedPixels = 0;
+
+            // Первый проход - вычисление среднего и отклонения
+            for (int y = 1; y < original.Height - 1; y++)
+            {
+                for (int x = 1; x < original.Width - 1; x++)
+                {
+                    // Вычисляем среднее значение в окрестности 3x3
+                    double sum = 0;
+                    for (int i = -1; i <= 1; i++)
+                    {
+                        for (int j = -1; j <= 1; j++)
+                        {
+                            sum += original.GetPixel(x + i, y + j).R;
+                        }
+                    }
+                    double mean = sum / 9;
+
+                    // Вычисляем среднеквадратичное отклонение
+                    double variance = 0;
+                    for (int i = -1; i <= 1; i++)
+                    {
+                        for (int j = -1; j <= 1; j++)
+                        {
+                            double diff = original.GetPixel(x + i, y + j).R - mean;
+                            variance += diff * diff;
+                        }
+                    }
+                    double stdDev = Math.Sqrt(variance / 9);
+
+                    // Применяем преобразование
+                    int newValue = (int)(stdDev * original.GetPixel(x, y).R);
+                    newValue = Math.Min(255, Math.Max(0, newValue + 100)); // Нормализация и повышение яркости
+
+                    result.SetPixel(x, y, Color.FromArgb(newValue, newValue, newValue));
+
+                    // Обновление прогресса
+                    processedPixels++;
+                    int progress = (int)((double)processedPixels / totalPixels * 100);
+                    progressForm.UpdateProgress(progress);
+                    Application.DoEvents();
+                }
+            }
+            return result;
+        }
+
+        private void методУоллесаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                var progressForm = new ProgressBar();
+                progressForm.Show();
+
+                Bitmap original = new Bitmap(pictureBox1.Image);
+                Bitmap result = WallaceEdgeDetection(original, progressForm);
+
+                FormResult resultForm = new FormResult(result);
+                resultForm.Show();
+
+                progressForm.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка обработки: {ex.Message}", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Bitmap WallaceEdgeDetection(Bitmap original, ProgressBar progressForm)
+        {
+            Bitmap result = new Bitmap(original.Width, original.Height);
+            int totalPixels = original.Width * original.Height;
+            int processedPixels = 0;
+
+            for (int y = 1; y < original.Height - 1; y++)
+            {
+                for (int x = 1; x < original.Width - 1; x++)
+                {
+                    // Получаем значения пикселей в окрестности 3x3
+                    int[] A = new int[8];
+                    A[0] = original.GetPixel(x - 1, y - 1).R;
+                    A[1] = original.GetPixel(x, y - 1).R;
+                    A[2] = original.GetPixel(x + 1, y - 1).R;
+                    A[3] = original.GetPixel(x + 1, y).R;
+                    A[4] = original.GetPixel(x + 1, y + 1).R;
+                    A[5] = original.GetPixel(x, y + 1).R;
+                    A[6] = original.GetPixel(x - 1, y + 1).R;
+                    A[7] = original.GetPixel(x - 1, y).R;
+                    int F = original.GetPixel(x, y).R;
+
+                    // Вычисляем по формуле Уоллеса
+                    double numerator = Math.Pow(A[0] * A[2] * A[4] * A[6], 1.0 / 4);
+                    double denominator = Math.Pow(A[1] * A[3] * A[5] * A[7], 1.0 / 4);
+
+                    // Добавляем 1 к числителю и знаменателю, чтобы избежать деления на ноль
+                    numerator += 1;
+                    denominator += 1;
+
+                    int newValue = (int)(500 * (numerator / denominator) * F);
+                    newValue = Math.Min(255, Math.Max(0, newValue + 100)); // Нормализация и повышение яркости
+
+                    result.SetPixel(x, y, Color.FromArgb(newValue, newValue, newValue));
+
+                    // Обновление прогресса
+                    processedPixels++;
+                    int progress = (int)((double)processedPixels / totalPixels * 100);
+                    progressForm.UpdateProgress(progress);
+                    Application.DoEvents();
+                }
+            }
+            return result;
+        }
+        //Класс для измения цвета при наведении на кнопки
+        public class MyOrangeColorTable : ProfessionalColorTable
+        {
+            // Основные цвета для подсветки
+            public override Color MenuItemSelected => Color.FromArgb(255, 224, 192); // Светло-оранжевый фон
+
+            public override Color MenuItemSelectedGradientBegin => Color.FromArgb(255, 224, 192);
+            public override Color MenuItemSelectedGradientEnd => Color.FromArgb(255, 224, 192);
+
+            public override Color MenuItemBorder => Color.FromArgb(255, 180, 120); // Граница
+
+            // Цвета при нажатии
+            public override Color MenuItemPressedGradientBegin => Color.FromArgb(255, 180, 120);
+            public override Color MenuItemPressedGradientEnd => Color.FromArgb(255, 180, 120);
+
+            // Фон выпадающего меню
+            public override Color ToolStripDropDownBackground => Color.White;
+
+            // Граница меню
+            public override Color MenuBorder => Color.LightGray;
+
+        }
+
     }
-
-    //Класс для измения цвета при наведении на кнопки
-    public class MyOrangeColorTable : ProfessionalColorTable
-    {
-        // Основные цвета для подсветки
-        public override Color MenuItemSelected => Color.FromArgb(255, 224, 192); // Светло-оранжевый фон
-
-        public override Color MenuItemSelectedGradientBegin => Color.FromArgb(255, 224, 192);
-        public override Color MenuItemSelectedGradientEnd => Color.FromArgb(255, 224, 192);
-
-        public override Color MenuItemBorder => Color.FromArgb(255, 180, 120); // Граница
-
-        // Цвета при нажатии
-        public override Color MenuItemPressedGradientBegin => Color.FromArgb(255, 180, 120);
-        public override Color MenuItemPressedGradientEnd => Color.FromArgb(255, 180, 120);
-
-        // Фон выпадающего меню
-        public override Color ToolStripDropDownBackground => Color.White;
-
-        // Граница меню
-        public override Color MenuBorder => Color.LightGray;
-
-    }
-
 }
