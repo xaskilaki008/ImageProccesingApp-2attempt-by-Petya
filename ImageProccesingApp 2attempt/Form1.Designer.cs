@@ -48,8 +48,6 @@ namespace ImageProccesingApp_2attempt
             this.filters_shadesofgrey = new System.Windows.Forms.ToolStripMenuItem();
             this.filters_negative = new System.Windows.Forms.ToolStripMenuItem();
             this.цветподробноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.view_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.весьЭкранF11ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.image_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Rotate = new System.Windows.Forms.ToolStripMenuItem();
             this.построитьУбратьГистограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -167,7 +165,6 @@ namespace ImageProccesingApp_2attempt
             this.App_menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.file_tsmenu,
             this.filters_tsmenu,
-            this.view_ToolStripMenuItem,
             this.image_ToolStripMenuItem,
             this.highlighting_toolStripMenuItem2});
             this.App_menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -259,7 +256,7 @@ namespace ImageProccesingApp_2attempt
             this.filters_binaris.BackColor = System.Drawing.SystemColors.Control;
             this.filters_binaris.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_binaris.Name = "filters_binaris";
-            this.filters_binaris.Size = new System.Drawing.Size(224, 26);
+            this.filters_binaris.Size = new System.Drawing.Size(204, 26);
             this.filters_binaris.Text = "Бинаризация";
             this.filters_binaris.Click += new System.EventHandler(this.filters_binaris_Click);
             // 
@@ -268,7 +265,7 @@ namespace ImageProccesingApp_2attempt
             this.filters_shadesofgrey.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.filters_shadesofgrey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_shadesofgrey.Name = "filters_shadesofgrey";
-            this.filters_shadesofgrey.Size = new System.Drawing.Size(224, 26);
+            this.filters_shadesofgrey.Size = new System.Drawing.Size(204, 26);
             this.filters_shadesofgrey.Text = "Оттенки серого";
             this.filters_shadesofgrey.Click += new System.EventHandler(this.filters_shadesofgrey_Click);
             // 
@@ -277,7 +274,7 @@ namespace ImageProccesingApp_2attempt
             this.filters_negative.BackColor = System.Drawing.SystemColors.Control;
             this.filters_negative.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.filters_negative.Name = "filters_negative";
-            this.filters_negative.Size = new System.Drawing.Size(224, 26);
+            this.filters_negative.Size = new System.Drawing.Size(204, 26);
             this.filters_negative.Text = "Негатив";
             this.filters_negative.Click += new System.EventHandler(this.filters_negative_Click);
             // 
@@ -286,28 +283,9 @@ namespace ImageProccesingApp_2attempt
             this.цветподробноToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.цветподробноToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.цветподробноToolStripMenuItem.Name = "цветподробноToolStripMenuItem";
-            this.цветподробноToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.цветподробноToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.цветподробноToolStripMenuItem.Text = "Цвет (подробно)";
             this.цветподробноToolStripMenuItem.Click += new System.EventHandler(this.цветподробноToolStripMenuItem_Click);
-            // 
-            // view_ToolStripMenuItem
-            // 
-            this.view_ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(188)))), ((int)(((byte)(180)))));
-            this.view_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.весьЭкранF11ToolStripMenuItem});
-            this.view_ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.view_ToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
-            this.view_ToolStripMenuItem.Name = "view_ToolStripMenuItem";
-            this.view_ToolStripMenuItem.Size = new System.Drawing.Size(51, 25);
-            this.view_ToolStripMenuItem.Text = "Вид";
-            // 
-            // весьЭкранF11ToolStripMenuItem
-            // 
-            this.весьЭкранF11ToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.весьЭкранF11ToolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
-            this.весьЭкранF11ToolStripMenuItem.Name = "весьЭкранF11ToolStripMenuItem";
-            this.весьЭкранF11ToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
-            this.весьЭкранF11ToolStripMenuItem.Text = "Весь экран [F11]";
             // 
             // image_ToolStripMenuItem
             // 
@@ -753,7 +731,6 @@ namespace ImageProccesingApp_2attempt
             this.txt_hight.Name = "txt_hight";
             this.txt_hight.Size = new System.Drawing.Size(100, 22);
             this.txt_hight.TabIndex = 6;
-
             // 
             // txt_width
             // 
@@ -917,8 +894,6 @@ namespace ImageProccesingApp_2attempt
         private System.Windows.Forms.ToolStripMenuItem filters_binaris;
         private System.Windows.Forms.ToolStripMenuItem filters_shadesofgrey;
         private System.Windows.Forms.ToolStripMenuItem filters_negative;
-        private System.Windows.Forms.ToolStripMenuItem view_ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem весьЭкранF11ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem image_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Rotate;
         private System.Windows.Forms.ToolStripMenuItem построитьУбратьГистограммыToolStripMenuItem;
