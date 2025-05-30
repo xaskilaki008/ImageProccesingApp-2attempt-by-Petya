@@ -134,6 +134,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormResult.resx">
+      <DependentUpon>FormResult.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_ColorPicker.resx">
       <DependentUpon>Form_ColorPicker.cs</DependentUpon>
     </EmbeddedResource>

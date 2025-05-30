@@ -37,13 +37,14 @@
             // 
             this.pbar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
             this.pbar.AnimationSpeed = 500;
-            this.pbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.pbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
             this.pbar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pbar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.pbar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pbar.InnerMargin = 2;
             this.pbar.InnerWidth = -1;
-            this.pbar.Location = new System.Drawing.Point(2, -2);
+            this.pbar.Location = new System.Drawing.Point(19, -2);
+            this.pbar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbar.MarqueeAnimationSpeed = 2000;
             this.pbar.Name = "pbar";
             this.pbar.OuterColor = System.Drawing.Color.DimGray;
@@ -52,7 +53,7 @@
             this.pbar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.pbar.ProgressWidth = 18;
             this.pbar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.pbar.Size = new System.Drawing.Size(320, 320);
+            this.pbar.Size = new System.Drawing.Size(400, 400);
             this.pbar.StartAngle = 270;
             this.pbar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.pbar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
@@ -72,12 +73,13 @@
             // 
             // ProgressBar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(331, 323);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.ClientSize = new System.Drawing.Size(441, 398);
             this.Controls.Add(this.pbar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ProgressBar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProgressBar";
