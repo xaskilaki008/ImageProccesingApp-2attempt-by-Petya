@@ -341,7 +341,7 @@ namespace ImageProccesingApp_2attempt
             this.Kirsha_toolStripMenuItem.ForeColor = System.Drawing.Color.Sienna;
             this.Kirsha_toolStripMenuItem.Name = "Kirsha_toolStripMenuItem";
             this.Kirsha_toolStripMenuItem.Size = new System.Drawing.Size(254, 26);
-            this.Kirsha_toolStripMenuItem.Text = "Выделение Кирша";
+            this.Kirsha_toolStripMenuItem.Text = "Метод Кирша";
             this.Kirsha_toolStripMenuItem.Click += new System.EventHandler(this.kirsha_toolStripMenuItem_Click);
             // 
             // laplas_ToolStripMenuItem
