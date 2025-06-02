@@ -464,7 +464,6 @@ namespace ImageProccesingApp_2attempt
             this.btn_stretch.TabIndex = 2;
             this.btn_stretch.Text = "Stretch";
             this.btn_stretch.UseVisualStyleBackColor = true;
-            this.btn_stretch.Click += new System.EventHandler(this.btn_stretch_Click_1);
             // 
             // panel6
             // 

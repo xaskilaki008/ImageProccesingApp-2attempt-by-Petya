@@ -1338,19 +1338,6 @@ namespace ImageProccesingApp_2attempt
             pictureBox1.Image = processedImage;
         }
 
-        private void ResetImage()
-        {
-            if (originalImage != null)
-            {
-                processedImage = new Bitmap(originalImage);
-                pictureBox1.Image = processedImage;
-            }
-        }
-        private void btn_stretch_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void методРобертсаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null)
@@ -1423,16 +1410,18 @@ namespace ImageProccesingApp_2attempt
 
             try
             {
-                var progressForm = new ProgressBar();
-                progressForm.Show();
+                using (var progressForm = new ProgressBar())
+                {
+                    progressForm.Show();
 
-                Bitmap original = new Bitmap(pictureBox1.Image);
-                Bitmap result = StatisticalEdgeDetection(original, progressForm);
+                    // Вызываем метод с фиксированным порогом 50
+                    Bitmap result = StatisticalEdgeDetection(
+                        new Bitmap(pictureBox1.Image),
+                        progressForm);
 
-                FormResult resultForm = new FormResult(result);
-                resultForm.Show();
-
-                progressForm.Close();
+                    FormResult resultForm = new FormResult(result, "Статистический метод");
+                    resultForm.Show();
+                }
             }
             catch (Exception ex)
             {
@@ -1443,48 +1432,45 @@ namespace ImageProccesingApp_2attempt
 
         private Bitmap StatisticalEdgeDetection(Bitmap original, ProgressBar progressForm)
         {
+            const int BrightnessThreshold = 50; // Фиксированный порог яркости
             Bitmap result = new Bitmap(original.Width, original.Height);
             int totalPixels = original.Width * original.Height;
             int processedPixels = 0;
 
-            // Первый проход - вычисление среднего и отклонения
             for (int y = 1; y < original.Height - 1; y++)
             {
                 for (int x = 1; x < original.Width - 1; x++)
                 {
-                    // Вычисляем среднее значение в окрестности 3x3
+                    // Вычисляем среднее значение
                     double sum = 0;
                     for (int i = -1; i <= 1; i++)
-                    {
                         for (int j = -1; j <= 1; j++)
-                        {
                             sum += original.GetPixel(x + i, y + j).R;
-                        }
-                    }
                     double mean = sum / 9;
 
-                    // Вычисляем среднеквадратичное отклонение
+                    // Вычисляем стандартное отклонение
                     double variance = 0;
                     for (int i = -1; i <= 1; i++)
-                    {
                         for (int j = -1; j <= 1; j++)
                         {
                             double diff = original.GetPixel(x + i, y + j).R - mean;
                             variance += diff * diff;
                         }
-                    }
                     double stdDev = Math.Sqrt(variance / 9);
 
-                    // Применяем преобразование
+                    // Применяем преобразование с фиксированным порогом 50
                     int newValue = (int)(stdDev * original.GetPixel(x, y).R);
-                    newValue = Math.Min(255, Math.Max(0, newValue + 100)); // Нормализация и повышение яркости
+                    newValue += BrightnessThreshold;
+
+                    // Ручная реализация Clamp
+                    if (newValue < 0) newValue = 0;
+                    if (newValue > 255) newValue = 255;
 
                     result.SetPixel(x, y, Color.FromArgb(newValue, newValue, newValue));
 
                     // Обновление прогресса
                     processedPixels++;
-                    int progress = (int)((double)processedPixels / totalPixels * 100);
-                    progressForm.UpdateProgress(progress);
+                    progressForm.UpdateProgress((int)((double)processedPixels / totalPixels * 100));
                     Application.DoEvents();
                 }
             }

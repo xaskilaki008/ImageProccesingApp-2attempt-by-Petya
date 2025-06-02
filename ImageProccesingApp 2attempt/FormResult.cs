@@ -12,10 +12,14 @@ namespace ImageProccesingApp_2attempt
 {
     public partial class FormResult : Form
     {
-        public FormResult(Image resultImage)
+        public FormResult(Image resultImage, string methodName = null)
         {
             InitializeComponent();
-            this.Text = "Результат фильтра";
+
+            // Устанавливаем заголовок окна в зависимости от переданного метода
+            this.Text = string.IsNullOrEmpty(methodName)
+                ? "Результат фильтра"
+                : $"Статистический метод ({methodName})";
 
             // Настройка PictureBox для отображения результата
             PictureBox pictureBoxResult = new PictureBox
