@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -1498,55 +1496,57 @@ namespace ImageProccesingApp_2attempt
         }
 
         // Реализация метода Уоллеса
-        private Bitmap WallaceEdgeDetection(Bitmap original, ProgressBar progressForm)
+        private Bitmap WallaceEdgeDetection(Bitmap original, ProgressBar progressBar = null)
         {
             Bitmap result = new Bitmap(original.Width, original.Height);
             int totalPixels = original.Width * original.Height;
             int processedPixels = 0;
 
-            // Коэффициенты согласно инструкции
             const double multiplier = 500.0;
             const int brightnessBoost = 100;
 
-            // Функция для ограничения значения в диапазоне [0, 255]
-            int Clamp(int value)
-            {
-                return value < 0 ? 0 : (value > 255 ? 255 : value);
-            }
+            int Clamp(int value) => Math.Clamp(value, 0, 255);
 
             for (int y = 1; y < original.Height - 1; y++)
             {
                 for (int x = 1; x < original.Width - 1; x++)
                 {
-                    // Получаем цвет центрального пикселя
-                    Color centerColor = original.GetPixel(x, y);
+                    Color center = original.GetPixel(x, y);
+                    Color top = original.GetPixel(x, y - 1);
+                    Color right = original.GetPixel(x + 1, y);
+                    Color bottom = original.GetPixel(x, y + 1);
+                    Color left = original.GetPixel(x - 1, y);
 
-                    // Получаем цвета соседних пикселей (верх, право, низ, лево)
-                    Color topColor = original.GetPixel(x, y - 1);
-                    Color rightColor = original.GetPixel(x + 1, y);
-                    Color bottomColor = original.GetPixel(x, y + 1);
-                    Color leftColor = original.GetPixel(x - 1, y);
-
-                    // Обрабатываем каждый цветовой канал отдельно
-                    int r = ProcessChannel(centerColor.R, topColor.R, rightColor.R, bottomColor.R, leftColor.R);
-                    int g = ProcessChannel(centerColor.G, topColor.G, rightColor.G, bottomColor.G, leftColor.G);
-                    int b = ProcessChannel(centerColor.B, topColor.B, rightColor.B, bottomColor.B, leftColor.B);
-
-                    // Применяем усиление и ограничение диапазона
-                    r = Clamp((int)(r * multiplier + brightnessBoost));
-                    g = Clamp((int)(g * multiplier + brightnessBoost));
-                    b = Clamp((int)(b * multiplier + brightnessBoost));
+                    int r = ProcessChannel(center.R, top.R, right.R, bottom.R, left.R);
+                    int g = ProcessChannel(center.G, top.G, right.G, bottom.G, left.G);
+                    int b = ProcessChannel(center.B, top.B, right.B, bottom.B, left.B);
 
                     result.SetPixel(x, y, Color.FromArgb(r, g, b));
 
-                    // Обновление прогресса
                     processedPixels++;
-                    progressForm.Value = (int)((double)processedPixels / totalPixels * 100);
-                    Application.DoEvents();
+                    UpdateProgress(progressBar, processedPixels, totalPixels);
                 }
             }
             return result;
         }
+
+        private int ProcessChannel(byte center, byte top, byte right, byte bottom, byte left)
+        {
+            double ratio1 = (center + 1) / (double)(top + 1);
+            double ratio3 = (center + 1) / (double)(right + 1);
+            double ratio5 = (center + 1) / (double)(bottom + 1);
+            double ratio7 = (center + 1) / (double)(left + 1);
+
+            double logProduct = Math.Log(ratio1) * Math.Log(ratio3) *
+                               Math.Log(ratio5) * Math.Log(ratio7);
+
+            double normalized = logProduct / 4.0;
+            int value = (int)Math.Round(normalized * 500.0 + 100.0);
+
+            return Math.Clamp(value, 0, 255);
+        }
+
+        
 
         // Метод для обработки одного цветового канала
         private double ProcessChannel(byte center, byte top, byte right, byte bottom, byte left)
