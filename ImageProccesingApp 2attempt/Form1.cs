@@ -551,20 +551,19 @@ namespace ImageProccesingApp_2attempt
             using (var form = new Form())
             {
                 form.Text = "Параметры бинаризации";
-                form.Size = new Size(350, 250); // Увеличена ширина формы
+                form.Size = new Size(400, 350);
                 form.FormBorderStyle = FormBorderStyle.FixedDialog;
                 form.StartPosition = FormStartPosition.CenterParent;
                 form.BackColor = Color.Lavender;
 
-                // Группа для радиокнопок
-                var groupBox = new GroupBox()
+                // Группа для типа бинаризации
+                var groupBoxType = new GroupBox()
                 {
                     Text = "Тип бинаризации",
                     Location = new Point(10, 10),
-                    Size = new Size(320, 80)
+                    Size = new Size(370, 80)
                 };
 
-                // Радиокнопки
                 var rbBrightness = new RadioButton()
                 {
                     Text = "По яркости (чёрно-белая)",
@@ -573,81 +572,97 @@ namespace ImageProccesingApp_2attempt
                     AutoSize = true
                 };
 
-                var rbColor = new RadioButton()
+                var rbTwoColor = new RadioButton()
                 {
-                    Text = "По выбранному цвету",
+                    Text = "Двухцветная бинаризация",
                     Location = new Point(15, 45),
                     AutoSize = true
                 };
 
-                // Кнопка выбора цвета
-                var btnPickColor = new Button()
+                // Группа для выбора цветов
+                var groupBoxColors = new GroupBox()
                 {
-                    Text = "Выбрать цвет...",
-                    Location = new Point(200, 45),
-                    Size = new Size(100, 23),
-                    Enabled = false,
-                    BackColor = Color.Red
+                    Text = "Цвета для бинаризации",
+                    Location = new Point(10, 100),
+                    Size = new Size(370, 100),
+                    Enabled = false
                 };
 
-                Color targetColor = Color.Red;
+                Color color1 = Color.Black;
+                Color color2 = Color.White;
 
-                rbColor.CheckedChanged += (s, ev) =>
+                var btnColor1 = new Button()
                 {
-                    btnPickColor.Enabled = rbColor.Checked;
+                    Text = "Цвет 1 (фон)",
+                    Location = new Point(15, 20),
+                    Size = new Size(150, 30),
+                    BackColor = color1,
+                    ForeColor = Color.White
                 };
 
-                btnPickColor.Click += (s, ev) =>
+                var btnColor2 = new Button()
                 {
-                    using (ColorDialog colorDialog = new ColorDialog())
+                    Text = "Цвет 2 (объекты)",
+                    Location = new Point(200, 20),
+                    Size = new Size(150, 30),
+                    BackColor = color2
+                };
+
+                // Обработчики выбора цветов
+                btnColor1.Click += (s, ev) =>
+                {
+                    using (ColorDialog dlg = new ColorDialog())
                     {
-                        if (colorDialog.ShowDialog() == DialogResult.OK)
+                        if (dlg.ShowDialog() == DialogResult.OK)
                         {
-                            targetColor = colorDialog.Color;
-                            btnPickColor.BackColor = targetColor;
+                            color1 = dlg.Color;
+                            btnColor1.BackColor = color1;
+                            btnColor1.ForeColor = GetContrastColor(color1);
                         }
                     }
                 };
 
-                // Подписи и трекбар
+                btnColor2.Click += (s, ev) =>
+                {
+                    using (ColorDialog dlg = new ColorDialog())
+                    {
+                        if (dlg.ShowDialog() == DialogResult.OK)
+                        {
+                            color2 = dlg.Color;
+                            btnColor2.BackColor = color2;
+                            btnColor2.ForeColor = GetContrastColor(color2);
+                        }
+                    }
+                };
+
+                // Активация группы цветов при выборе двухцветного режима
+                rbTwoColor.CheckedChanged += (s, ev) =>
+                {
+                    groupBoxColors.Enabled = rbTwoColor.Checked;
+                };
+
+                // Настройка порога
                 var lblThreshold = new Label()
                 {
-                    Text = "Чувствительность: 50",
-                    Location = new Point(10, 100),
+                    Text = "Порог бинаризации: 128",
+                    Location = new Point(10, 210),
                     Font = new Font("Segoe UI", 9, FontStyle.Bold),
                     AutoSize = true
                 };
 
-                // Подпись "Меньше" слева
-                var lblLess = new Label()
-                {
-                    Text = "Меньше",
-                    Location = new Point(10, 140),
-                    AutoSize = true
-                };
-
-                // Трекбар
                 var trkThreshold = new TrackBar()
                 {
-                    Minimum = 1,
-                    Maximum = 100,
-                    Value = 50,
-                    Location = new Point(50, 135), // Сдвинут вправо
-                    Size = new Size(200, 45),
-                    TickFrequency = 10
-                };
-
-                // Подпись "Больше" справа
-                var lblMore = new Label()
-                {
-                    Text = "Больше",
-                    Location = new Point(260, 140),
-                    AutoSize = true
+                    Minimum = 0,
+                    Maximum = 255,
+                    Value = 128,
+                    Location = new Point(10, 235),
+                    Size = new Size(360, 45),
+                    TickFrequency = 16
                 };
 
                 trkThreshold.Scroll += (s, ev) =>
                 {
-                    lblThreshold.Text = $"Чувствительность: {trkThreshold.Value}";
+                    lblThreshold.Text = $"Порог бинаризации: {trkThreshold.Value}";
                 };
 
                 // Кнопка применения
@@ -655,21 +670,23 @@ namespace ImageProccesingApp_2attempt
                 {
                     Text = "Применить",
                     DialogResult = DialogResult.OK,
-                    Location = new Point(120, 170),
+                    Location = new Point(150, 280),
                     Size = new Size(100, 30),
                     BackColor = Color.LightSteelBlue,
                     FlatStyle = FlatStyle.Flat
                 };
 
-                groupBox.Controls.Add(rbBrightness);
-                groupBox.Controls.Add(rbColor);
-                groupBox.Controls.Add(btnPickColor);
+                // Добавление элементов на форму
+                groupBoxType.Controls.Add(rbBrightness);
+                groupBoxType.Controls.Add(rbTwoColor);
 
-                form.Controls.Add(groupBox);
+                groupBoxColors.Controls.Add(btnColor1);
+                groupBoxColors.Controls.Add(btnColor2);
+
+                form.Controls.Add(groupBoxType);
+                form.Controls.Add(groupBoxColors);
                 form.Controls.Add(lblThreshold);
-                form.Controls.Add(lblLess);
                 form.Controls.Add(trkThreshold);
-                form.Controls.Add(lblMore);
                 form.Controls.Add(btnApply);
 
                 if (form.ShowDialog(this) == DialogResult.OK)
@@ -683,27 +700,22 @@ namespace ImageProccesingApp_2attempt
                         for (int x = 0; x < original.Width; x++)
                         {
                             Color pixel = original.GetPixel(x, y);
-                            Color binaryColor = Color.Black;
+                            Color resultColor;
 
                             if (rbBrightness.Checked)
                             {
+                                // Стандартная бинаризация по яркости
                                 int gray = (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11);
-                                binaryColor = gray > threshold * 2.55 ? Color.White : Color.Black;
+                                resultColor = gray > threshold ? color2 : color1;
                             }
                             else
                             {
-                                double colorDistance = Math.Sqrt(
-                                    Math.Pow(pixel.R - targetColor.R, 2) +
-                                    Math.Pow(pixel.G - targetColor.G, 2) +
-                                    Math.Pow(pixel.B - targetColor.B, 2));
-
-                                double maxDistance = 441.67;
-                                double sensitivity = (100 - threshold) / 100.0;
-
-                                binaryColor = colorDistance < (maxDistance * sensitivity) ? Color.White : Color.Black;
+                                // Двухцветная бинаризация
+                                int gray = (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11);
+                                resultColor = gray > threshold ? color2 : color1;
                             }
 
-                            binary.SetPixel(x, y, binaryColor);
+                            binary.SetPixel(x, y, resultColor);
                         }
                     }
 
@@ -711,8 +723,16 @@ namespace ImageProccesingApp_2attempt
                     processedImage = new Bitmap(binary);
                 }
             }
+
             undoHistory.Push(new Bitmap(processedImage));
             redoHistory.Clear();
+        }
+
+        // Вспомогательная функция для определения контрастного цвета текста
+        private Color GetContrastColor(Color color)
+        {
+            int brightness = (int)(color.R * 0.299 + color.G * 0.587 + color.B * 0.114);
+            return brightness > 128 ? Color.Black : Color.White;
         }
         private void btn_f2_Click_1(object sender, EventArgs e)
         {
@@ -1374,6 +1394,9 @@ namespace ImageProccesingApp_2attempt
             int totalPixels = original.Width * original.Height;
             int processedPixels = 0;
 
+            // Порог для определения границ (можно регулировать)
+            int threshold = 30;
+
             for (int y = 0; y < original.Height - 1; y++)
             {
                 for (int x = 0; x < original.Width - 1; x++)
@@ -1383,12 +1406,26 @@ namespace ImageProccesingApp_2attempt
                     Color c3 = original.GetPixel(x + 1, y);
                     Color c4 = original.GetPixel(x, y + 1);
 
-                    int gx = c1.R - c2.R;
-                    int gy = c1.R - c3.R - c4.R + c2.R;
-                    int gradient = (int)Math.Sqrt(gx * gx + gy * gy);
-                    gradient = Math.Min(255, gradient + 100); // Повышение порога яркости
+                    // Вычисляем градиенты для каждого канала
+                    int gxR = c1.R - c2.R;
+                    int gyR = c1.R - c3.R - c4.R + c2.R;
+                    int gradientR = (int)Math.Sqrt(gxR * gxR + gyR * gyR);
 
-                    result.SetPixel(x, y, Color.FromArgb(gradient, gradient, gradient));
+                    int gxG = c1.G - c2.G;
+                    int gyG = c1.G - c3.G - c4.G + c2.G;
+                    int gradientG = (int)Math.Sqrt(gxG * gxG + gyG * gyG);
+
+                    int gxB = c1.B - c2.B;
+                    int gyB = c1.B - c3.B - c4.B + c2.B;
+                    int gradientB = (int)Math.Sqrt(gxB * gxB + gyB * gyB);
+
+                    // Общий градиент (можно использовать максимальное значение)
+                    int maxGradient = Math.Max(gradientR, Math.Max(gradientG, gradientB));
+
+                    // Применяем порог: если градиент выше порога - белый, иначе - черный
+                    Color edgeColor = maxGradient > threshold ? Color.White : Color.Black;
+
+                    result.SetPixel(x, y, edgeColor);
 
                     // Обновление прогресса
                     processedPixels++;
@@ -1399,6 +1436,37 @@ namespace ImageProccesingApp_2attempt
             }
             return result;
         }
+        // Метод Уоллеса
+        private void методУоллесаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (var progressForm = new ProgressBar())
+                {
+                    progressForm.Show();
+
+                    Bitmap result = WallaceEdgeDetection(
+                        new Bitmap(pictureBox1.Image),
+                        progressForm);
+
+                    FormResult resultForm = new FormResult(result, "Метод Уоллеса");
+                    resultForm.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка обработки: {ex.Message}", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        // Статистический метод
         private void статистическийМетодToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null)
@@ -1414,7 +1482,6 @@ namespace ImageProccesingApp_2attempt
                 {
                     progressForm.Show();
 
-                    // Вызываем метод с фиксированным порогом 50
                     Bitmap result = StatisticalEdgeDetection(
                         new Bitmap(pictureBox1.Image),
                         progressForm);
@@ -1430,9 +1497,80 @@ namespace ImageProccesingApp_2attempt
             }
         }
 
+        // Реализация метода Уоллеса
+        private Bitmap WallaceEdgeDetection(Bitmap original, ProgressBar progressForm)
+        {
+            Bitmap result = new Bitmap(original.Width, original.Height);
+            int totalPixels = original.Width * original.Height;
+            int processedPixels = 0;
+
+            // Коэффициенты согласно инструкции
+            const double multiplier = 500.0;
+            const int brightnessBoost = 100;
+
+            // Функция для ограничения значения в диапазоне [0, 255]
+            int Clamp(int value)
+            {
+                return value < 0 ? 0 : (value > 255 ? 255 : value);
+            }
+
+            for (int y = 1; y < original.Height - 1; y++)
+            {
+                for (int x = 1; x < original.Width - 1; x++)
+                {
+                    // Получаем цвет центрального пикселя
+                    Color centerColor = original.GetPixel(x, y);
+
+                    // Получаем цвета соседних пикселей (верх, право, низ, лево)
+                    Color topColor = original.GetPixel(x, y - 1);
+                    Color rightColor = original.GetPixel(x + 1, y);
+                    Color bottomColor = original.GetPixel(x, y + 1);
+                    Color leftColor = original.GetPixel(x - 1, y);
+
+                    // Обрабатываем каждый цветовой канал отдельно
+                    int r = ProcessChannel(centerColor.R, topColor.R, rightColor.R, bottomColor.R, leftColor.R);
+                    int g = ProcessChannel(centerColor.G, topColor.G, rightColor.G, bottomColor.G, leftColor.G);
+                    int b = ProcessChannel(centerColor.B, topColor.B, rightColor.B, bottomColor.B, leftColor.B);
+
+                    // Применяем усиление и ограничение диапазона
+                    r = Clamp((int)(r * multiplier + brightnessBoost));
+                    g = Clamp((int)(g * multiplier + brightnessBoost));
+                    b = Clamp((int)(b * multiplier + brightnessBoost));
+
+                    result.SetPixel(x, y, Color.FromArgb(r, g, b));
+
+                    // Обновление прогресса
+                    processedPixels++;
+                    progressForm.Value = (int)((double)processedPixels / totalPixels * 100);
+                    Application.DoEvents();
+                }
+            }
+            return result;
+        }
+
+        // Метод для обработки одного цветового канала
+        private double ProcessChannel(byte center, byte top, byte right, byte bottom, byte left)
+        {
+            // Вычисляем отношения center/neighbor с добавлением 1 (чтобы избежать деления на 0)
+            double ratio1 = (center + 1) / (double)(top + 1);
+            double ratio3 = (center + 1) / (double)(right + 1);
+            double ratio5 = (center + 1) / (double)(bottom + 1);
+            double ratio7 = (center + 1) / (double)(left + 1);
+
+            // Вычисляем логарифмы отношений
+            double log1 = Math.Log(ratio1);
+            double log3 = Math.Log(ratio3);
+            double log5 = Math.Log(ratio5);
+            double log7 = Math.Log(ratio7);
+
+            // Вычисляем новое значение по формуле Уоллеса
+            return (log1 * log3 * log5 * log7) / 4.0;
+        }
+
+        // Реализация статистического метода
         private Bitmap StatisticalEdgeDetection(Bitmap original, ProgressBar progressForm)
         {
-            const int BrightnessThreshold = 50; // Фиксированный порог яркости
+            const int BrightnessThreshold = 50;
             Bitmap result = new Bitmap(original.Width, original.Height);
             int totalPixels = original.Width * original.Height;
             int processedPixels = 0;
@@ -1441,14 +1579,12 @@ namespace ImageProccesingApp_2attempt
             {
                 for (int x = 1; x < original.Width - 1; x++)
                 {
-                    // Вычисляем среднее значение
                     double sum = 0;
                     for (int i = -1; i <= 1; i++)
                         for (int j = -1; j <= 1; j++)
                             sum += original.GetPixel(x + i, y + j).R;
                     double mean = sum / 9;
 
-                    // Вычисляем стандартное отклонение
                     double variance = 0;
                     for (int i = -1; i <= 1; i++)
                         for (int j = -1; j <= 1; j++)
@@ -1458,93 +1594,14 @@ namespace ImageProccesingApp_2attempt
                         }
                     double stdDev = Math.Sqrt(variance / 9);
 
-                    // Применяем преобразование с фиксированным порогом 50
                     int newValue = (int)(stdDev * original.GetPixel(x, y).R);
                     newValue += BrightnessThreshold;
-
-                    // Ручная реализация Clamp
-                    if (newValue < 0) newValue = 0;
-                    if (newValue > 255) newValue = 255;
+                    newValue = Math.Max(0, Math.Min(255, newValue));
 
                     result.SetPixel(x, y, Color.FromArgb(newValue, newValue, newValue));
 
-                    // Обновление прогресса
                     processedPixels++;
                     progressForm.UpdateProgress((int)((double)processedPixels / totalPixels * 100));
-                    Application.DoEvents();
-                }
-            }
-            return result;
-        }
-
-        private void методУоллесаToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image == null)
-            {
-                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                var progressForm = new ProgressBar();
-                progressForm.Show();
-
-                Bitmap original = new Bitmap(pictureBox1.Image);
-                Bitmap result = WallaceEdgeDetection(original, progressForm);
-
-                FormResult resultForm = new FormResult(result);
-                resultForm.Show();
-
-                progressForm.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка обработки: {ex.Message}", "Ошибка",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private Bitmap WallaceEdgeDetection(Bitmap original, ProgressBar progressForm)
-        {
-            Bitmap result = new Bitmap(original.Width, original.Height);
-            int totalPixels = original.Width * original.Height;
-            int processedPixels = 0;
-
-            for (int y = 1; y < original.Height - 1; y++)
-            {
-                for (int x = 1; x < original.Width - 1; x++)
-                {
-                    // Получаем значения пикселей в окрестности 3x3
-                    int[] A = new int[8];
-                    A[0] = original.GetPixel(x - 1, y - 1).R;
-                    A[1] = original.GetPixel(x, y - 1).R;
-                    A[2] = original.GetPixel(x + 1, y - 1).R;
-                    A[3] = original.GetPixel(x + 1, y).R;
-                    A[4] = original.GetPixel(x + 1, y + 1).R;
-                    A[5] = original.GetPixel(x, y + 1).R;
-                    A[6] = original.GetPixel(x - 1, y + 1).R;
-                    A[7] = original.GetPixel(x - 1, y).R;
-                    int F = original.GetPixel(x, y).R;
-
-                    // Вычисляем по формуле Уоллеса
-                    double numerator = Math.Pow(A[0] * A[2] * A[4] * A[6], 1.0 / 4);
-                    double denominator = Math.Pow(A[1] * A[3] * A[5] * A[7], 1.0 / 4);
-
-                    // Добавляем 1 к числителю и знаменателю, чтобы избежать деления на ноль
-                    numerator += 1;
-                    denominator += 1;
-
-                    int newValue = (int)(500 * (numerator / denominator) * F);
-                    newValue = Math.Min(255, Math.Max(0, newValue + 100)); // Нормализация и повышение яркости
-
-                    result.SetPixel(x, y, Color.FromArgb(newValue, newValue, newValue));
-
-                    // Обновление прогресса
-                    processedPixels++;
-                    int progress = (int)((double)processedPixels / totalPixels * 100);
-                    progressForm.UpdateProgress(progress);
                     Application.DoEvents();
                 }
             }
