@@ -2,7 +2,7 @@
 
 namespace ImageProccesingApp_2attempt
 {
-    partial class histograms
+    partial class Histograms
     {
         /// <summary>
         /// Required designer variable.
@@ -180,7 +180,7 @@ namespace ImageProccesingApp_2attempt
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 476);
             this.Controls.Add(this.barchartpanel);
-            this.Name = "histograms";
+            this.Name = "Histograms";
             this.Text = "histograms";
             this.barchartpanel.ResumeLayout(false);
             this.barchartpanel.PerformLayout();

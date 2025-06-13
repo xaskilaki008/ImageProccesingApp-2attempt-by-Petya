@@ -9,14 +9,14 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 namespace ImageProccesingApp_2attempt
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        private Bitmap originalImage; // Оригинальное изображение
-        private Bitmap processedImage; // Обработанное изображение
-        private Stack<Bitmap> undoHistory = new Stack<Bitmap>();  // История для отката
-        private Stack<Bitmap> redoHistory = new Stack<Bitmap>();  // История для повтора (опционально)
+        private Bitmap _originalImage; // Оригинальное изображение
+        private Bitmap _processedImage; // Обработанное изображение
+        private Stack<Bitmap> _undoHistory = new Stack<Bitmap>();  // История для отката
+        private Stack<Bitmap> _redoHistory = new Stack<Bitmap>();  // История для повтора (опционально)
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             InitializeFiltersMenu();
@@ -51,22 +51,22 @@ namespace ImageProccesingApp_2attempt
             ToolStripMenuItem_Rotate.Click += ToolStripMenuItem_Rotate_Click;
             copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
             pasteToolStripMenuItem.Click += pasteToolStripMenuItem_Click;
-            // Добавьте в конструктор Form1() после инициализации других элементов:
+            // Добавьте в конструктор MainForm() после инициализации других элементов:
             this.KeyPreview = true; // Для обработки горячих клавиш
             this.KeyDown += Form1_KeyDown;
 
         }
-        histograms f2;
+        Histograms f2;
         private void построитьУбратьГистограммыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (processedImage == null)
+            if (_processedImage == null)
             {
                 MessageBox.Show("Сначала обработайте изображение!");
                 return;
             }
 
             // Передаем processedImage в конструктор
-            var histForm = new histograms(processedImage);
+            var histForm = new Histograms(_processedImage);
             histForm.Show();
         }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,30 +82,30 @@ namespace ImageProccesingApp_2attempt
                     try
                     {
                         // Очистка предыдущих изображений (если были)
-                        if (originalImage != null)
+                        if (_originalImage != null)
                         {
-                            originalImage.Dispose();
-                            originalImage = null;
+                            _originalImage.Dispose();
+                            _originalImage = null;
                         }
-                        if (processedImage != null)
+                        if (_processedImage != null)
                         {
-                            processedImage.Dispose();
-                            processedImage = null;
+                            _processedImage.Dispose();
+                            _processedImage = null;
                         }
 
                         // Загрузка изображения с проверкой на поддерживаемый формат
                         using (var tempImage = new Bitmap(openFileDialog.FileName))
                         {
-                            originalImage = new Bitmap(tempImage);
-                            processedImage = new Bitmap(tempImage);
+                            _originalImage = new Bitmap(tempImage);
+                            _processedImage = new Bitmap(tempImage);
                         }
 
                         // Обновление элементов интерфейса
-                        pictureBox1.Image = originalImage;
-                        pictureBox2.Image = originalImage;
+                        pictureBox1.Image = _originalImage;
+                        pictureBox2.Image = _originalImage;
 
                         txt_imgpath.Text = openFileDialog.FileName;
-                        UpdateImageInfo(originalImage);
+                        UpdateImageInfo(_originalImage);
 
                         // Настройка PictureBox
                         ConfigurePictureBoxes();
@@ -145,7 +145,7 @@ namespace ImageProccesingApp_2attempt
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
 
             // Опционально: можно добавить обработку слишком больших изображений
-            if (originalImage.Width > 2000 || originalImage.Height > 2000)
+            if (_originalImage.Width > 2000 || _originalImage.Height > 2000)
             {
                 MessageBox.Show("The image is very large. Processing may take longer.",
                                "Large Image", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -161,15 +161,15 @@ namespace ImageProccesingApp_2attempt
             txt_width.Text = string.Empty;
             txt_hight.Text = string.Empty;
 
-            if (originalImage != null)
+            if (_originalImage != null)
             {
-                originalImage.Dispose();
-                originalImage = null;
+                _originalImage.Dispose();
+                _originalImage = null;
             }
-            if (processedImage != null)
+            if (_processedImage != null)
             {
-                processedImage.Dispose();
-                processedImage = null;
+                _processedImage.Dispose();
+                _processedImage = null;
             }
         }
 
@@ -181,9 +181,9 @@ namespace ImageProccesingApp_2attempt
         private void нормальныйToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
-            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+            _undoHistory.Push(new Bitmap(_processedImage));  // Сохраняем текущее состояние
                                                            // Очищаем redoHistory при новом действии
-            redoHistory.Clear();
+            _redoHistory.Clear();
         }
         private void Btn_stretch_Click(object sender, EventArgs e)
         {
@@ -204,34 +204,34 @@ namespace ImageProccesingApp_2attempt
         // Изменение размера изображения
         private void Btn_resize_Click(object sender, EventArgs e)
         {
-            if (originalImage == null) return;
+            if (_originalImage == null) return;
             try
             {
                 int width = int.Parse(txt_width.Text);
                 int height = int.Parse(txt_hight.Text);
 
-                processedImage = new Bitmap(originalImage, width, height);
-                pictureBox1.Image = processedImage;
-                lbl_size.Text = $"{width} x {height}";
+                _processedImage = new Bitmap(_originalImage, width, height);
+                pictureBox1.Image = _processedImage;
+                lbl_size.Text = $@"{width} x {height}";
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error resizing image: {ex.Message}");
             }
-            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+            _undoHistory.Push(new Bitmap(_processedImage));  // Сохраняем текущее состояние
                                                            // Очищаем redoHistory при новом действии
-            redoHistory.Clear();
+            _redoHistory.Clear();
         }
         // Сброс изменений
         private void Btn_reload_Click(object sender, EventArgs e)
         {
-            if (originalImage != null)
+            if (_originalImage != null)
             {
-                undoHistory.Push(new Bitmap(processedImage)); // Сохраняем текущее состояние
+                _undoHistory.Push(new Bitmap(_processedImage)); // Сохраняем текущее состояние
 
-                processedImage?.Dispose();
-                processedImage = new Bitmap(originalImage);
-                pictureBox1.Image = processedImage;
+                _processedImage?.Dispose();
+                _processedImage = new Bitmap(_originalImage);
+                pictureBox1.Image = _processedImage;
 
                 // Сброс трекбаров
                 trk_hue.Value = 0;
@@ -242,23 +242,23 @@ namespace ImageProccesingApp_2attempt
         // Поворот изображения
         private void Btn_rotate_Click(object sender, EventArgs e)
         {
-            if (processedImage == null) return;
+            if (_processedImage == null) return;
 
-            processedImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            pictureBox1.Image = processedImage;
-            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+            _processedImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            pictureBox1.Image = _processedImage;
+            _undoHistory.Push(new Bitmap(_processedImage));  // Сохраняем текущее состояние
                                                            // Очищаем redoHistory при новом действии
-            redoHistory.Clear();
+            _redoHistory.Clear();
         }
         private void ToolStripMenuItem_Rotate_Click(object sender, EventArgs e)
         {
-            if (processedImage == null) return;
+            if (_processedImage == null) return;
 
-            processedImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            pictureBox1.Image = processedImage;
-            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+            _processedImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            pictureBox1.Image = _processedImage;
+            _undoHistory.Push(new Bitmap(_processedImage));  // Сохраняем текущее состояние
                                                            // Очищаем redoHistory при новом действии
-            redoHistory.Clear();
+            _redoHistory.Clear();
         }
         // Метод для настройки изображения (цвет, контраст, яркость)
         private Bitmap AdjustImage(Bitmap image, float hue, float contrast, float brightness)
@@ -391,13 +391,16 @@ namespace ImageProccesingApp_2attempt
                     // Обновляем изображения и интерфейс
                     pictureBox1.Image = pastedImage;
                     pictureBox2.Image = pastedImage;
-                    processedImage = new Bitmap(pastedImage);
-                    originalImage = new Bitmap(pastedImage);
+                    if (pastedImage != null)
+                    {
+                        _processedImage = new Bitmap(pastedImage);
+                        _originalImage = new Bitmap(pastedImage);
 
-                    // Обновляем информацию о размере
-                    txt_width.Text = pastedImage.Width.ToString();
-                    txt_hight.Text = pastedImage.Height.ToString();
-                    lbl_size.Text = $"{pastedImage.Width} x {pastedImage.Height}";
+                        // Обновляем информацию о размере
+                        txt_width.Text = pastedImage.Width.ToString();
+                        txt_hight.Text = pastedImage.Height.ToString();
+                        lbl_size.Text = $"{pastedImage.Width} x {pastedImage.Height}";
+                    }
 
                     // Сбрасываем трекбары
                     trk_hue.Value = 0;
@@ -473,14 +476,14 @@ namespace ImageProccesingApp_2attempt
                 // Освобождаем старые изображения, если они есть
                 pictureBox1.Image?.Dispose();
                 pictureBox2.Image?.Dispose();
-                originalImage?.Dispose();
-                processedImage?.Dispose();
+                _originalImage?.Dispose();
+                _processedImage?.Dispose();
 
                 // Обновляем изображения
                 pictureBox1.Image = (Image)pastedImage.Clone();
                 pictureBox2.Image = (Image)pastedImage.Clone();
-                processedImage = new Bitmap(pastedImage);
-                originalImage = new Bitmap(pastedImage);
+                _processedImage = new Bitmap(pastedImage);
+                _originalImage = new Bitmap(pastedImage);
 
                 // Обновляем информацию о размере
                 txt_width.Text = pastedImage.Width.ToString();
@@ -539,7 +542,7 @@ namespace ImageProccesingApp_2attempt
             }
 
             pictureBox1.Image = binary;
-            processedImage = new Bitmap(binary); // Сохраняем результат
+            _processedImage = new Bitmap(binary); // Сохраняем результат
         }
         //Бинаризация изображения
         private void filters_binaris_Click(object sender, EventArgs e)
@@ -718,12 +721,12 @@ namespace ImageProccesingApp_2attempt
                     }
 
                     pictureBox1.Image = binary;
-                    processedImage = new Bitmap(binary);
+                    _processedImage = new Bitmap(binary);
                 }
             }
 
-            undoHistory.Push(new Bitmap(processedImage));
-            redoHistory.Clear();
+            _undoHistory.Push(new Bitmap(_processedImage));
+            _redoHistory.Clear();
         }
 
         // Вспомогательная функция для определения контрастного цвета текста
@@ -815,7 +818,7 @@ namespace ImageProccesingApp_2attempt
             }
 
             pictureBox1.Image = negative;
-            processedImage = new Bitmap(negative); // Сохраняем результат
+            _processedImage = new Bitmap(negative); // Сохраняем результат
         }
         //Для негатива в  tool strip menu
         private void filters_negative_Click(object sender, EventArgs e)
@@ -840,7 +843,7 @@ namespace ImageProccesingApp_2attempt
             }
 
             pictureBox1.Image = negative;
-            processedImage = new Bitmap(negative); // Сохраняем результат
+            _processedImage = new Bitmap(negative); // Сохраняем результат
         }
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -849,17 +852,17 @@ namespace ImageProccesingApp_2attempt
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Освобождаем ресурсы изображений
-            if (originalImage != null)
+            if (_originalImage != null)
             {
-                originalImage.Dispose();
-                originalImage = null;
+                _originalImage.Dispose();
+                _originalImage = null;
             }
 
-            if (processedImage != null)
+            if (_processedImage != null)
             {
-                undoHistory.Push(new Bitmap(processedImage)); // Сохраняем ДО очистки
-                processedImage.Dispose();
-                processedImage = null;
+                _undoHistory.Push(new Bitmap(_processedImage)); // Сохраняем ДО очистки
+                _processedImage.Dispose();
+                _processedImage = null;
             }
 
             // Очищаем PictureBox
@@ -875,9 +878,9 @@ namespace ImageProccesingApp_2attempt
             // Опционально: сбрасываем режимы отображения
             pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
             pictureBox2.SizeMode = PictureBoxSizeMode.Normal;
-            undoHistory.Push(new Bitmap(processedImage));  // Сохраняем текущее состояние
+            _undoHistory.Push(new Bitmap(_processedImage));  // Сохраняем текущее состояние
                                                            // Очищаем redoHistory при новом действии
-            redoHistory.Clear();
+            _redoHistory.Clear();
         }
         private void цветподробноToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -918,7 +921,7 @@ namespace ImageProccesingApp_2attempt
         //применение параметров Scroll Bars цвета
         private void change_parammetrs_button_Click(object sender, EventArgs e)
         {
-            if (processedImage == null) // Используем processedImage вместо originalImage
+            if (_processedImage == null) // Используем processedImage вместо originalImage
             {
                 MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -928,8 +931,8 @@ namespace ImageProccesingApp_2attempt
             try
             {
                 // Сохраняем текущее состояние для возможного отката
-                undoHistory.Push(new Bitmap(processedImage));
-                redoHistory.Clear();
+                _undoHistory.Push(new Bitmap(_processedImage));
+                _redoHistory.Clear();
 
                 // Получаем значения с ползунков
                 float hue = trk_hue.Value / 100f;
@@ -937,11 +940,11 @@ namespace ImageProccesingApp_2attempt
                 float brightness = 1 + trk_bright.Value / 100f;
 
                 // Применяем изменения к ТЕКУЩЕМУ обработанному изображению
-                Bitmap newImage = AdjustImage(processedImage, hue, contrast, brightness);
+                Bitmap newImage = AdjustImage(_processedImage, hue, contrast, brightness);
 
                 // Обновляем изображения
-                processedImage.Dispose(); // Освобождаем старый ресурс
-                processedImage = newImage;
+                _processedImage.Dispose(); // Освобождаем старый ресурс
+                _processedImage = newImage;
                 pictureBox1.Image = newImage;
 
                 // Сбрасываем ползунки в 0
@@ -1234,25 +1237,25 @@ namespace ImageProccesingApp_2attempt
         }
         private void AddSaltAndPepperNoise(double probability)
         {
-            if (originalImage == null) return;
+            if (_originalImage == null) return;
 
             // Создаем и показываем ProgressBar
             var progressForm = new ProgressBar();
             progressForm.Show();
 
-            processedImage = new Bitmap(originalImage);
+            _processedImage = new Bitmap(_originalImage);
             Random rand = new Random();
 
-            int totalPixels = processedImage.Width * processedImage.Height;
+            int totalPixels = _processedImage.Width * _processedImage.Height;
             int processedPixels = 0;
 
-            for (int y = 0; y < processedImage.Height; y++)
+            for (int y = 0; y < _processedImage.Height; y++)
             {
-                for (int x = 0; x < processedImage.Width; x++)
+                for (int x = 0; x < _processedImage.Width; x++)
                 {
                     if (rand.NextDouble() < probability)
                     {
-                        processedImage.SetPixel(x, y, rand.NextDouble() < 0.5 ? Color.White : Color.Black);
+                        _processedImage.SetPixel(x, y, rand.NextDouble() < 0.5 ? Color.White : Color.Black);
                     }
 
                     // Обновляем прогресс
@@ -1265,19 +1268,19 @@ namespace ImageProccesingApp_2attempt
                 }
             }
 
-            pictureBox1.Image = processedImage;
+            pictureBox1.Image = _processedImage;
         }
 
         private void ApplySmoothingFilter(int apertureSize)
         {
-            if (processedImage == null) return;
+            if (_processedImage == null) return;
 
-            Bitmap tempImage = new Bitmap(processedImage);
+            Bitmap tempImage = new Bitmap(_processedImage);
             int offset = apertureSize / 2;
 
-            for (int y = offset; y < processedImage.Height - offset; y++)
+            for (int y = offset; y < _processedImage.Height - offset; y++)
             {
-                for (int x = offset; x < processedImage.Width - offset; x++)
+                for (int x = offset; x < _processedImage.Width - offset; x++)
                 {
                     int totalR = 0, totalG = 0, totalB = 0;
                     int pixelCount = 0;
@@ -1286,7 +1289,7 @@ namespace ImageProccesingApp_2attempt
                     {
                         for (int fx = -offset; fx <= offset; fx++)
                         {
-                            Color pixel = processedImage.GetPixel(x + fx, y + fy);
+                            Color pixel = _processedImage.GetPixel(x + fx, y + fy);
                             totalR += pixel.R;
                             totalG += pixel.G;
                             totalB += pixel.B;
@@ -1302,22 +1305,22 @@ namespace ImageProccesingApp_2attempt
                 }
             }
 
-            processedImage = tempImage;
-            pictureBox1.Image = processedImage;
+            _processedImage = tempImage;
+            pictureBox1.Image = _processedImage;
         }
 
         private void ApplyMedianFilter(int apertureSize)
         {
-            if (processedImage == null) return;
+            if (_processedImage == null) return;
 
-            Bitmap tempImage = new Bitmap(processedImage);
+            Bitmap tempImage = new Bitmap(_processedImage);
             int offset = apertureSize / 2;
             int pixelCount = apertureSize * apertureSize;
             int medianIndex = pixelCount / 2;
 
-            for (int y = offset; y < processedImage.Height - offset; y++)
+            for (int y = offset; y < _processedImage.Height - offset; y++)
             {
-                for (int x = offset; x < processedImage.Width - offset; x++)
+                for (int x = offset; x < _processedImage.Width - offset; x++)
                 {
                     // Массивы для хранения значений каналов
                     int[] rValues = new int[pixelCount];
@@ -1330,7 +1333,7 @@ namespace ImageProccesingApp_2attempt
                     {
                         for (int fx = -offset; fx <= offset; fx++)
                         {
-                            Color pixel = processedImage.GetPixel(x + fx, y + fy);
+                            Color pixel = _processedImage.GetPixel(x + fx, y + fy);
                             rValues[index] = pixel.R;
                             gValues[index] = pixel.G;
                             bValues[index] = pixel.B;
@@ -1352,8 +1355,8 @@ namespace ImageProccesingApp_2attempt
                 }
             }
 
-            processedImage = tempImage;
-            pictureBox1.Image = processedImage;
+            _processedImage = tempImage;
+            pictureBox1.Image = _processedImage;
         }
 
         private void методРобертсаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1505,7 +1508,7 @@ namespace ImageProccesingApp_2attempt
             const double multiplier = 500.0;
             const int brightnessBoost = 100;
 
-            int Clamp(int value) => Math.Clamp(value, 0, 255);
+            int Clamp(int value) => value < 0 ? 0 : (value > 255 ? 255 : value);
 
             for (int y = 1; y < original.Height - 1; y++)
             {
@@ -1524,7 +1527,7 @@ namespace ImageProccesingApp_2attempt
                     result.SetPixel(x, y, Color.FromArgb(r, g, b));
 
                     processedPixels++;
-                    UpdateProgress(progressBar, processedPixels, totalPixels);
+                    progressBar?.UpdateProgress((int)((double)processedPixels / totalPixels * 100));
                 }
             }
             return result;
@@ -1543,13 +1546,13 @@ namespace ImageProccesingApp_2attempt
             double normalized = logProduct / 4.0;
             int value = (int)Math.Round(normalized * 500.0 + 100.0);
 
-            return Math.Clamp(value, 0, 255);
+            return value < 0 ? 0 : (value > 255 ? 255 : value);
         }
 
         
 
         // Метод для обработки одного цветового канала
-        private double ProcessChannel(byte center, byte top, byte right, byte bottom, byte left)
+        private double DProcessChannel(byte center, byte top, byte right, byte bottom, byte left)
         {
             // Вычисляем отношения center/neighbor с добавлением 1 (чтобы избежать деления на 0)
             double ratio1 = (center + 1) / (double)(top + 1);

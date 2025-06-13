@@ -5,18 +5,18 @@ using System.Windows.Forms;
 namespace ImageProccesingApp_2attempt
 
 {
-    public partial class histograms : Form
+    public partial class Histograms : Form
     {
-        private readonly Bitmap processedImage;
+        private readonly Bitmap _processedImage;
         private const int HistWidth = 256;
         private const int HistHeight = 100;
-        public histograms(Bitmap img)
+        public Histograms(Bitmap img)
         {
             if (img == null)
                 throw new ArgumentNullException(nameof(img));
 
             InitializeComponent();
-            this.processedImage = new Bitmap(img); ;
+            this._processedImage = new Bitmap(img); ;
 
             // Автоматически строим гистограмму при открытии формы
             this.Shown += (s, e) => BuildHistograms();
@@ -26,7 +26,7 @@ namespace ImageProccesingApp_2attempt
         {
             if (disposing)
             {
-                processedImage?.Dispose();
+                _processedImage?.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -48,11 +48,11 @@ namespace ImageProccesingApp_2attempt
                 int[] blueValues = new int[256];
 
                 // 3. Сбор статистики
-                for (int x = 0; x < processedImage.Width; x++)
+                for (int x = 0; x < _processedImage.Width; x++)
                 {
-                    for (int y = 0; y < processedImage.Height; y++)
+                    for (int y = 0; y < _processedImage.Height; y++)
                     {
-                        Color pixel = processedImage.GetPixel(x, y);
+                        Color pixel = _processedImage.GetPixel(x, y);
 
                         int brightness = Clamp((int)(0.34 * pixel.R + 0.5 * pixel.G + 0.16 * pixel.B), 0, 255);
                         brightnessValues[brightness]++;
@@ -116,14 +116,14 @@ namespace ImageProccesingApp_2attempt
 
         private void histograms_rebuild_Click(object sender, EventArgs e)
         {
-            if (processedImage == null)
+            if (_processedImage == null)
             {
                 MessageBox.Show("Сначала обработайте изображение!");
                 return;
             }
 
             // Передаем processedImage в конструктор
-            var histForm = new histograms(processedImage);
+            var histForm = new Histograms(_processedImage);
             histForm.Show();
         }
 
