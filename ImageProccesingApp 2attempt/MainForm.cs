@@ -1633,5 +1633,85 @@ namespace ImageProccesingApp_2attempt
 
         }
 
+        private void методСобелаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Сначала загрузите изображение!", "Ошибка",
+                               MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Создаем и показываем форму с прогресс-баром
+                var progressForm = new ProgressBar();
+                progressForm.Show();
+
+                // Получаем изображение из pictureBox
+                Bitmap original = new Bitmap(pictureBox1.Image);
+
+                // Обрабатываем изображение методом Собела
+                Bitmap result = ApplySobelFilter(original, progressForm);
+
+                // Показываем результат в новом окне
+                FormResult resultForm = new FormResult(result);
+                resultForm.Show();
+
+                // Закрываем прогресс-бар
+                progressForm.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при обработке изображения: {ex.Message}", "Ошибка",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Bitmap ApplySobelFilter(Bitmap sourceImage, ProgressBar progressForm)
+        {
+            Bitmap result = new Bitmap(sourceImage.Width, sourceImage.Height);
+            int totalPixels = (sourceImage.Width - 2) * (sourceImage.Height - 2);
+            int processedPixels = 0;
+            const int brightnessThreshold = 100; // Порог яркости
+
+            // Ядра Собела
+            int[,] xKernel = { { -1, 0, 1 }, { -2, 0, 2 }, { -1, 0, 1 } };
+            int[,] yKernel = { { -1, -2, -1 }, { 0, 0, 0 }, { 1, 2, 1 } };
+
+            for (int y = 1; y < sourceImage.Height - 1; y++)
+            {
+                for (int x = 1; x < sourceImage.Width - 1; x++)
+                {
+                    int gx = 0, gy = 0;
+
+                    // Применяем ядра Собела к окрестности 3x3
+                    for (int i = -1; i <= 1; i++)
+                    {
+                        for (int j = -1; j <= 1; j++)
+                        {
+                            Color pixel = sourceImage.GetPixel(x + j, y + i);
+                            int grayValue = (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11);
+
+                            gx += grayValue * xKernel[i + 1, j + 1];
+                            gy += grayValue * yKernel[i + 1, j + 1];
+                        }
+                    }
+
+                    // Вычисляем величину градиента
+                    int gradient = (int)Math.Sqrt(gx * gx + gy * gy) + brightnessThreshold;
+                    gradient = Math.Max(0, Math.Min(255, gradient)); // Нормализация
+
+                    result.SetPixel(x, y, Color.FromArgb(gradient, gradient, gradient));
+
+                    // Обновляем прогресс-бар
+                    processedPixels++;
+                    int percent = (int)((double)processedPixels / totalPixels * 100);
+                    progressForm?.UpdateProgress(percent);
+                }
+            }
+
+            return result;
+        }
     }
 }
