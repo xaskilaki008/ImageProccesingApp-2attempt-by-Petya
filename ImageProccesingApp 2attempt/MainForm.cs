@@ -1549,27 +1549,6 @@ namespace ImageProccesingApp_2attempt
             return value < 0 ? 0 : (value > 255 ? 255 : value);
         }
 
-        
-
-        // Метод для обработки одного цветового канала
-        private double DProcessChannel(byte center, byte top, byte right, byte bottom, byte left)
-        {
-            // Вычисляем отношения center/neighbor с добавлением 1 (чтобы избежать деления на 0)
-            double ratio1 = (center + 1) / (double)(top + 1);
-            double ratio3 = (center + 1) / (double)(right + 1);
-            double ratio5 = (center + 1) / (double)(bottom + 1);
-            double ratio7 = (center + 1) / (double)(left + 1);
-
-            // Вычисляем логарифмы отношений
-            double log1 = Math.Log(ratio1);
-            double log3 = Math.Log(ratio3);
-            double log5 = Math.Log(ratio5);
-            double log7 = Math.Log(ratio7);
-
-            // Вычисляем новое значение по формуле Уоллеса
-            return (log1 * log3 * log5 * log7) / 4.0;
-        }
-
         // Реализация статистического метода
         private Bitmap StatisticalEdgeDetection(Bitmap original, ProgressBar progressForm)
         {
