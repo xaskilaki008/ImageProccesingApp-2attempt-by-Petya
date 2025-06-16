@@ -796,30 +796,6 @@ namespace ImageProccesingApp_2attempt
             // Отображаем результат
             pictureBox1.Image = grayImage;
         }
-        private void btn_f3_Click_1(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image == null) return;
-
-            Bitmap original = new Bitmap(pictureBox1.Image);
-            Bitmap negative = new Bitmap(original.Width, original.Height);
-
-            for (int y = 0; y < original.Height; y++)
-            {
-                for (int x = 0; x < original.Width; x++)
-                {
-                    Color pixel = original.GetPixel(x, y);
-                    // Инвертируем каждый цветовой канал
-                    Color negativeColor = Color.FromArgb(
-                        255 - pixel.R,
-                        255 - pixel.G,
-                        255 - pixel.B);
-                    negative.SetPixel(x, y, negativeColor);
-                }
-            }
-
-            pictureBox1.Image = negative;
-            _processedImage = new Bitmap(negative); // Сохраняем результат
-        }
         //Для негатива в  tool strip menu
         private void filters_negative_Click(object sender, EventArgs e)
         {
@@ -910,15 +886,6 @@ namespace ImageProccesingApp_2attempt
             panel.BorderStyle = BorderStyle.None; // Убираем стандартную рамку
         }
         // Обработчик изменения размера панели
-        private void Color_Picker_Panel_SizeChanged(object sender, EventArgs e)
-        {
-            if (Color_Picker_Panel.Visible)
-            {
-                ApplyRoundedCorners(Color_Picker_Panel, 15);
-            }
-        }
-        private DateTime lastScrollTime = DateTime.MinValue;
-        //применение параметров Scroll Bars цвета
         private void change_parammetrs_button_Click(object sender, EventArgs e)
         {
             if (_processedImage == null) // Используем processedImage вместо originalImage

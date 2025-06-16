@@ -126,10 +126,5 @@ namespace ImageProccesingApp_2attempt
             var histForm = new Histograms(_processedImage);
             histForm.Show();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
