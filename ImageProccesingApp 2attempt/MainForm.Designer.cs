@@ -115,7 +115,7 @@ namespace ImageProccesingApp_2attempt
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.App_menuStrip);
             this.panel1.Location = new System.Drawing.Point(1, 3);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(476, 299);
             this.panel1.TabIndex = 1;
@@ -128,7 +128,7 @@ namespace ImageProccesingApp_2attempt
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Cross;
             this.pictureBox1.Location = new System.Drawing.Point(8, 26);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(458, 260);
             this.pictureBox1.TabIndex = 3;
@@ -139,7 +139,7 @@ namespace ImageProccesingApp_2attempt
             this.panel3.BackColor = System.Drawing.Color.DarkGray;
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Location = new System.Drawing.Point(0, 297);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(700, 154);
             this.panel3.TabIndex = 4;
@@ -147,7 +147,7 @@ namespace ImageProccesingApp_2attempt
             // panel4
             // 
             this.panel4.Location = new System.Drawing.Point(522, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(181, 292);
             this.panel4.TabIndex = 0;
@@ -155,7 +155,7 @@ namespace ImageProccesingApp_2attempt
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(522, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(181, 292);
             this.panel2.TabIndex = 0;
@@ -397,7 +397,7 @@ namespace ImageProccesingApp_2attempt
             this.panel5.Controls.Add(this.btn_center);
             this.panel5.Controls.Add(this.btn_stretch);
             this.panel5.Location = new System.Drawing.Point(471, 3);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(266, 299);
             this.panel5.TabIndex = 0;
@@ -407,7 +407,7 @@ namespace ImageProccesingApp_2attempt
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.pictureBox2.Location = new System.Drawing.Point(12, 37);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(166, 115);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -437,7 +437,7 @@ namespace ImageProccesingApp_2attempt
             this.btn_zoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_zoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btn_zoom.Location = new System.Drawing.Point(180, -2);
-            this.btn_zoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_zoom.Margin = new System.Windows.Forms.Padding(2);
             this.btn_zoom.Name = "btn_zoom";
             this.btn_zoom.Size = new System.Drawing.Size(75, 32);
             this.btn_zoom.TabIndex = 0;
@@ -453,7 +453,7 @@ namespace ImageProccesingApp_2attempt
             this.btn_center.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_center.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btn_center.Location = new System.Drawing.Point(106, -2);
-            this.btn_center.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_center.Margin = new System.Windows.Forms.Padding(2);
             this.btn_center.Name = "btn_center";
             this.btn_center.Size = new System.Drawing.Size(75, 32);
             this.btn_center.TabIndex = 1;
@@ -469,7 +469,7 @@ namespace ImageProccesingApp_2attempt
             this.btn_stretch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_stretch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btn_stretch.Location = new System.Drawing.Point(31, -2);
-            this.btn_stretch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_stretch.Margin = new System.Windows.Forms.Padding(2);
             this.btn_stretch.Name = "btn_stretch";
             this.btn_stretch.Size = new System.Drawing.Size(75, 32);
             this.btn_stretch.TabIndex = 2;
@@ -493,7 +493,7 @@ namespace ImageProccesingApp_2attempt
             this.panel6.Controls.Add(this.btn_resize);
             this.panel6.Controls.Add(this.btn_save);
             this.panel6.Location = new System.Drawing.Point(0, 304);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(737, 151);
             this.panel6.TabIndex = 2;
@@ -520,7 +520,7 @@ namespace ImageProccesingApp_2attempt
             this.Color_Picker_Panel.Controls.Add(this.trk_hue);
             this.Color_Picker_Panel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Color_Picker_Panel.Location = new System.Drawing.Point(200, -10);
-            this.Color_Picker_Panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Color_Picker_Panel.Margin = new System.Windows.Forms.Padding(2);
             this.Color_Picker_Panel.Name = "Color_Picker_Panel";
             this.Color_Picker_Panel.Size = new System.Drawing.Size(166, 156);
             this.Color_Picker_Panel.TabIndex = 0;
@@ -641,7 +641,7 @@ namespace ImageProccesingApp_2attempt
             this.change_parammetrs_button.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.change_parammetrs_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.change_parammetrs_button.Location = new System.Drawing.Point(27, 123);
-            this.change_parammetrs_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.change_parammetrs_button.Margin = new System.Windows.Forms.Padding(2);
             this.change_parammetrs_button.Name = "change_parammetrs_button";
             this.change_parammetrs_button.Size = new System.Drawing.Size(82, 23);
             this.change_parammetrs_button.TabIndex = 0;
@@ -773,7 +773,7 @@ namespace ImageProccesingApp_2attempt
             // txt_hight
             // 
             this.txt_hight.Location = new System.Drawing.Point(90, 76);
-            this.txt_hight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_hight.Margin = new System.Windows.Forms.Padding(2);
             this.txt_hight.Name = "txt_hight";
             this.txt_hight.Size = new System.Drawing.Size(76, 20);
             this.txt_hight.TabIndex = 6;
@@ -781,7 +781,7 @@ namespace ImageProccesingApp_2attempt
             // txt_width
             // 
             this.txt_width.Location = new System.Drawing.Point(3, 76);
-            this.txt_width.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_width.Margin = new System.Windows.Forms.Padding(2);
             this.txt_width.Name = "txt_width";
             this.txt_width.Size = new System.Drawing.Size(76, 20);
             this.txt_width.TabIndex = 5;
@@ -789,7 +789,7 @@ namespace ImageProccesingApp_2attempt
             // txt_imgpath
             // 
             this.txt_imgpath.Location = new System.Drawing.Point(2, 24);
-            this.txt_imgpath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_imgpath.Margin = new System.Windows.Forms.Padding(2);
             this.txt_imgpath.Multiline = true;
             this.txt_imgpath.Name = "txt_imgpath";
             this.txt_imgpath.Size = new System.Drawing.Size(318, 25);
@@ -802,7 +802,7 @@ namespace ImageProccesingApp_2attempt
             this.btn_reload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btn_reload.Location = new System.Drawing.Point(96, 115);
-            this.btn_reload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_reload.Margin = new System.Windows.Forms.Padding(2);
             this.btn_reload.Name = "btn_reload";
             this.btn_reload.Size = new System.Drawing.Size(68, 31);
             this.btn_reload.TabIndex = 3;
@@ -816,7 +816,7 @@ namespace ImageProccesingApp_2attempt
             this.btn_resize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_resize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btn_resize.Location = new System.Drawing.Point(0, 114);
-            this.btn_resize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_resize.Margin = new System.Windows.Forms.Padding(2);
             this.btn_resize.Name = "btn_resize";
             this.btn_resize.Size = new System.Drawing.Size(68, 31);
             this.btn_resize.TabIndex = 2;
@@ -830,12 +830,13 @@ namespace ImageProccesingApp_2attempt
             this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btn_save.Location = new System.Drawing.Point(547, 24);
-            this.btn_save.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_save.Margin = new System.Windows.Forms.Padding(2);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(180, 31);
             this.btn_save.TabIndex = 4;
             this.btn_save.Text = "Сохранить изображение";
             this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // MainForm
             // 
@@ -846,7 +847,7 @@ namespace ImageProccesingApp_2attempt
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
             this.MainMenuStrip = this.App_menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.panel1.ResumeLayout(false);

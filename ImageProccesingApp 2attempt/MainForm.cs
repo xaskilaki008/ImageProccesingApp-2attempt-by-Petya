@@ -239,17 +239,7 @@ namespace ImageProccesingApp_2attempt
                 trk_bright.Value = 0;
             }
         }
-        // Поворот изображения
-        private void Btn_rotate_Click(object sender, EventArgs e)
-        {
-            if (_processedImage == null) return;
-
-            _processedImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            pictureBox1.Image = _processedImage;
-            _undoHistory.Push(new Bitmap(_processedImage));  // Сохраняем текущее состояние
-                                                           // Очищаем redoHistory при новом действии
-            _redoHistory.Clear();
-        }
+        
         private void ToolStripMenuItem_Rotate_Click(object sender, EventArgs e)
         {
             if (_processedImage == null) return;
@@ -868,23 +858,7 @@ namespace ImageProccesingApp_2attempt
                 ? "Скрыть панель цвета"
                 : "Показать панель цвета";
         }
-        private void ApplyRoundedCorners(Panel panel, int radius)
-        {
-            // Создаем графический путь с скругленными углами
-            GraphicsPath path = new GraphicsPath();
-            path.AddArc(0, 0, radius, radius, 180, 90); // Левый верхний
-            path.AddArc(panel.Width - radius, 0, radius, radius, 270, 90); // Правый верхний
-            path.AddArc(panel.Width - radius, panel.Height - radius, radius, radius, 0, 90); // Правый нижний
-            path.AddArc(0, panel.Height - radius, radius, radius, 90, 90); // Левый нижний
-            path.CloseFigure();
-
-            // Устанавливаем регион для панели
-            panel.Region = new Region(path);
-
-            // Настраиваем внешний вид панели
-            panel.BackColor = Color.FromArgb(240, 240, 240); // Светло-серый фон
-            panel.BorderStyle = BorderStyle.None; // Убираем стандартную рамку
-        }
+        
         // Обработчик изменения размера панели
         private void change_parammetrs_button_Click(object sender, EventArgs e)
         {
@@ -1658,6 +1632,69 @@ namespace ImageProccesingApp_2attempt
             }
 
             return result;
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            // Проверяем, есть ли изображение для сохранения
+            if (_processedImage == null)
+            {
+                MessageBox.Show("Нет изображения для сохранения!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Получаем путь к папке "projects" в директории приложения
+            string defaultPath = Path.Combine(Application.StartupPath, "projects");
+
+            // Создаем папку, если она не существует
+            if (!Directory.Exists(defaultPath))
+            {
+                Directory.CreateDirectory(defaultPath);
+            }
+
+            // Предлагаем пользователю выбрать место сохранения (по умолчанию - папка projects)
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "PNG Image|*.png|JPEG Image|*.jpg|Bitmap Image|*.bmp",
+                Title = "Сохранить изображение",
+                InitialDirectory = defaultPath,
+                FileName = "processed_image.png" // Имя файла по умолчанию
+            };
+
+            // Если пользователь выбрал файл и нажал "Сохранить"
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Получаем выбранный путь
+                    string filePath = saveFileDialog.FileName;
+
+                    // Определяем формат на основе расширения файла
+                    ImageFormat format;
+                    switch (Path.GetExtension(filePath).ToLower())
+                    {
+                        case ".jpg":
+                        case ".jpeg":
+                            format = ImageFormat.Jpeg;
+                            break;
+                        case ".bmp":
+                            format = ImageFormat.Bmp;
+                            break;
+                        default:
+                            format = ImageFormat.Png;
+                            break;
+                    }
+
+                    // Сохраняем изображение
+                    _processedImage.Save(filePath, format);
+
+                    MessageBox.Show("Изображение успешно сохранено!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при сохранении изображения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
